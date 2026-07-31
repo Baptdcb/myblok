@@ -16,7 +16,7 @@ export const content = {
     hero: {
       pre: 'Des outils',
       grad: 'sur mesure',
-      post: 'pour les PME.',
+      post: 'pour les PME',
       sub: "On conçoit et on met en place l'IA, les automatisations et les logiciels sur mesure qui font gagner du temps à votre entreprise. En direct, sans agence.",
       ctaPrimary: 'Parlons-en',
       ctaSecondary: 'Comment ça se passe',

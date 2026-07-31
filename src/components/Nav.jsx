@@ -8,7 +8,8 @@ export default function Nav({ t, theme, toggleTheme, lang, toggleLang }) {
       <div className="container">
         <nav className="nav">
           <a href="#top" className="brand" aria-label="myblok">
-            myblok<span className="brand-dot" aria-hidden="true" />
+            <img className="brand-mark" src="/logos/myblok.svg" alt="" aria-hidden="true" />
+            <span>myblok</span>
           </a>
 
           <div className={`nav-links ${open ? 'open' : ''}`}>

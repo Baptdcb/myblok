@@ -8,7 +8,10 @@ export default function Footer({ t }) {
       <div className="container">
         <div className="footer-top">
           <div>
-            <div className="brand">myblok<span className="brand-dot" aria-hidden="true" /></div>
+            <div className="brand">
+              <img className="brand-mark" src="/logos/myblok.svg" alt="" aria-hidden="true" />
+              <span>myblok</span>
+            </div>
             <p className="footer-tag">{footer.tagline}</p>
           </div>
           <div className="footer-links">

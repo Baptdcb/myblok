@@ -21,18 +21,19 @@ export default function AISection({ t }) {
       </div>
       <div className="ai-marquee" aria-hidden="true">
         <div className="ai-track">
-          {loop.map((name, i) => (
-            <span className="ai-chip" key={i}>
-              <img
-                className="ai-logo"
-                src={`/logos/${SLUG[name] || name.toLowerCase()}.svg`}
-                alt=""
-                loading="lazy"
-                onError={(e) => { e.currentTarget.style.display = 'none' }}
-              />
-              {name}
-            </span>
-          ))}
+          {loop.map((name, i) => {
+            const logoSrc = `/logos/${SLUG[name] || name.toLowerCase()}.svg`
+            return (
+              <span className="ai-chip" key={i}>
+                <span
+                  className="ai-logo"
+                  aria-hidden="true"
+                  style={{ WebkitMaskImage: `url(${logoSrc})`, maskImage: `url(${logoSrc})` }}
+                />
+                {name}
+              </span>
+            )
+          })}
         </div>
       </div>
     </section>
