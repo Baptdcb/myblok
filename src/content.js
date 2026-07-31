@@ -1,4 +1,4 @@
-// Bilingual content for myblok. FR default; EN for Lombok / international prospecting.
+// Bilingual content for myblok. FR default; EN for international prospecting.
 // Voice: "on / nous" (first person plural), address the client as "vous",
 // never third person about ourselves. Honest — no fake clients, team, or metrics.
 
@@ -66,6 +66,35 @@ export const content = {
       text: "On met en place l'IA la plus adaptée à votre secteur et à vos besoins — après un audit clair de ce qui vous fera vraiment gagner du temps. On choisit et on installe le bon outil, pas le plus tendance.",
       tools: ['Claude', 'ChatGPT', 'Gemini', 'Codex', 'Copilot', 'Mistral', 'Perplexity', 'Llama', 'Cursor', 'n8n', 'Zapier', 'Make'],
     },
+    cases: {
+      title: 'Réalisations / cas d’usage',
+      intro: 'On travaille sur des situations concrètes : gagner du temps, réduire les erreurs, éviter les doublons ou automatiser ce qui revient sans fin.',
+      items: [
+        { title: 'Automatiser un suivi client', desc: 'Un flux qui collecte les infos, les relie à un outil interne et déclenche des actions sans intervention manuelle.' },
+        { title: 'Créer un outil interne', desc: 'Une application simple pour remplacer une feuille, un tableau ou des échanges de mails trop répétitifs.' },
+        { title: 'Rendre l’IA utile au quotidien', desc: 'Un assistant ou un agent qui aide à rédiger, classer, résumer ou préparer des documents plus vite.' },
+      ],
+    },
+    method: {
+      title: 'Méthode de travail détaillée',
+      intro: 'On ne part pas dans le code tout de suite. On pose le cadre, puis on construit proprement avec des étapes claires.',
+      steps: [
+        { n: '01', title: 'Comprendre le besoin', desc: 'On écoute votre contexte, vos contraintes, vos habitudes et les points qui bloquent vraiment.' },
+        { n: '02', title: 'Choisir le bon levier', desc: 'On identifie si le bon levier est une automatisation, un outil sur mesure ou une intégration IA.' },
+        { n: '03', title: 'Construire par itérations', desc: 'On avance par petites étapes concrètes, avec des retours réguliers pour éviter les surprises.' },
+        { n: '04', title: 'Former et accompagner', desc: 'On explique ce qui a été mis en place et on reste disponible pour l’évolution du projet.' },
+      ],
+    },
+    pricing: {
+      title: 'Tarif sur devis',
+      intro: 'On ne vend pas un package générique. On propose plusieurs blocs selon votre besoin, votre niveau de maturité et l’impact attendu.',
+      note: 'On vous recommande le bon format après un premier échange clair.',
+      blocks: [
+        { title: 'Automatisation agentique', points: ['Agents qui prennent en charge des tâches répétitives', 'Déclenchements automatisés entre vos outils', 'Gain de temps rapide sur les processus clés'] },
+        { title: 'Développement d’un outil', points: ['Application ou interface adaptée à votre façon de travailler', 'Remplacement d’un process manuel ou fragile', 'Solution simple, robuste et pensée pour durer'] },
+        { title: 'Solution complète', points: ['Analyse du besoin', 'Mise en place d’outils et automatisations', 'Formation et accompagnement sur la prise en main'] },
+      ],
+    },
     process: {
       title: 'Comment ça se passe',
       intro: 'Un chemin simple, sans piège, du premier échange à la livraison.',
@@ -90,7 +119,7 @@ export const content = {
         { k: 'Sans intermédiaire', v: 'Moins de coûts, moins de délais, rien qui se perd en route.' },
         { k: 'Impliqué', v: "Votre projet compte — il ne finit pas au fond d'une file d'attente." },
       ],
-      location: "On travaille entre la France et l'Indonésie (Lombok) jusqu'à fin août 2026, à distance — le décalage horaire est géré.",
+      location: 'Basé à Lyon, on peut intervenir sur site si besoin, ou gérer le projet à distance selon ce qui vous convient le mieux.',
     },
     contact: {
       title: 'Une idée, un besoin, ou juste une question ?',
@@ -107,15 +136,14 @@ export const content = {
     footer: {
       tagline: 'Outils sur mesure & IA pour PME.',
       legalToggle: 'Mentions légales',
-      madeIn: 'Conçu et développé en direct, entre la France et Lombok.',
+      madeIn: 'Conçu et développé en direct, depuis Lyon.',
     },
     legal: {
       title: 'Mentions légales',
       lines: [
-        ['Éditeur', 'Baptiste [NOM] — Entrepreneur individuel (auto-entrepreneur)'],
-        ['SIREN', '[à compléter]'],
+        ['Éditeur', 'myblok — Entrepreneur individuel (auto-entreprise)'],
         ['Contact', 'contact@myblok.fr'],
-        ['Directeur de publication', 'Baptiste [NOM]'],
+        ['Directeur de publication', 'Baptiste '],
         ['Hébergeur', 'Vercel Inc. — 340 S Lemon Ave #4133, Walnut, CA 91789, USA — vercel.com'],
       ],
     },
@@ -165,6 +193,35 @@ export const content = {
       text: 'We set up the AI best suited to your sector and needs — after a clear audit of what would actually save you time. We pick and install the right tool, not the buzziest one.',
       tools: ['Claude', 'ChatGPT', 'Gemini', 'Codex', 'Copilot', 'Mistral', 'Perplexity', 'Llama', 'Cursor', 'n8n', 'Zapier', 'Make'],
     },
+    cases: {
+      title: 'Use cases / real-world examples',
+      intro: 'We work on concrete situations: saving time, reducing errors, avoiding duplicates or automating work that comes back again and again.',
+      items: [
+        { title: 'Automating client follow-up', desc: 'A flow that collects information, connects it to an internal tool and triggers actions without manual effort.' },
+        { title: 'Creating an internal tool', desc: 'A simple app to replace a spreadsheet, a shared file or too many repetitive emails.' },
+        { title: 'Making AI useful every day', desc: 'An assistant or agent that helps draft, sort, summarise or prepare documents faster.' },
+      ],
+    },
+    method: {
+      title: 'Detailed working method',
+      intro: 'We do not jump straight into code. We define the frame first, then build carefully with clear steps.',
+      steps: [
+        { n: '01', title: 'Understand the need', desc: 'We listen to your context, constraints, habits and the points that really block you.' },
+        { n: '02', title: 'Choose the right lever', desc: 'We identify whether the right solution is automation, a bespoke tool or an AI integration.' },
+        { n: '03', title: 'Build iteratively', desc: 'We move forward in practical steps with regular feedback so surprises stay low.' },
+        { n: '04', title: 'Train and support', desc: 'We explain what was put in place and stay available as the project develops.' },
+      ],
+    },
+    pricing: {
+      title: 'Quote-based pricing',
+      intro: 'We do not sell a generic package. We propose several blocks depending on your need, maturity and expected impact.',
+      note: 'We recommend the right format after a clear first conversation.',
+      blocks: [
+        { title: 'Agentic automation', points: ['Agents that take over repetitive tasks', 'Automated triggers across your tools', 'Fast time savings on key processes'] },
+        { title: 'Custom tool development', points: ['An app or interface adapted to your way of working', 'Replacement for a manual or fragile process', 'A simple, robust solution built to last'] },
+        { title: 'Complete solution', points: ['Needs analysis', 'Implementation of tools and automations', 'Training and support for adoption'] },
+      ],
+    },
     process: {
       title: 'How it works',
       intro: 'A simple path, no traps, from the first chat to delivery.',
@@ -189,7 +246,7 @@ export const content = {
         { k: 'No middleman', v: 'Lower cost, shorter delays, nothing lost along the way.' },
         { k: 'Invested', v: "Your project matters — it won't sit at the bottom of a queue." },
       ],
-      location: 'We work between France and Indonesia (Lombok) until end of August 2026, remotely — the time difference is handled.',
+      location: 'Based in Lyon, we can work on site when needed or manage the project remotely depending on what suits you best.',
     },
     contact: {
       title: 'An idea, a need, or just a question?',
@@ -206,7 +263,7 @@ export const content = {
     footer: {
       tagline: 'Custom tools & AI for SMEs.',
       legalToggle: 'Legal notice',
-      madeIn: 'Designed and built direct, between France and Lombok.',
+      madeIn: 'Designed and built directly from Lyon.',
     },
     legal: {
       title: 'Legal notice',

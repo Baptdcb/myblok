@@ -191,6 +191,24 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 800; line-height: 1.
 .offer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 
 /* ======================================================
+   CASES / METHOD / PRICING
+   ====================================================== */
+.case-grid, .method-grid, .pricing-grid { display: grid; gap: 18px; }
+.case-grid { grid-template-columns: repeat(3, 1fr); }
+.method-grid { grid-template-columns: repeat(4, 1fr); }
+.pricing-grid { grid-template-columns: repeat(3, 1fr); }
+.case-card, .method-card, .pricing-card { padding: 28px 26px; display: flex; flex-direction: column; }
+.case-card:hover, .method-card:hover, .pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.case-card h3, .method-card h3 { font-size: 22px; letter-spacing: -0.03em; }
+.case-card p, .method-card p { margin-top: 10px; color: var(--ink-2); font-size: 15px; line-height: 1.55; }
+.method-step { align-self: flex-start; font-family: var(--font-display); font-weight: 800; font-size: 28px; line-height: 1; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.pricing-tag { align-self: flex-start; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: var(--grad); padding: 6px 12px; border-radius: 100px; }
+.pricing-card ul { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-direction: column; gap: 9px; }
+.pricing-card li { color: var(--ink-2); font-size: 14.5px; line-height: 1.45; display: flex; gap: 8px; align-items: flex-start; }
+.pricing-card li::before { content: '•'; color: var(--red); font-size: 16px; line-height: 1; margin-top: 1px; }
+.pricing-note { margin-top: 24px; font-family: var(--font-display); font-size: clamp(18px, 2vw, 24px); font-weight: 800; letter-spacing: -0.03em; color: var(--ink); }
+
+/* ======================================================
    AI SECTION
    ====================================================== */
 .ai-head { max-width: 52ch; }
@@ -335,6 +353,8 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 800; line-height: 1.
   .nav-burger { display: grid; }
   .problem-list { grid-template-columns: 1fr; }
   .offer-grid { grid-template-columns: 1fr; }
+  .case-grid, .pricing-grid { grid-template-columns: 1fr; }
+  .method-grid { grid-template-columns: 1fr; }
   .process-track { grid-template-columns: 1fr; }
   .legal dl { grid-template-columns: 1fr; gap: 3px 0; }
   .legal dt { margin-top: 10px; }

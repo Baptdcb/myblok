@@ -50,6 +50,81 @@ export function Offer({ t }) {
   )
 }
 
+/* ---------------- Cases ---------------- */
+export function CasesSection({ t }) {
+  const { cases } = t
+  return (
+    <section id="realisations" className="section" aria-labelledby="cases-title">
+      <div className="container">
+        <Reveal className="section-head">
+          <h2 id="cases-title" className="section-title">{cases.title}</h2>
+          <p className="section-intro">{cases.intro}</p>
+        </Reveal>
+        <div className="case-grid">
+          {cases.items.map((item, i) => (
+            <Reveal key={i} className="glass case-card" delay={i + 1}>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ---------------- Method ---------------- */
+export function MethodSection({ t }) {
+  const { method } = t
+  return (
+    <section id="method" className="section" aria-labelledby="method-title">
+      <div className="container">
+        <Reveal className="section-head">
+          <h2 id="method-title" className="section-title">{method.title}</h2>
+          <p className="section-intro">{method.intro}</p>
+        </Reveal>
+        <div className="method-grid">
+          {method.steps.map((step, i) => (
+            <Reveal key={i} className="glass method-card" delay={i + 1}>
+              <span className="method-step">{step.n}</span>
+              <h3>{step.title}</h3>
+              <p>{step.desc}</p>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ---------------- Pricing ---------------- */
+export function PricingSection({ t }) {
+  const { pricing } = t
+  return (
+    <section id="tarifs" className="section" aria-labelledby="pricing-title">
+      <div className="container">
+        <Reveal className="section-head">
+          <h2 id="pricing-title" className="section-title">{pricing.title}</h2>
+          <p className="section-intro">{pricing.intro}</p>
+        </Reveal>
+        <div className="pricing-grid">
+          {pricing.blocks.map((block, i) => (
+            <Reveal key={i} className="glass pricing-card" delay={i + 1}>
+              <span className="pricing-tag">{block.title}</span>
+              <ul>
+                {block.points.map((point, j) => <li key={j}>{point}</li>)}
+              </ul>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal className="pricing-note" delay={2}>
+          <span>{pricing.note}</span>
+        </Reveal>
+      </div>
+    </section>
+  )
+}
+
 /* ---------------- Process ---------------- */
 export function Process({ t }) {
   const { process } = t
