@@ -279,6 +279,4 @@ export const content = {
   },
 }
 
-// Formspree endpoint — replace with your real form id from formspree.io
-export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/your-form-id'
 export const CONTACT_EMAIL = 'contact@myblok.fr'

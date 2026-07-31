@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Icon, Reveal } from './common.jsx'
-import { FORMSPREE_ENDPOINT, CONTACT_EMAIL } from '../content.js'
+import { CONTACT_EMAIL } from '../content.js'
 
 export default function Contact({ t }) {
   const { contact } = t
@@ -11,11 +11,22 @@ export default function Contact({ t }) {
     setStatus('sending')
     const form = e.currentTarget
     const data = new FormData(form)
+
+    const payload = {
+      name: String(data.get('name') || '').trim(),
+      email: String(data.get('email') || '').trim(),
+      message: String(data.get('message') || '').trim(),
+      company: String(data.get('company') || '').trim(), // honeypot
+    }
+
     try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
       })
       if (res.ok) {
         setStatus('ok')
@@ -52,6 +63,14 @@ export default function Contact({ t }) {
             <label htmlFor="cf-msg">{contact.message}</label>
             <textarea id="cf-msg" name="message" required placeholder={contact.message} />
           </div>
+          <input
+            type="text"
+            name="company"
+            autoComplete="off"
+            tabIndex={-1}
+            aria-hidden="true"
+            style={{ position: 'absolute', left: '-9999px', opacity: 0, pointerEvents: 'none' }}
+          />
           <button type="submit" className="btn btn-primary" disabled={status === 'sending'}>
             {status === 'sending' ? contact.sending : contact.submit}
             {status !== 'sending' && <Icon.arrow />}
