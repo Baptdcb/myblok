@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-30T00:00:00Z",
+  "title": "Design System: myblok",
+  "extensions": {
+    "colorMeta": {
+      "signal": { "role": "primary", "displayName": "Electric Blue Signal", "canonical": "#4b82ff", "tonalRamp": ["#0a1436", "#132456", "#1e3a86", "#2a54b8", "#3a6ce0", "#4b82ff", "#7aa2ff", "#b3c8ff"] },
+      "signal-2": { "role": "primary", "displayName": "Signal Light", "canonical": "#7aa2ff", "tonalRamp": ["#16264f", "#22386f", "#31509c", "#436bc9", "#5a86ef", "#7aa2ff", "#a3bcff", "#cfdcff"] },
+      "midnight-ground": { "role": "neutral", "displayName": "Midnight Ground", "canonical": "#060a16", "tonalRamp": ["#060a16", "#0a1024", "#0d1430", "#131b45", "#1c2860", "#2a3a82", "#3a4ea8", "#5266cc"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#eef1fb", "tonalRamp": ["#717ea6", "#8592b6", "#a7b3d4", "#bcc6e0", "#d2dae9", "#e0e6f4", "#eef1fb", "#f7f9ff"] },
+      "ink-2": { "role": "neutral", "displayName": "Ink Secondary", "canonical": "#a7b3d4", "tonalRamp": ["#3a4568", "#4b587e", "#5f6d96", "#7381af", "#8b98c3", "#a7b3d4", "#c2cbe2", "#dde3f0"] },
+      "ink-3": { "role": "neutral", "displayName": "Ink Tertiary", "canonical": "#717ea6", "tonalRamp": ["#2c3450", "#3a4468", "#495580", "#5b6796", "#717ea6", "#8b97b9", "#a8b2cc", "#c8cfe0"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only; solid ink with a solid-signal accent word, never gradient." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles." },
+      "title": { "displayName": "Title", "purpose": "Offer card, process step, and side-panel h3." },
+      "body": { "displayName": "Body", "purpose": "Paragraph copy and form fields; 34-62ch measure." },
+      "label": { "displayName": "Label", "purpose": "Eyebrow pills, module tags, step numbers, badges; the only positive-tracked, uppercase register." }
+    },
+    "shadows": [
+      { "name": "panel", "value": "0 24px 60px rgba(2,6,22,0.55), inset 0 1px 1px rgba(255,255,255,0.30)", "purpose": "Default glass panel elevation: outer diffusion plus inner top sheen." },
+      { "name": "panel-sm", "value": "0 10px 26px rgba(2,6,22,0.45)", "purpose": "Nav bar and lighter-lift glass surfaces." },
+      { "name": "signal-glow", "value": "0 12px 28px rgba(75,130,255,0.55), inset 0 1px 1px rgba(255,255,255,0.45)", "purpose": "Colored cast under the primary button and signal elements." },
+      { "name": "signal-glow-hover", "value": "0 18px 40px rgba(75,130,255,0.55), inset 0 1px 1px rgba(255,255,255,0.5)", "purpose": "Deepened glow on primary-button hover." },
+      { "name": "focus-ring", "value": "0 0 0 3px color-mix(in srgb, #4b82ff 22%, transparent)", "purpose": "Signal-tinted input focus ring." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "The single system easing (--ease) for lifts, deck rotation, and reveals." },
+      { "name": "lift", "value": "transform translateY(-2px) over 0.4s", "purpose": "Hover raise on buttons and interactive glass." },
+      { "name": "press", "value": "transform translateY(1px) scale(0.99)", "purpose": "Active-state settle on buttons." },
+      { "name": "reveal", "value": "opacity + translateY(26px) over 0.8s, staggered 0.08s per data-d step", "purpose": "Scroll-in reveal; disabled under prefers-reduced-motion." }
+    ],
+    "breakpoints": [
+      { "name": "lg", "value": "940px" },
+      { "name": "md", "value": "720px" },
+      { "name": "sm", "value": "460px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main action; signal-gradient glass with an inner top-white line, used once per view.",
+      "html": "<button class=\"ds-btn-primary\">Prendre contact</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 9px; font: 650 15px/1.2 'Helvetica Neue', system-ui, sans-serif; color: #fff; background: linear-gradient(135deg, #7aa2ff, #4b82ff); padding: 14px 22px; border: none; border-radius: 13px; box-shadow: 0 12px 28px rgba(75,130,255,0.55), inset 0 1px 1px rgba(255,255,255,0.45); cursor: pointer; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1); } .ds-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(75,130,255,0.55), inset 0 1px 1px rgba(255,255,255,0.5); } .ds-btn-primary:active { transform: translateY(1px) scale(0.99); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary quiet action; glass fill with a 1px luminous edge.",
+      "html": "<button class=\"ds-btn-ghost\">Voir la demarche</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 9px; font: 650 15px/1.2 'Helvetica Neue', system-ui, sans-serif; color: #eef1fb; background: rgba(255,255,255,0.055); border: 1px solid rgba(255,255,255,0.14); border-radius: 13px; padding: 14px 22px; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); cursor: pointer; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), background 0.3s ease, border-color 0.3s ease; } .ds-btn-ghost:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.22); transform: translateY(-2px); } .ds-btn-ghost:active { transform: translateY(1px) scale(0.99); }"
+    },
+    {
+      "name": "Glass Panel",
+      "kind": "card",
+      "refersTo": "glass-card",
+      "description": "The primary container: frosted pane, 1px luminous edge, top-left specular sheen.",
+      "html": "<div class=\"ds-glass\"><span class=\"ds-oc-tag\">Automatisation</span><h3>Taches repetitives</h3><p>On automatise ce qui vous fait perdre du temps chaque semaine.</p></div>",
+      "css": ".ds-glass { position: relative; background: rgba(255,255,255,0.055); border: 1px solid rgba(255,255,255,0.14); border-radius: 18px; padding: 28px 26px; color: #eef1fb; -webkit-backdrop-filter: blur(20px) saturate(150%); backdrop-filter: blur(20px) saturate(150%); box-shadow: 0 24px 60px rgba(2,6,22,0.55), inset 0 1px 1px rgba(255,255,255,0.30); } .ds-glass::before { content: ''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(135deg, rgba(255,255,255,0.30), transparent 42%); opacity: 0.5; pointer-events: none; } .ds-glass h3 { font: 800 22px/1.15 'Helvetica Neue', system-ui, sans-serif; letter-spacing: -0.03em; margin: 20px 0 0; } .ds-glass p { color: #a7b3d4; font-size: 15.5px; margin-top: 12px; } .ds-oc-tag { display: inline-block; font: 700 12px/1 'Helvetica Neue', system-ui, sans-serif; letter-spacing: 0.03em; color: #7aa2ff; padding: 6px 11px; border-radius: 100px; background: color-mix(in srgb, #4b82ff 14%, transparent); border: 1px solid color-mix(in srgb, #4b82ff 30%, transparent); }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Glass field with a signal focus ring; no default outline.",
+      "html": "<div class=\"ds-field\"><label>Votre email</label><input class=\"ds-input\" placeholder=\"nom@entreprise.fr\" /></div>",
+      "css": ".ds-field label { display: block; font: 650 12.5px/1 'Helvetica Neue', system-ui, sans-serif; color: #a7b3d4; margin-bottom: 8px; } .ds-input { width: 100%; font: 400 15px/1.4 'Helvetica Neue', system-ui, sans-serif; color: #eef1fb; padding: 13px 15px; border-radius: 12px; background: rgba(255,255,255,0.055); border: 1px solid rgba(255,255,255,0.14); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: border-color 0.2s, box-shadow 0.2s, background 0.2s; } .ds-input::placeholder { color: #717ea6; } .ds-input:focus { outline: none; border-color: #4b82ff; box-shadow: 0 0 0 3px color-mix(in srgb, #4b82ff 22%, transparent); background: rgba(255,255,255,0.09); }"
+    },
+    {
+      "name": "Glass Nav Pill",
+      "kind": "nav",
+      "refersTo": "nav-cta",
+      "description": "Sticky pill-shaped glass nav bar with gradient brand cube and a signal CTA.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-brand\"><span class=\"ds-cube\"></span>myblok</span><a class=\"ds-nav-cta\">Contact</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 10px 12px 10px 18px; border-radius: 100px; background: rgba(255,255,255,0.055); border: 1px solid rgba(255,255,255,0.14); -webkit-backdrop-filter: blur(20px) saturate(150%); backdrop-filter: blur(20px) saturate(150%); box-shadow: 0 10px 26px rgba(2,6,22,0.45); } .ds-brand { display: flex; align-items: center; gap: 10px; font: 800 19px/1 'Helvetica Neue', system-ui, sans-serif; letter-spacing: -0.03em; color: #eef1fb; } .ds-cube { width: 20px; height: 20px; border-radius: 6px; background: linear-gradient(135deg, #7aa2ff, #4b82ff); box-shadow: 0 0 14px rgba(75,130,255,0.55), inset 0 1px 2px rgba(255,255,255,0.6); } .ds-nav-cta { font: 650 14px/1 'Helvetica Neue', system-ui, sans-serif; padding: 10px 18px; border-radius: 100px; color: #fff; background: linear-gradient(135deg, #7aa2ff, #4b82ff); box-shadow: 0 8px 20px rgba(75,130,255,0.55), inset 0 1px 1px rgba(255,255,255,0.4); cursor: pointer; transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); } .ds-nav-cta:hover { transform: translateY(-1px); }"
+    },
+    {
+      "name": "Eyebrow Pill",
+      "kind": "chip",
+      "refersTo": "chip-tag",
+      "description": "Neutral glass pill with a glowing signal dot; section eyebrow label.",
+      "html": "<span class=\"ds-eyebrow\"><span class=\"ds-dot\"></span>Le probleme</span>",
+      "css": ".ds-eyebrow { display: inline-flex; align-items: center; gap: 8px; font: 600 12px/1 'Helvetica Neue', system-ui, sans-serif; letter-spacing: 0.02em; color: #a7b3d4; padding: 7px 13px; border-radius: 100px; background: rgba(255,255,255,0.055); border: 1px solid rgba(255,255,255,0.14); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); } .ds-dot { width: 7px; height: 7px; border-radius: 50%; background: #4b82ff; box-shadow: 0 0 10px rgba(75,130,255,0.55); }"
+    },
+    {
+      "name": "Empty Module Slot",
+      "kind": "custom",
+      "refersTo": "glass-card",
+      "description": "The signature dashed 'to-be-assembled' block from the hero deck; transparent fill, dashed signal outline, no shadow.",
+      "html": "<div class=\"ds-mod-slot\"><span class=\"ds-mod-tag\">+ Votre besoin</span><div class=\"ds-mod-label\">Le bloc qui vous manque</div></div>",
+      "css": ".ds-mod-slot { position: relative; padding: 18px 18px 16px; border-radius: 18px; background: transparent; border: 1.5px dashed #4b82ff; box-shadow: none; transform: rotate(-2deg); } .ds-mod-slot .ds-mod-tag { font: 700 11px/1 'Helvetica Neue', system-ui, sans-serif; letter-spacing: 0.06em; text-transform: uppercase; color: #4b82ff; } .ds-mod-slot .ds-mod-label { font: 700 16px/1.15 'Helvetica Neue', system-ui, sans-serif; letter-spacing: -0.02em; margin-top: 10px; color: #a7b3d4; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Assembling Deck",
+    "overview": "myblok is a liquid-glass modular world. Every surface is a frosted pane floating over a deep midnight-navy ground, edged with a single luminous 1px hairline and lit from the top-left. The signature is literal: the hero is a deck of glass service modules floating in real CSS 3D perspective, with a dashed '+ votre besoin' slot clipping in. The mood is sober but dynamic, professional-credible with a controlled dose of startup wow. Color is disciplined to two registers: a near-monochrome blue-tinted navy field and one electric-blue signal that carries every accent, CTA, and highlight. The system ships full light and dark themes with dark as default, both the same world under a different light source.",
+    "keyCharacteristics": [
+      "Deep midnight-navy ground, never pure black; blue-tinted ink, never flat gray.",
+      "A single electric-blue signal owns every accent.",
+      "Frosted glass panels (backdrop-blur + 1px luminous edge + top-left sheen) as the primary container.",
+      "Heavy tight grotesque display type; solid headings, never gradient-filled.",
+      "Real 3D perspective staging for the module deck; light source top-left."
+    ],
+    "rules": [
+      { "name": "The One Signal Rule", "body": "There is exactly one accent hue. Every attention-carrying element is the electric blue. If you need contrast, change lightness within the signal, not the hue.", "section": "colors" },
+      { "name": "The Never-Black-Never-Gray Rule", "body": "The ground is midnight-navy (#060a16), never #000. Text is blue-tinted, never neutral gray. The whole field is quietly blue.", "section": "colors" },
+      { "name": "The Solid-Heading Rule", "body": "Headings are solid ink or a solid-blue accent word. Never fill a heading with a gradient; gradients belong to buttons, marks, and badges.", "section": "typography" },
+      { "name": "The Negative-Tracking Rule", "body": "Display and heading type always carries negative letter-spacing; the larger the size, the tighter. Only labels and eyebrows track positive.", "section": "typography" },
+      { "name": "The Top-Left Light Rule", "body": "One light source, top-left, everywhere. Every glass panel gets a 135deg sheen and an inset top highlight. Never light a panel from the bottom.", "section": "elevation" },
+      { "name": "The Lift-On-Hover Rule", "body": "Raised state is motion, not just color: interactive elements translate up -1px to -2px and deepen their shadow on hover; buttons settle on :active.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do build every container as a glass panel: glass fill + 1px luminous border + backdrop-blur(20px) saturate(150%) + panel shadow + the top-left ::before sheen.",
+      "Do keep the accent to the single electric blue; change lightness when you need accent contrast, never the hue.",
+      "Do light everything from the top-left with 135deg sheens and inset top highlights.",
+      "Do set headings at weight 800 with negative tracking and keep body copy to a 34-62ch measure.",
+      "Do express raised/active state as motion (translateY hover, translateY(1px) scale(0.99) active) plus a deeper glow.",
+      "Do reserve dashed signal strokes for the 'empty / to-be-assembled' module meaning.",
+      "Do guard every animation behind prefers-reduced-motion and keep tokens theme-agnostic so both light and dark render from the same names."
+    ],
+    "donts": [
+      "Don't fill headings with gradients; gradients live on buttons, marks, badges, and the brand cube only.",
+      "Don't use pure black for ground or flat gray for text; the field stays blue-tinted.",
+      "Don't introduce a second accent hue; the only sanctioned non-signal color is scoped error red on form messages.",
+      "Don't draw hard opaque borders; panel edges are the 1px luminous glass hairline.",
+      "Don't flatten the hero deck into a static 2D card grid; the real-perspective float is the identity.",
+      "Don't collapse the two-register discipline into a generic dark-gradient SaaS hero or a flat freelance card-grid."
+    ]
+  }
+}

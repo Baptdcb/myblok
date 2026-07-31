@@ -1,0 +1,40 @@
+import { Reveal } from './common.jsx'
+
+// Real logos are dropped into /public/logos/<slug>.svg (official brand assets).
+// Until a file is present, the tool name shows on its own (graceful fallback).
+const SLUG = {
+  Claude: 'claude', ChatGPT: 'chatgpt', Gemini: 'gemini', Codex: 'codex',
+  Copilot: 'copilot', Mistral: 'mistral', Perplexity: 'perplexity', Llama: 'llama',
+  Cursor: 'cursor', n8n: 'n8n', Zapier: 'zapier', Make: 'make',
+}
+
+export default function AISection({ t }) {
+  const { ai } = t
+  const loop = [...ai.tools, ...ai.tools]
+  return (
+    <section id="ia" className="section ai-sec" aria-labelledby="ai-title">
+      <div className="container">
+        <Reveal className="ai-head">
+          <h2 id="ai-title" className="section-title">{ai.title}</h2>
+          <p className="section-intro ai-text">{ai.text}</p>
+        </Reveal>
+      </div>
+      <div className="ai-marquee" aria-hidden="true">
+        <div className="ai-track">
+          {loop.map((name, i) => (
+            <span className="ai-chip" key={i}>
+              <img
+                className="ai-logo"
+                src={`/logos/${SLUG[name] || name.toLowerCase()}.svg`}
+                alt=""
+                loading="lazy"
+                onError={(e) => { e.currentTarget.style.display = 'none' }}
+              />
+              {name}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
