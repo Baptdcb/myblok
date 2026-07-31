@@ -38,7 +38,7 @@ export const content = {
         {
           tag: 'Conseil & audit',
           title: "Y voir clair sur l'IA",
-          desc: "On audite votre activité et on vous dit franchement où l'IA vous ferait gagner du temps — et où elle ne sert à rien.",
+          desc: "On audite votre activité et on vous dit franchement où l'IA vous ferait gagner du temps et où elle ne sert à rien.",
           example: 'Ex : un audit clair avant de dépenser le moindre euro.',
         },
         {
