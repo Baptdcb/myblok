@@ -1,4 +1,4 @@
-import { Reveal } from './common.jsx'
+import { Reveal, Icon } from './common.jsx'
 
 // Real logos are dropped into /public/logos/<slug>.svg (official brand assets).
 // Until a file is present, the tool name shows on its own (graceful fallback).
@@ -35,6 +35,12 @@ export default function AISection({ t }) {
             )
           })}
         </div>
+      </div>
+      <div className="container">
+        <Reveal className="section-cta" delay={2}>
+          <span>{ai.cta.text}</span>
+          <a href="#contact" className="btn btn-primary">{ai.cta.button} <Icon.arrow /></a>
+        </Reveal>
       </div>
     </section>
   )
