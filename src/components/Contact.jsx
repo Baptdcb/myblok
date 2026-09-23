@@ -1,10 +1,34 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Icon, Reveal } from './common.jsx'
 import { CONTACT_EMAIL } from '../content.js'
 
 export default function Contact({ t }) {
   const { contact } = t
   const [status, setStatus] = useState('idle') // idle | sending | ok | err
+  const turnstileRef = useRef(null)
+  const widgetId = useRef(null)
+
+  // Explicit render: the page is prerendered and React replaces that DOM on
+  // mount, so Turnstile's implicit scan could draw into a node that gets thrown away.
+  useEffect(() => {
+    let timer
+    const mount = () => {
+      if (!window.turnstile || !turnstileRef.current) {
+        timer = setTimeout(mount, 200)
+        return
+      }
+      widgetId.current = window.turnstile.render(turnstileRef.current, {
+        sitekey: import.meta.env.VITE_TURNSTILE_SITE_KEY,
+        theme: 'auto',
+      })
+    }
+    mount()
+    return () => {
+      clearTimeout(timer)
+      if (widgetId.current != null) window.turnstile?.remove(widgetId.current)
+      widgetId.current = null
+    }
+  }, [])
 
   async function onSubmit(e) {
     e.preventDefault()
@@ -38,7 +62,7 @@ export default function Contact({ t }) {
     } catch {
       setStatus('err')
     } finally {
-      window.turnstile?.reset()
+      if (widgetId.current != null) window.turnstile?.reset(widgetId.current)
     }
   }
 
@@ -74,7 +98,7 @@ export default function Contact({ t }) {
             aria-hidden="true"
             style={{ position: 'absolute', left: '-9999px', opacity: 0, pointerEvents: 'none' }}
           />
-          <div className="cf-turnstile" data-sitekey={import.meta.env.VITE_TURNSTILE_SITE_KEY} data-theme="auto" />
+          <div ref={turnstileRef} />
           <button type="submit" className="btn btn-primary" disabled={status === 'sending'}>
             {status === 'sending' ? contact.sending : contact.submit}
             {status !== 'sending' && <Icon.arrow />}
