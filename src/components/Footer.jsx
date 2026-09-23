@@ -16,7 +16,7 @@ function LegalList({ lines }) {
 export default function Footer({ t }) {
   const [legalOpen, setLegalOpen] = useState(false)
   const { footer, legal } = t
-<<<<<<< HEAD
+  const navLabel = (id) => t.nav.links.find((l) => l.id === id)?.label
 
   useEffect(() => {
     const sync = () => {
@@ -27,9 +27,6 @@ export default function Footer({ t }) {
     return () => window.removeEventListener('hashchange', sync)
   }, [])
 
-=======
-  const navLabel = (id) => t.nav.links.find((l) => l.id === id)?.label
->>>>>>> main
   return (
     <footer className="footer">
       <div className="container">

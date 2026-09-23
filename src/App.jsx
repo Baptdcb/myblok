@@ -6,6 +6,7 @@ import { Problem, Offer, PricingSection, Process, About } from './components/Sec
 import AISection from './components/AISection.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
+import { Analytics } from "@vercel/analytics/react"
 
 function Background() {
   return <div className="bg" aria-hidden="true" />
@@ -19,6 +20,7 @@ export default function App() {
   return (
     <>
       <Background />
+      <Analytics />
       <Nav t={t} theme={theme} toggleTheme={toggleTheme} lang={lang} toggleLang={toggleLang} />
       <main>
         <Hero t={t} />
