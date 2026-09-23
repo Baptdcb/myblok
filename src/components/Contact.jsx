@@ -24,7 +24,12 @@ export default function Contact({ t }) {
       }
       // A Turnstile failure must never take the whole page down with it.
       try {
-        widgetId.current = window.turnstile.render(turnstileRef.current, { sitekey, theme: 'auto' })
+        widgetId.current = window.turnstile.render(turnstileRef.current, {
+          sitekey,
+          theme: 'auto',
+          // Handling errors here stops Turnstile from throwing uncaught (e.g. 110200 = hostname not allowed).
+          'error-callback': (code) => console.error('Turnstile error', code),
+        })
       } catch (err) {
         console.error(err)
       }
