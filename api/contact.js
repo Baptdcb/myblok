@@ -43,10 +43,22 @@ export default async function handler(req, res) {
   const turnstileSecret = process.env.TURNSTILE_SECRET_KEY
 
   if (!apiKey || !from || !to || !turnstileSecret) {
+    const missing = Object.entries({
+      RESEND_API_KEY: apiKey,
+      CONTACT_FROM_EMAIL: from,
+      CONTACT_TO_EMAIL: to,
+      TURNSTILE_SECRET_KEY: turnstileSecret,
+    }).filter(([, v]) => !v).map(([k]) => k)
+    console.error('Contact API missing env vars:', missing.join(', '))
     return json(res, 500, { ok: false, error: 'server_not_configured' })
   }
 
-  const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {})
+  let body
+  try {
+    body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {})
+  } catch {
+    return json(res, 400, { ok: false, error: 'invalid_json' })
+  }
   const name = String(body.name || '').trim()
   const email = String(body.email || '').trim()
   const message = String(body.message || '').trim()
@@ -70,7 +82,12 @@ export default async function handler(req, res) {
   }
 
   const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim()
-  const humanVerified = await verifyTurnstile(turnstileToken, ip)
+  let humanVerified = false
+  try {
+    humanVerified = await verifyTurnstile(turnstileToken, ip)
+  } catch (error) {
+    console.error('Turnstile verification error:', error)
+  }
   if (!humanVerified) {
     return json(res, 400, { ok: false, error: 'captcha_failed' })
   }
