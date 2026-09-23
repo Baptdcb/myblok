@@ -1,20 +1,20 @@
 import { useState } from 'react'
 import { Icon } from './common.jsx'
 
-export default function Nav({ t, theme, toggleTheme, lang, toggleLang }) {
+export default function Nav({ t, home = '', theme, toggleTheme, lang, toggleLang }) {
   const [open, setOpen] = useState(false)
   return (
     <div className="nav-wrap">
       <div className="container">
         <nav className="nav">
-          <a href="#top" className="brand" aria-label="myblok">
+          <a href={home || '#top'} className="brand" aria-label="myblok">
             <img className="brand-mark" src="/logos/myblok.svg" alt="" aria-hidden="true" />
             <span>myblok</span>
           </a>
 
           <div className={`nav-links ${open ? 'open' : ''}`}>
             {t.nav.links.map((l) => (
-              <a key={l.id} href={`#${l.id}`} onClick={() => setOpen(false)}>{l.label}</a>
+              <a key={l.id} href={`${home}#${l.id}`} onClick={() => setOpen(false)}>{l.label}</a>
             ))}
           </div>
 

@@ -1102,6 +1102,772 @@ h3 {
 }
 
 /* ======================================================
+   EXAMPLES — lien vers la page projet
+   ====================================================== */
+.case-more {
+	margin-top: 18px;
+	align-self: flex-start;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	font-weight: 700;
+	font-size: 14.5px;
+	color: var(--red);
+}
+.case-more svg {
+	transition: transform 0.3s var(--ease);
+}
+.case-more:hover svg {
+	transform: translateX(4px);
+}
+
+/* ======================================================
+   PAGE PROJET
+   ====================================================== */
+.project-sec {
+	padding-top: 0;
+}
+.project-hero {
+	padding-bottom: clamp(56px, 8vw, 96px);
+}
+.project-back {
+	display: inline-block;
+	font-size: 11.5px;
+	font-weight: 700;
+	letter-spacing: 0.13em;
+	text-transform: uppercase;
+	color: var(--ink-2);
+	margin-bottom: 28px;
+	transition: color 0.2s ease;
+}
+.project-back:hover {
+	color: var(--red);
+}
+.project-tag {
+	display: table;
+}
+.project-title {
+	margin-top: 18px;
+	font-size: clamp(40px, 6.4vw, 80px);
+	line-height: 0.95;
+	letter-spacing: -0.05em;
+	max-width: 14ch;
+}
+.project-lead {
+	margin-top: 22px;
+	color: var(--ink-2);
+	font-size: clamp(16px, 1.7vw, 20px);
+	max-width: 52ch;
+}
+.project-facts {
+	margin-top: clamp(36px, 5vw, 56px);
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 18px;
+}
+.project-fact {
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+.project-fact strong {
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: clamp(38px, 4.4vw, 52px);
+	line-height: 1;
+	letter-spacing: -0.05em;
+	background: var(--grad);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	align-self: flex-start;
+}
+.project-fact span {
+	color: var(--ink-2);
+	font-size: 15px;
+	line-height: 1.4;
+}
+.project-problem {
+	display: grid;
+	grid-template-columns: 0.8fr 1.2fr;
+	gap: 18px 48px;
+	align-items: start;
+}
+.project-prose p {
+	font-size: clamp(16px, 1.6vw, 19px);
+	line-height: 1.55;
+	max-width: 58ch;
+}
+.project-prose p + p {
+	margin-top: 16px;
+	color: var(--ink-2);
+}
+
+/* ---------- schémas (Flow) ---------- */
+.flow-block + .flow-block {
+	margin-top: 34px;
+}
+.flow-label {
+	font-size: 11px;
+	font-weight: 800;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--ink-3);
+	margin-bottom: 14px;
+}
+.flow-label-auto {
+	color: var(--red);
+}
+.flow {
+	display: flex;
+	align-items: stretch;
+}
+.flow-arrow {
+	flex: none;
+	width: 46px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	color: var(--red);
+}
+.flow-arrow-label {
+	font-size: 10px;
+	font-weight: 800;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--ink-3);
+	text-align: center;
+	line-height: 1.2;
+}
+.flow-node {
+	flex: 1 1 0;
+	min-width: 0;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding: 18px 18px 20px;
+	border-radius: 16px;
+	border: 1.5px solid var(--ink);
+	background: var(--pap-2);
+}
+.flow-node strong {
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 17px;
+	line-height: 1.15;
+	letter-spacing: -0.02em;
+}
+.flow-sub {
+	color: var(--ink-2);
+	font-size: 14px;
+	line-height: 1.4;
+}
+.flow-manual .flow-node {
+	background: transparent;
+	border-style: dashed;
+	border-color: var(--line-2);
+}
+.flow-manual .flow-node strong {
+	color: var(--ink-2);
+}
+.flow-manual .flow-arrow {
+	color: var(--ink-3);
+}
+.flow-mark {
+	color: var(--red);
+	font-size: 22px;
+	font-weight: 800;
+	line-height: 1;
+}
+.flow-blok {
+	width: 18px;
+	height: 18px;
+	border-radius: 5px;
+	background: var(--grad);
+	box-shadow: 0 6px 14px var(--grad-glow);
+}
+.flow-role {
+	align-self: flex-start;
+	font-size: 10.5px;
+	font-weight: 800;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: #fff;
+	background: var(--grad);
+	padding: 4px 10px;
+	border-radius: 100px;
+}
+.flow-arch .flow-node strong {
+	font-size: 22px;
+	margin-top: 6px;
+}
+.flow-node ul {
+	list-style: none;
+	padding: 0;
+	margin: 6px 0 0;
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+}
+.flow-node li {
+	color: var(--ink-2);
+	font-size: 14px;
+	line-height: 1.4;
+	display: flex;
+	gap: 8px;
+}
+.flow-node li::before {
+	content: "";
+	flex: none;
+	width: 7px;
+	height: 7px;
+	margin-top: 6px;
+	border-radius: 2px;
+	background: var(--grad);
+}
+
+/* ---------- paliers ---------- */
+.tiers {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 14px;
+}
+.tier {
+	padding: 24px 20px;
+	display: flex;
+	flex-direction: column;
+}
+.tier-when {
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 34px;
+	line-height: 1;
+	letter-spacing: -0.04em;
+	background: var(--grad);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	align-self: flex-start;
+}
+.tier h3 {
+	margin-top: 14px;
+	font-size: 18px;
+	letter-spacing: -0.02em;
+}
+.tier p {
+	margin-top: 8px;
+	color: var(--ink-2);
+	font-size: 14px;
+	line-height: 1.45;
+}
+.tiers-note {
+	margin-top: 22px;
+	color: var(--ink-2);
+	font-size: 15px;
+	font-style: italic;
+}
+
+/* ---------- aperçu d'email ----------
+   Un email se lit sur fond blanc quel que soit le thème du site : les couleurs
+   sont fixes ici, volontairement hors des variables. */
+.project-preview .section-head {
+	margin-bottom: 28px;
+}
+.mail {
+	max-width: 640px;
+	border: 1.5px solid var(--ink);
+	border-radius: var(--radius);
+	overflow: hidden;
+	background: #ffffff;
+	color: #3f3f46;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 1.55;
+}
+.mail-head {
+	margin: 0;
+	padding: 14px 22px;
+	background: #f4f4f5;
+	border-bottom: 1px solid #e4e4e7;
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	font-size: 13px;
+}
+.mail-head div {
+	display: flex;
+	gap: 10px;
+	min-width: 0;
+}
+.mail-head dt {
+	flex: none;
+	width: 48px;
+	color: #71717a;
+}
+.mail-head dd {
+	margin: 0;
+	min-width: 0;
+	overflow-wrap: anywhere;
+	color: #18181b;
+}
+.mail-body {
+	padding: 22px 26px 26px;
+}
+.mail-body p {
+	margin: 0 0 14px;
+}
+.mail-company {
+	font-weight: 700;
+	font-size: 15px;
+	color: #18181b;
+	padding-bottom: 14px;
+	margin-bottom: 18px;
+	border-bottom: 1px solid #e4e4e7;
+}
+.mail-table-wrap {
+	overflow-x: auto;
+	margin-bottom: 16px;
+}
+.mail-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 13px;
+}
+.mail-table th {
+	text-align: left;
+	padding: 8px 10px;
+	border-bottom: 1px solid #e4e4e7;
+	color: #71717a;
+	font-weight: 400;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+.mail-table td {
+	padding: 9px 10px;
+	border-bottom: 1px solid #f4f4f5;
+	white-space: nowrap;
+}
+.mail-table td:first-child {
+	font-weight: 700;
+	color: #18181b;
+}
+.mail-table td:nth-child(3) {
+	color: #b45309;
+}
+.mail-table th:last-child,
+.mail-table td:last-child {
+	text-align: right;
+	font-weight: 700;
+	color: #18181b;
+}
+.mail-table .mail-total td {
+	border-bottom: none;
+	padding-top: 12px;
+	color: #71717a;
+	font-weight: 400;
+}
+.mail-table .mail-total td:last-child {
+	color: #18181b;
+	font-weight: 700;
+	font-size: 15px;
+}
+.mail-bank {
+	margin: 0 0 16px;
+	padding: 12px 14px;
+	background: #fafafa;
+	border: 1px solid #e4e4e7;
+	font-size: 13px;
+}
+.mail-bank span {
+	display: block;
+	color: #71717a;
+}
+.mail-bank strong {
+	color: #18181b;
+}
+.mail-sign {
+	color: #71717a;
+}
+.mail-sign strong {
+	color: #18181b;
+}
+.mail-caption {
+	margin-top: 12px;
+	color: var(--ink-3);
+	font-size: 13.5px;
+	font-style: italic;
+}
+
+/* ---------- garanties ---------- */
+.guarantees {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 18px;
+}
+.guarantee {
+	padding: 26px 24px;
+}
+.guarantee:hover,
+.tier:hover,
+.pass-step:hover,
+.project-fact:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--shadow);
+}
+.guarantee-check {
+	display: grid;
+	place-items: center;
+	width: 30px;
+	height: 30px;
+	border-radius: 9px;
+	background: var(--grad);
+	color: #fff;
+	font-weight: 800;
+	font-size: 15px;
+	box-shadow: 0 8px 18px var(--grad-glow);
+}
+.guarantee h3 {
+	margin-top: 16px;
+	font-size: 19px;
+	letter-spacing: -0.02em;
+}
+.guarantee p {
+	margin-top: 8px;
+	color: var(--ink-2);
+	font-size: 14.5px;
+	line-height: 1.5;
+}
+
+/* ---------- sous le capot ---------- */
+.pass {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 14px;
+}
+.pass-step {
+	padding: 22px 20px;
+}
+.pass-step .step-n {
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 30px;
+	line-height: 1;
+	letter-spacing: -0.04em;
+	background: var(--grad);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+.pass-step h3 {
+	margin-top: 12px;
+	font-size: 18px;
+	letter-spacing: -0.02em;
+}
+.pass-step p {
+	margin-top: 8px;
+	color: var(--ink-2);
+	font-size: 14px;
+	line-height: 1.45;
+}
+.tech-grid {
+	margin-top: 34px;
+	display: grid;
+	grid-template-columns: 0.8fr 1.2fr;
+	gap: 18px;
+	align-items: start;
+}
+.tech-stack,
+.tech-why {
+	padding: 26px 24px;
+}
+.stack {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+.stack li {
+	padding: 9px 16px;
+	border: 1.5px solid var(--ink);
+	border-radius: 100px;
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 15px;
+	letter-spacing: -0.01em;
+}
+.why + .why {
+	margin-top: 18px;
+	padding-top: 18px;
+	border-top: 1.5px solid var(--line);
+}
+.why h3 {
+	font-size: 18px;
+	letter-spacing: -0.02em;
+}
+.why p {
+	margin-top: 6px;
+	color: var(--ink-2);
+	font-size: 14.5px;
+	line-height: 1.5;
+}
+
+/* ---------- chez vous ---------- */
+.adapt {
+	list-style: none;
+	margin: 0;
+	padding: 10px 26px;
+	max-width: 760px;
+}
+.adapt li {
+	padding: 14px 0;
+	display: flex;
+	gap: 12px;
+	font-size: 16px;
+	line-height: 1.45;
+}
+.adapt li + li {
+	border-top: 1.5px solid var(--line);
+}
+.adapt li::before {
+	content: "";
+	flex: none;
+	width: 10px;
+	height: 10px;
+	margin-top: 7px;
+	border-radius: 2px;
+	background: var(--grad);
+}
+
+/* ---------- aperçus : jauges, email texte, compte rendu ---------- */
+.preview-grid {
+	display: grid;
+	grid-template-columns: 1.1fr 0.9fr;
+	gap: 18px;
+	align-items: start;
+}
+.preview-grid .mail {
+	max-width: none;
+}
+.mail-plain p {
+	margin: 0 0 4px;
+	font-family: Consolas, "SFMono-Regular", Menlo, monospace;
+	font-size: 13.5px;
+	color: #18181b;
+}
+.gauges {
+	padding: 24px;
+}
+.gauges ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+.gauge-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px;
+}
+.gauge-top strong {
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 16px;
+	letter-spacing: -0.02em;
+}
+.gauge-status {
+	flex: none;
+	font-size: 10.5px;
+	font-weight: 800;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	padding: 4px 10px;
+	border-radius: 100px;
+	border: 1.5px solid var(--line-2);
+	color: var(--ink-3);
+}
+.gauge-low .gauge-status {
+	border-color: transparent;
+	background: var(--grad);
+	color: #fff;
+}
+.gauge-track {
+	position: relative;
+	margin-top: 10px;
+	height: 10px;
+	border-radius: 100px;
+	background: var(--pap);
+	border: 1px solid var(--line);
+}
+.gauge-fill {
+	position: absolute;
+	inset: 0 auto 0 0;
+	border-radius: 100px;
+	background: var(--ink-3);
+}
+.gauge-low .gauge-fill {
+	background: var(--grad);
+}
+.gauge-mark {
+	position: absolute;
+	top: -5px;
+	bottom: -5px;
+	width: 2px;
+	margin-left: -1px;
+	background: var(--ink);
+}
+.gauge-nums {
+	margin-top: 8px;
+	color: var(--ink-2);
+	font-size: 13.5px;
+}
+.report {
+	padding: 24px;
+}
+.report-summary {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 14px;
+	padding-bottom: 20px;
+	border-bottom: 1.5px solid var(--line);
+}
+.report-summary div {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+.report-summary strong {
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 40px;
+	line-height: 1;
+	letter-spacing: -0.04em;
+	background: var(--grad);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	align-self: flex-start;
+}
+.report-summary span {
+	color: var(--ink-2);
+	font-size: 14px;
+}
+.report-rows {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.report-row {
+	display: grid;
+	grid-template-columns: 210px 100px 1fr;
+	gap: 8px 18px;
+	align-items: center;
+	padding: 14px 0;
+}
+.report-row + .report-row {
+	border-top: 1.5px solid var(--line);
+}
+.report-id {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+.report-id strong {
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 15px;
+	letter-spacing: -0.01em;
+}
+.report-id span {
+	color: var(--ink-2);
+	font-size: 14px;
+}
+.report-status {
+	justify-self: start;
+	font-size: 10.5px;
+	font-weight: 800;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	padding: 4px 10px;
+	border-radius: 100px;
+	border: 1.5px solid var(--ink);
+	color: var(--ink);
+}
+.report-ko {
+	border-color: transparent;
+	background: var(--grad);
+	color: #fff;
+}
+.report-detail {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	min-width: 0;
+	font-size: 14.5px;
+	line-height: 1.4;
+}
+.report-file {
+	font-family: Consolas, "SFMono-Regular", Menlo, monospace;
+	font-size: 13px;
+	overflow-wrap: anywhere;
+	color: var(--ink-2);
+}
+.report-warn {
+	color: var(--ink-3);
+	font-size: 13.5px;
+	font-style: italic;
+}
+
+/* ---------- autres exemples ---------- */
+.others-title {
+	font-family: var(--font);
+	line-height: 1.2;
+}
+.others {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 18px;
+}
+.other {
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+.other:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--shadow);
+}
+.other > span:first-child {
+	align-self: flex-start;
+}
+.other strong {
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 22px;
+	line-height: 1.1;
+	letter-spacing: -0.03em;
+}
+.other .case-more {
+	margin-top: 0;
+}
+
+/* ======================================================
    REVEAL
    ====================================================== */
 /* box-shadow est listé ici et pas seulement dans .glass : .reveal arrive plus bas
@@ -1154,6 +1920,27 @@ h3 {
 	.case-grid {
 		grid-template-columns: 1fr;
 	}
+	.project-problem,
+	.tech-grid,
+	.preview-grid {
+		grid-template-columns: 1fr;
+	}
+	.tiers,
+	.guarantees,
+	.pass {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.flow {
+		flex-direction: column;
+	}
+	.flow-arrow {
+		width: auto;
+		height: 42px;
+		flex-direction: row;
+	}
+	.flow-arrow svg {
+		transform: rotate(90deg);
+	}
 	.step-connector {
 		display: none;
 	}
@@ -1180,6 +1967,22 @@ h3 {
 	}
 	.problem-list {
 		grid-template-columns: 1fr;
+	}
+	.project-facts,
+	.tiers,
+	.guarantees,
+	.pass,
+	.others {
+		grid-template-columns: 1fr;
+	}
+	.report-row {
+		grid-template-columns: 1fr auto;
+	}
+	.report-detail {
+		grid-column: 1 / -1;
+	}
+	.report-summary strong {
+		font-size: 32px;
 	}
 	.offer-grid {
 		grid-template-columns: 1fr;

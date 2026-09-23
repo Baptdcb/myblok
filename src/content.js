@@ -82,9 +82,12 @@ export const content = {
       removed: '{n} tâches sans valeur ajoutée en moins',
       after: 'Maintenant',
       gain: 'Temps gagné, estimé',
+      more: 'Voir en détail',
+      others: 'Les autres exemples',
       items: [
         {
           tag: 'Comptabilité',
+          slug: 'relance-factures',
           title: 'Relance des factures impayées',
           problem: "Relancer les retards de paiement, c'est la tâche que tout le monde repousse. Résultat : des oublis, et une trésorerie qui attend.",
           tasks: ['Éplucher les échéances une par une', 'Chercher le bon contact dans vos emails', 'Rédiger et copier-coller chaque relance', 'Tenir à jour qui a été relancé, et quand'],
@@ -94,6 +97,7 @@ export const content = {
         },
         {
           tag: 'Stocks',
+          slug: 'alertes-stock',
           title: 'Alertes de rupture de stock',
           problem: "On découvre qu'un produit manque le jour où un client le commande. Trop tard.",
           tasks: ['Vérifier les niveaux à la main', 'Comparer chaque produit à son seuil', 'Prévenir la bonne personne au cas par cas'],
@@ -103,6 +107,7 @@ export const content = {
         },
         {
           tag: 'Administratif',
+          slug: 'generation-contrats',
           title: 'Contrats générés par lot',
           problem: "Chaque contrat, c'est un modèle Word à dupliquer, des champs à remplacer, des montants à recalculer. Et toujours les mêmes erreurs.",
           tasks: ['Dupliquer le modèle Word', 'Recopier les infos client une à une', 'Recalculer HT, TVA et TTC à la main', 'Relire pour traquer les erreurs de copier-coller', 'Exporter en PDF, renommer, classer'],
@@ -251,9 +256,12 @@ export const content = {
       removed: '{n} low-value tasks, gone',
       after: 'Now',
       gain: 'Time saved, estimated',
+      more: 'See the details',
+      others: 'Other examples',
       items: [
         {
           tag: 'Accounting',
+          slug: 'relance-factures',
           title: 'Chasing unpaid invoices',
           problem: 'Chasing late payments is the task everyone puts off. The result: things slip, and your cash flow waits.',
           tasks: ['Comb through due dates one by one', 'Dig through emails for the right contact', 'Write and copy-paste each reminder', 'Keep track of who was chased, and when'],
@@ -263,6 +271,7 @@ export const content = {
         },
         {
           tag: 'Inventory',
+          slug: 'alertes-stock',
           title: 'Low-stock alerts',
           problem: "You find out a product is missing the day a customer orders it. Too late.",
           tasks: ['Check stock levels by hand', 'Compare each product to its threshold', 'Warn the right person case by case'],
@@ -272,6 +281,7 @@ export const content = {
         },
         {
           tag: 'Admin',
+          slug: 'generation-contrats',
           title: 'Contracts generated in bulk',
           problem: 'Every contract means copying a Word template, replacing fields, recalculating amounts. And the same mistakes every time.',
           tasks: ['Copy the Word template', 'Retype client details one by one', 'Recalculate net, VAT and gross by hand', 'Proofread for copy-paste mistakes', 'Export to PDF, rename, file it'],

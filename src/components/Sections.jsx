@@ -93,6 +93,9 @@ export function Examples({ t }) {
                 <strong>{ex.gain}</strong>
                 <span className="case-basis">{ex.basis}</span>
               </div>
+              {ex.slug && (
+                <a href={`/projets/${ex.slug}`} className="case-more">{examples.more} <Icon.arrow /></a>
+              )}
             </Reveal>
           ))}
         </div>
