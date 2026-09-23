@@ -18,7 +18,7 @@ export function Problem({ t }) {
           ))}
         </div>
         <Reveal className="problem-foot" delay={2}>
-          <span dangerouslySetInnerHTML={{ __html: problem.foot }} />
+          <span>{problem.foot}</span>
         </Reveal>
       </div>
     </section>

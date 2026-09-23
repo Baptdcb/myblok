@@ -14,6 +14,23 @@ function esc(value) {
     .replaceAll("'", '&#39;')
 }
 
+async function verifyTurnstile(token, ip) {
+  const secret = process.env.TURNSTILE_SECRET_KEY
+  const form = new URLSearchParams()
+  form.append('secret', secret)
+  form.append('response', token)
+  if (ip) form.append('remoteip', ip)
+
+  const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: form.toString(),
+  })
+  if (!res.ok) return false
+  const data = await res.json()
+  return data.success === true
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST')
@@ -23,8 +40,9 @@ export default async function handler(req, res) {
   const apiKey = process.env.RESEND_API_KEY
   const from = process.env.CONTACT_FROM_EMAIL
   const to = process.env.CONTACT_TO_EMAIL
+  const turnstileSecret = process.env.TURNSTILE_SECRET_KEY
 
-  if (!apiKey || !from || !to) {
+  if (!apiKey || !from || !to || !turnstileSecret) {
     return json(res, 500, { ok: false, error: 'server_not_configured' })
   }
 
@@ -33,12 +51,13 @@ export default async function handler(req, res) {
   const email = String(body.email || '').trim()
   const message = String(body.message || '').trim()
   const company = String(body.company || '').trim() // honeypot
+  const turnstileToken = String(body.turnstileToken || '').trim()
 
   if (company) {
     return json(res, 200, { ok: true })
   }
 
-  if (!name || !email || !message) {
+  if (!name || !email || !message || !turnstileToken) {
     return json(res, 400, { ok: false, error: 'missing_fields' })
   }
 
@@ -48,6 +67,12 @@ export default async function handler(req, res) {
 
   if (message.length > 4000 || name.length > 120) {
     return json(res, 400, { ok: false, error: 'payload_too_large' })
+  }
+
+  const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim()
+  const humanVerified = await verifyTurnstile(turnstileToken, ip)
+  if (!humanVerified) {
+    return json(res, 400, { ok: false, error: 'captcha_failed' })
   }
 
   try {
