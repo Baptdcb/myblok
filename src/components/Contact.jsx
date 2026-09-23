@@ -17,6 +17,7 @@ export default function Contact({ t }) {
       email: String(data.get('email') || '').trim(),
       message: String(data.get('message') || '').trim(),
       company: String(data.get('company') || '').trim(), // honeypot
+      turnstileToken: String(data.get('cf-turnstile-response') || ''),
     }
 
     try {
@@ -36,6 +37,8 @@ export default function Contact({ t }) {
       }
     } catch {
       setStatus('err')
+    } finally {
+      window.turnstile?.reset()
     }
   }
 
@@ -71,6 +74,7 @@ export default function Contact({ t }) {
             aria-hidden="true"
             style={{ position: 'absolute', left: '-9999px', opacity: 0, pointerEvents: 'none' }}
           />
+          <div className="cf-turnstile" data-sitekey={import.meta.env.VITE_TURNSTILE_SITE_KEY} data-theme="auto" />
           <button type="submit" className="btn btn-primary" disabled={status === 'sending'}>
             {status === 'sending' ? contact.sending : contact.submit}
             {status !== 'sending' && <Icon.arrow />}
