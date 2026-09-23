@@ -6,7 +6,7 @@ import { Problem, Offer, PricingSection, Process, About } from './components/Sec
 import AISection from './components/AISection.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 
 function Background() {
   return <div className="bg" aria-hidden="true" />
