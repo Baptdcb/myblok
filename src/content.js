@@ -2,6 +2,18 @@
 // Voice: "on / nous" (first person plural), address the client as "vous",
 // never third person about ourselves. Honest — no fake clients, team, or metrics.
 
+// À COMPLÉTER AVANT MISE EN LIGNE : nom de famille, SIREN, adresse.
+// Mentions obligatoires (LCEN art. 6-III, art. R123-237 du code de commerce).
+// Source unique : FR et EN lisent cet objet, elles ne peuvent donc plus diverger.
+export const LEGAL = {
+  name: 'Baptiste Do CABO',
+  siren: '940 162 290',
+  address: 'Lyon, France',
+  email: 'contact@myblok.fr',
+  // Prestataire d'acheminement du formulaire. Une seule ligne à changer si tu en changes.
+  mailProvider: 'Resend (Resend Inc., États-Unis)',
+}
+
 export const content = {
   fr: {
     nav: {
@@ -132,6 +144,8 @@ export const content = {
       success: 'Message envoyé. On revient vers vous très vite.',
       error: "L'envoi a échoué. Écrivez-nous directement à l'adresse ci-dessous.",
       or: 'ou directement',
+      privacy: 'Votre nom, votre email et votre message servent uniquement à vous répondre. Ni revendus, ni utilisés pour de la prospection.',
+      privacyLink: 'Vos droits et le détail',
     },
     footer: {
       tagline: 'Outils sur mesure & IA pour PME.',
@@ -141,11 +155,28 @@ export const content = {
     legal: {
       title: 'Mentions légales',
       lines: [
-        ['Éditeur', 'myblok — Entrepreneur individuel (auto-entreprise)'],
-        ['Contact', 'contact@myblok.fr'],
-        ['Directeur de publication', 'Baptiste '],
+        ['Éditeur', `myblok — ${LEGAL.name}, entrepreneur individuel (auto-entreprise)`],
+        ['SIREN', LEGAL.siren],
+        ['Siège', LEGAL.address],
+        ['Directeur de la publication', LEGAL.name],
+        ['Contact', LEGAL.email],
         ['Hébergeur', 'Vercel Inc. — 340 S Lemon Ave #4133, Walnut, CA 91789, USA — vercel.com'],
       ],
+      privacy: {
+        title: 'Données personnelles',
+        intro:
+          "Le formulaire de contact est le seul endroit du site où on vous demande des informations personnelles. Voilà exactement ce qu’on en fait.",
+        lines: [
+          ['Données collectées', 'Votre nom, votre adresse email et le contenu de votre message. Rien d’autre : aucun champ caché, aucune donnée récupérée à votre insu.'],
+          ['Finalité', 'Répondre à votre demande et, si ça débouche sur un projet, préparer une proposition. Pas de prospection non sollicitée, pas de revente, pas de fichier partagé avec qui que ce soit.'],
+          ['Base légale', 'Votre demande elle-même : l’exécution de mesures précontractuelles prises à votre initiative (article 6.1.b du RGPD).'],
+          ['Destinataires', `Baptiste, et personne d’autre. L’acheminement de l’email passe par notre prestataire d’envoi ${LEGAL.mailProvider}, encadré par un accord de sous-traitance et les clauses contractuelles types de la Commission européenne.`],
+          ['Hébergement', 'Le site et le formulaire sont hébergés par Vercel Inc. (États-Unis), sous le même encadrement contractuel.'],
+          ['Conservation', 'Trois ans à compter de notre dernier échange, puis suppression. Si une prestation démarre, les données liées sont gardées le temps de la mission et des obligations comptables et légales qui en découlent.'],
+          ['Cookies et traceurs', 'Aucun. Pas de mesure d’audience, pas de publicité, pas de bouton de réseau social. Seuls votre choix de thème et de langue sont mémorisés dans votre navigateur : cette information ne quitte jamais votre appareil et ne nécessite pas de consentement.'],
+          ['Vos droits', `Accès, rectification, effacement, limitation, opposition et portabilité. Un email à ${LEGAL.email} suffit, on répond sous un mois.`],
+        ],
+      },
     },
     theme: { toDark: 'Passer en mode sombre', toLight: 'Passer en mode clair' },
   },
@@ -259,6 +290,8 @@ export const content = {
       success: "Message sent. We'll get back to you very soon.",
       error: 'Sending failed. Just email us directly at the address below.',
       or: 'or directly',
+      privacy: 'Your name, email and message are used only to reply to you. Never sold, never used for marketing.',
+      privacyLink: 'Your rights and the details',
     },
     footer: {
       tagline: 'Custom tools & AI for SMEs.',
@@ -268,12 +301,28 @@ export const content = {
     legal: {
       title: 'Legal notice',
       lines: [
-        ['Publisher', 'Baptiste [LAST NAME] — Sole trader (auto-entrepreneur, France)'],
-        ['SIREN', '[to complete]'],
-        ['Contact', 'contact@myblok.fr'],
-        ['Publication director', 'Baptiste [LAST NAME]'],
+        ['Publisher', `myblok — ${LEGAL.name}, sole trader (auto-entrepreneur, France)`],
+        ['SIREN', LEGAL.siren],
+        ['Registered address', LEGAL.address],
+        ['Publication director', LEGAL.name],
+        ['Contact', LEGAL.email],
         ['Host', 'Vercel Inc. — 340 S Lemon Ave #4133, Walnut, CA 91789, USA — vercel.com'],
       ],
+      privacy: {
+        title: 'Personal data',
+        intro:
+          'The contact form is the only place on this site where we ask you for personal information. Here is exactly what happens to it.',
+        lines: [
+          ['Data collected', 'Your name, your email address and the content of your message. Nothing else: no hidden fields, no data gathered without your knowledge.'],
+          ['Purpose', 'Answering your enquiry and, if it turns into a project, preparing a proposal. No unsolicited marketing, no resale, no list shared with anyone.'],
+          ['Legal basis', 'Your own request: steps taken at your request prior to entering into a contract (Article 6(1)(b) GDPR).'],
+          ['Recipients', `Baptiste, and no one else. The email is delivered through our sending provider ${LEGAL.mailProvider}, covered by a data processing agreement and the European Commission’s standard contractual clauses.`],
+          ['Hosting', 'The site and the form are hosted by Vercel Inc. (USA), under the same contractual framework.'],
+          ['Retention', 'Three years from our last exchange, then deletion. If an engagement starts, the related data is kept for the duration of the work and the accounting and legal obligations that follow.'],
+          ['Cookies and trackers', 'None. No analytics, no advertising, no social widgets. Only your theme and language choice are stored in your browser: that never leaves your device and requires no consent.'],
+          ['Your rights', `Access, rectification, erasure, restriction, objection and portability. An email to ${LEGAL.email} is enough, we answer within one month.`],
+        ],
+      },
     },
     theme: { toDark: 'Switch to dark mode', toLight: 'Switch to light mode' },
   },
