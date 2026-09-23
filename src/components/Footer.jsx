@@ -16,6 +16,7 @@ function LegalList({ lines }) {
 export default function Footer({ t }) {
   const [legalOpen, setLegalOpen] = useState(false)
   const { footer, legal } = t
+  const navLabel = (id) => t.nav.links.find((l) => l.id === id)?.label
 
   useEffect(() => {
     const sync = () => {
