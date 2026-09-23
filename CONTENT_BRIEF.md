@@ -26,7 +26,7 @@ Tu peux le corriger librement, raccourcir des passages, changer le ton, ou ajout
 ### 2. Hero
 - Titre:
   - `Des outils`
-  - `sur mesure`
+  - `IA sur mesure`
   - `pour les PME`
 - Sous-texte actuel:
   - `On conçoit et on met en place l'IA, les automatisations et les logiciels sur mesure qui améliore la productivité de votre entreprise. En direct, sans agence.`

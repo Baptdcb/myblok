@@ -1,4 +1,8 @@
 {
+<<<<<<< HEAD
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [{ "source": "/((?!api/).*)", "destination": "/" }]
+=======
+  "$schema": "https://openapi.vercel.sh/vercel.json"
+>>>>>>> main
 }

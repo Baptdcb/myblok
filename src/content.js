@@ -26,22 +26,23 @@ export const content = {
       cta: 'Nous contacter',
     },
     hero: {
-      pre: 'Des outils',
+      pre: 'Des outils IA',
       grad: 'sur mesure',
       post: 'pour les PME',
-      sub: "On conçoit et on met en place l'IA, les automatisations et les logiciels sur mesure qui font gagner du temps à votre entreprise. En direct, sans agence.",
+      sub: "On conçoit et on met en place l'IA, les automatisations et les logiciels sur mesure qui font gagner du temps à votre entreprise. En direct depuis Lyon, sans agence.",
       ctaPrimary: 'Parlons-en',
       ctaSecondary: 'Comment ça se passe',
       tag: '+ votre besoin',
     },
     problem: {
-      title: 'Ça vous parle ?',
+      title: 'Des blocages qu’on voit tout le temps',
+      intro: 'Trois frictions qui reviennent, presque quel que soit le métier.',
       items: [
-        'Vous ressaisissez les mêmes données entre deux logiciels, tous les jours.',
-        "On vous parle d'IA partout, mais vous ne savez pas quoi en faire concrètement.",
-        "Aucun logiciel du marché ne colle vraiment à votre façon de travailler.",
+        { icon: 'repeat', title: 'Ressaisie sans fin', desc: 'Vous ressaisissez les mêmes données entre deux logiciels, tous les jours.' },
+        { icon: 'spark', title: 'Trop de bruit autour de l’IA', desc: "On vous en parle partout, mais vous ne savez pas quoi en faire concrètement." },
+        { icon: 'puzzle', title: 'Rien qui vous correspond', desc: "Aucun logiciel du marché ne colle vraiment à votre façon de travailler." },
       ],
-      foot: "Si l'un de ces cas vous parle, c'est exactement ce qu'on résout.",
+      foot: "Une seule de ces situations vous parle ? C’est exactement ce qu’on résout.",
     },
     offer: {
       title: "Ce qu'on fait",
@@ -50,7 +51,7 @@ export const content = {
         {
           tag: 'Conseil & audit',
           title: "Y voir clair sur l'IA",
-          desc: "On audite votre activité et on vous dit franchement où l'IA vous ferait gagner du temps — et où elle ne sert à rien.",
+          desc: "On audite votre activité et on vous dit franchement où l'IA vous ferait gagner du temps et où elle ne sert à rien.",
           example: 'Ex : un audit clair avant de dépenser le moindre euro.',
         },
         {
@@ -72,30 +73,13 @@ export const content = {
           example: 'Ex : l’outil que vous cherchez depuis des mois et qui n’existe pas.',
         },
       ],
+      cta: { text: 'Un de ces besoins vous parle ?', button: 'Parlons-en' },
     },
     ai: {
       title: 'La bonne IA, pas la plus à la mode.',
       text: "On met en place l'IA la plus adaptée à votre secteur et à vos besoins — après un audit clair de ce qui vous fera vraiment gagner du temps. On choisit et on installe le bon outil, pas le plus tendance.",
       tools: ['Claude', 'ChatGPT', 'Gemini', 'Codex', 'Copilot', 'Mistral', 'Perplexity', 'Llama', 'Cursor', 'n8n', 'Zapier', 'Make'],
-    },
-    cases: {
-      title: 'Réalisations / cas d’usage',
-      intro: 'On travaille sur des situations concrètes : gagner du temps, réduire les erreurs, éviter les doublons ou automatiser ce qui revient sans fin.',
-      items: [
-        { title: 'Automatiser un suivi client', desc: 'Un flux qui collecte les infos, les relie à un outil interne et déclenche des actions sans intervention manuelle.' },
-        { title: 'Créer un outil interne', desc: 'Une application simple pour remplacer une feuille, un tableau ou des échanges de mails trop répétitifs.' },
-        { title: 'Rendre l’IA utile au quotidien', desc: 'Un assistant ou un agent qui aide à rédiger, classer, résumer ou préparer des documents plus vite.' },
-      ],
-    },
-    method: {
-      title: 'Méthode de travail détaillée',
-      intro: 'On ne part pas dans le code tout de suite. On pose le cadre, puis on construit proprement avec des étapes claires.',
-      steps: [
-        { n: '01', title: 'Comprendre le besoin', desc: 'On écoute votre contexte, vos contraintes, vos habitudes et les points qui bloquent vraiment.' },
-        { n: '02', title: 'Choisir le bon levier', desc: 'On identifie si le bon levier est une automatisation, un outil sur mesure ou une intégration IA.' },
-        { n: '03', title: 'Construire par itérations', desc: 'On avance par petites étapes concrètes, avec des retours réguliers pour éviter les surprises.' },
-        { n: '04', title: 'Former et accompagner', desc: 'On explique ce qui a été mis en place et on reste disponible pour l’évolution du projet.' },
-      ],
+      cta: { text: 'Envie d’un audit clair de votre activité ?', button: 'Demander un audit' },
     },
     pricing: {
       title: 'Tarif sur devis',
@@ -117,6 +101,7 @@ export const content = {
         { n: '04', name: 'Développement', desc: "On construit, avec des points réguliers pour que vous suiviez l'avancement." },
         { n: '05', name: 'Livraison', desc: "Outil livré, expliqué, et on reste dispo si ça doit évoluer." },
       ],
+      cta: { text: 'Prêt à démarrer ?', button: 'Réserver un échange gratuit' },
     },
     about: {
       title: 'Qui on est',
@@ -195,19 +180,20 @@ export const content = {
       pre: 'Custom tools',
       grad: 'made to measure',
       post: 'for your SME.',
-      sub: "We design and set up the AI, automations and custom software that save your business time. Direct, no agency.",
+      sub: "We design and set up the AI, automations and custom software that save your business time. Direct from Lyon, no agency.",
       ctaPrimary: 'Let’s talk',
       ctaSecondary: 'See how it works',
       tag: '+ your need',
     },
     problem: {
-      title: 'Sound familiar?',
+      title: 'Roadblocks we see all the time',
+      intro: 'Three frictions that show up no matter the industry.',
       items: [
-        'You re-enter the same data between two apps, every single day.',
-        "Everyone talks about AI, but you don't know what to actually do with it.",
-        "No off-the-shelf software really fits the way you work.",
+        { icon: 'repeat', title: 'Endless re-entry', desc: 'You re-enter the same data between two apps, every single day.' },
+        { icon: 'spark', title: 'Too much AI noise', desc: "Everyone talks about it, but you don't know what to actually do with it." },
+        { icon: 'puzzle', title: 'Nothing quite fits', desc: 'No off-the-shelf software really fits the way you work.' },
       ],
-      foot: "If any of these is you, that's exactly what we solve.",
+      foot: "If even one of these sounds familiar, that's exactly what we solve.",
     },
     offer: {
       title: 'What we do',
@@ -218,30 +204,13 @@ export const content = {
         { tag: 'Automation', title: 'Agents that work for you', desc: 'We build automations and agents that take over your repetitive tasks, 24/7.', example: 'E.g. your reports generated on their own, every month.' },
         { tag: 'Bespoke', title: 'The software you’re missing', desc: "When nothing on the market fits, we build the tool or app made for you.", example: "E.g. the tool you've been after for months that just doesn't exist." },
       ],
+      cta: { text: 'Does one of these sound like you?', button: "Let's talk" },
     },
     ai: {
       title: 'The right AI, not the trendiest.',
       text: 'We set up the AI best suited to your sector and needs — after a clear audit of what would actually save you time. We pick and install the right tool, not the buzziest one.',
       tools: ['Claude', 'ChatGPT', 'Gemini', 'Codex', 'Copilot', 'Mistral', 'Perplexity', 'Llama', 'Cursor', 'n8n', 'Zapier', 'Make'],
-    },
-    cases: {
-      title: 'Use cases / real-world examples',
-      intro: 'We work on concrete situations: saving time, reducing errors, avoiding duplicates or automating work that comes back again and again.',
-      items: [
-        { title: 'Automating client follow-up', desc: 'A flow that collects information, connects it to an internal tool and triggers actions without manual effort.' },
-        { title: 'Creating an internal tool', desc: 'A simple app to replace a spreadsheet, a shared file or too many repetitive emails.' },
-        { title: 'Making AI useful every day', desc: 'An assistant or agent that helps draft, sort, summarise or prepare documents faster.' },
-      ],
-    },
-    method: {
-      title: 'Detailed working method',
-      intro: 'We do not jump straight into code. We define the frame first, then build carefully with clear steps.',
-      steps: [
-        { n: '01', title: 'Understand the need', desc: 'We listen to your context, constraints, habits and the points that really block you.' },
-        { n: '02', title: 'Choose the right lever', desc: 'We identify whether the right solution is automation, a bespoke tool or an AI integration.' },
-        { n: '03', title: 'Build iteratively', desc: 'We move forward in practical steps with regular feedback so surprises stay low.' },
-        { n: '04', title: 'Train and support', desc: 'We explain what was put in place and stay available as the project develops.' },
-      ],
+      cta: { text: 'Want a clear audit of your business?', button: 'Request an audit' },
     },
     pricing: {
       title: 'Quote-based pricing',
@@ -263,6 +232,7 @@ export const content = {
         { n: '04', name: 'Development', desc: 'We build, with regular check-ins so you follow the progress.' },
         { n: '05', name: 'Delivery', desc: 'Tool delivered, explained, and we stay available as it evolves.' },
       ],
+      cta: { text: 'Ready to get started?', button: 'Book a free call' },
     },
     about: {
       title: 'Who we are',
@@ -328,6 +298,4 @@ export const content = {
   },
 }
 
-// Formspree endpoint — replace with your real form id from formspree.io
-export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/your-form-id'
 export const CONTACT_EMAIL = 'contact@myblok.fr'

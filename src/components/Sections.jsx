@@ -1,5 +1,15 @@
 import { Reveal, Icon } from './common.jsx'
 
+/* ---------------- Section CTA ---------------- */
+function SectionCta({ cta }) {
+  return (
+    <Reveal className="section-cta" delay={2}>
+      <span>{cta.text}</span>
+      <a href="#contact" className="btn btn-primary">{cta.button} <Icon.arrow /></a>
+    </Reveal>
+  )
+}
+
 /* ---------------- Problem ---------------- */
 export function Problem({ t }) {
   const { problem } = t
@@ -8,14 +18,19 @@ export function Problem({ t }) {
       <div className="container">
         <Reveal className="section-head">
           <h2 id="problem-title" className="section-title">{problem.title}</h2>
+          <p className="section-intro">{problem.intro}</p>
         </Reveal>
         <div className="problem-list">
-          {problem.items.map((item, i) => (
-            <Reveal key={i} className="glass problem-item" delay={i + 1}>
-              <span className="p-mark" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-              <p>{item}</p>
-            </Reveal>
-          ))}
+          {problem.items.map((item, i) => {
+            const ItemIcon = Icon[item.icon]
+            return (
+              <Reveal key={i} className="glass problem-item" delay={i + 1}>
+                <span className="p-icon" aria-hidden="true"><ItemIcon /></span>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </Reveal>
+            )
+          })}
         </div>
         <Reveal className="problem-foot" delay={2}>
           <span dangerouslySetInnerHTML={{ __html: problem.foot }} />
@@ -45,53 +60,7 @@ export function Offer({ t }) {
             </Reveal>
           ))}
         </div>
-      </div>
-    </section>
-  )
-}
-
-/* ---------------- Cases ---------------- */
-export function CasesSection({ t }) {
-  const { cases } = t
-  return (
-    <section id="realisations" className="section" aria-labelledby="cases-title">
-      <div className="container">
-        <Reveal className="section-head">
-          <h2 id="cases-title" className="section-title">{cases.title}</h2>
-          <p className="section-intro">{cases.intro}</p>
-        </Reveal>
-        <div className="case-grid">
-          {cases.items.map((item, i) => (
-            <Reveal key={i} className="glass case-card" delay={i + 1}>
-              <h3>{item.title}</h3>
-              <p>{item.desc}</p>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-/* ---------------- Method ---------------- */
-export function MethodSection({ t }) {
-  const { method } = t
-  return (
-    <section id="method" className="section" aria-labelledby="method-title">
-      <div className="container">
-        <Reveal className="section-head">
-          <h2 id="method-title" className="section-title">{method.title}</h2>
-          <p className="section-intro">{method.intro}</p>
-        </Reveal>
-        <div className="method-grid">
-          {method.steps.map((step, i) => (
-            <Reveal key={i} className="glass method-card" delay={i + 1}>
-              <span className="method-step">{step.n}</span>
-              <h3>{step.title}</h3>
-              <p>{step.desc}</p>
-            </Reveal>
-          ))}
-        </div>
+        <SectionCta cta={offer.cta} />
       </div>
     </section>
   )
@@ -146,6 +115,7 @@ export function Process({ t }) {
             </Reveal>
           ))}
         </div>
+        <SectionCta cta={process.cta} />
       </div>
     </section>
   )
