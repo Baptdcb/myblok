@@ -3,6 +3,7 @@ import { useState } from 'react'
 export default function Footer({ t }) {
   const [legalOpen, setLegalOpen] = useState(false)
   const { footer, legal } = t
+  const navLabel = (id) => t.nav.links.find((l) => l.id === id)?.label
   return (
     <footer className="footer">
       <div className="container">
@@ -15,8 +16,8 @@ export default function Footer({ t }) {
             <p className="footer-tag">{footer.tagline}</p>
           </div>
           <div className="footer-links">
-            <a href="#offre">{t.nav.links[0].label}</a>
-            <a href="#process">{t.nav.links[1].label}</a>
+            <a href="#offre">{navLabel('offre')}</a>
+            <a href="#process">{navLabel('process')}</a>
             <a href="#contact">{t.nav.cta}</a>
             <button onClick={() => setLegalOpen((o) => !o)} aria-expanded={legalOpen}>
               {footer.legalToggle}

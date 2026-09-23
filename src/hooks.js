@@ -25,11 +25,16 @@ export function useReveal() {
   return ref
 }
 
-// Persisted theme, dark by default.
+// localStorage read that is safe during build-time prerendering (no window).
+function readStored(key) {
+  if (typeof window === 'undefined') return null
+  try { return window.localStorage.getItem(key) } catch { return null }
+}
+
+// Persisted theme, light by default.
 export function useTheme() {
   const [theme, setTheme] = useState(() => {
-    const saved = typeof localStorage !== 'undefined' && localStorage.getItem('myblok-theme')
-    return saved || 'light'
+    return readStored('myblok-theme') || 'light'
   })
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
@@ -43,8 +48,7 @@ export function useTheme() {
 // Language, FR by default, persisted; also drives <html lang>.
 export function useLang() {
   const [lang, setLang] = useState(() => {
-    const saved = typeof localStorage !== 'undefined' && localStorage.getItem('myblok-lang')
-    return saved || 'fr'
+    return readStored('myblok-lang') || 'fr'
   })
   useEffect(() => {
     document.documentElement.setAttribute('lang', lang)

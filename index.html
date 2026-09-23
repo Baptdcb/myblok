@@ -2,17 +2,98 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="myblok — développeur indépendant. Outils et logiciels sur mesure pour PME : automatisations, outils métier, applications. Contact direct, sans agence." />
-    <meta name="theme-color" content="#0a0e1f" />
+    <title>myblok — Automatisation & IA sur mesure pour PME | Lyon</title>
+    <meta name="description" content="Développeur freelance à Lyon : automatisation, IA et outils sur mesure pour PME. Audit, développement et mise en place en direct, sans agence." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://www.myblok.fr/" />
+    <meta name="theme-color" content="#f4f2ec" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <title>myblok — outils sur mesure pour PME</title>
+
+    <!-- Open Graph / réseaux sociaux -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="myblok" />
+    <meta property="og:title" content="myblok — Automatisation & IA sur mesure pour PME" />
+    <meta property="og:description" content="Développeur freelance à Lyon : automatisation, IA et outils sur mesure pour PME. Audit, développement et mise en place en direct, sans agence." />
+    <meta property="og:url" content="https://www.myblok.fr/" />
+    <meta property="og:image" content="https://www.myblok.fr/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="myblok — Automatisation & IA sur mesure pour PME, développeur freelance à Lyon" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale:alternate" content="en_GB" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="myblok — Automatisation & IA sur mesure pour PME" />
+    <meta name="twitter:description" content="Développeur freelance à Lyon : automatisation, IA et outils sur mesure pour PME." />
+    <meta name="twitter:image" content="https://www.myblok.fr/og-image.png" />
+    <meta name="twitter:image:alt" content="myblok — Automatisation & IA sur mesure pour PME" />
+
+    <!-- Données structurées pour Google (rich results) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://www.myblok.fr/#website",
+          "url": "https://www.myblok.fr/",
+          "name": "myblok",
+          "inLanguage": "fr-FR",
+          "publisher": { "@id": "https://www.myblok.fr/#business" }
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://www.myblok.fr/#business",
+          "name": "myblok",
+          "description": "Développeur freelance indépendant à Lyon : automatisation, IA et outils sur mesure pour PME. Audit, développement et mise en place en direct, sans agence.",
+          "url": "https://www.myblok.fr/",
+          "logo": "https://www.myblok.fr/icon-512.png",
+          "image": "https://www.myblok.fr/og-image.png",
+          "email": "contact@myblok.fr",
+          "priceRange": "Sur devis",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lyon",
+            "addressRegion": "Auvergne-Rhône-Alpes",
+            "addressCountry": "FR"
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Lyon" },
+            { "@type": "Country", "name": "France" }
+          ],
+          "founder": { "@type": "Person", "name": "Baptiste" },
+          "knowsAbout": ["Intelligence artificielle", "Automatisation", "Agents IA", "Développement logiciel sur mesure", "n8n", "Zapier", "Make"],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Services",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Conseil & audit IA", "description": "Audit de votre activité pour identifier où l'IA fait réellement gagner du temps." } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Intégration d'outils IA", "description": "Installation et connexion des outils d'IA adaptés à votre métier, dans vos process." } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automatisation et agents IA", "description": "Automatisations et agents qui prennent en charge les tâches répétitives." } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Développement logiciel sur mesure", "description": "Outils et applications métier développés sur mesure pour les PME." } }
+            ]
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Sans JS, le contenu prérendu reste visible (les .reveal sont masqués jusqu'à l'animation) -->
+    <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
   </head>
   <body>
     <!--
@@ -33,7 +114,7 @@
       FORM: solid isometric 3D-block world; staging = the floating/assembling cube cluster; seed d2b0e570.
       FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md.
     -->
-    <div id="root"></div>
+    <div id="root"><!--app-html--></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
