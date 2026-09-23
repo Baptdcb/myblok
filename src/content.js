@@ -19,6 +19,7 @@ export const content = {
     nav: {
       links: [
         { id: 'offre', label: "Ce qu'on fait" },
+        { id: 'exemples', label: 'Exemples' },
         { id: 'ia', label: 'IA' },
         { id: 'process', label: 'Comment ça marche' },
         { id: 'apropos', label: 'Qui on est' },
@@ -74,6 +75,43 @@ export const content = {
         },
       ],
       cta: { text: 'Un de ces besoins vous parle ?', button: 'Parlons-en' },
+    },
+    examples: {
+      title: 'Exemples concrets',
+      intro: "Des démonstrations qu'on a construites sur des tâches que presque toutes les PME connaissent. Chacune peut être adaptée à vos outils et mise en place chez vous, pour faire disparaître ces corvées de vos journées.",
+      removed: '{n} tâches sans valeur ajoutée en moins',
+      after: 'Maintenant',
+      gain: 'Temps gagné, estimé',
+      items: [
+        {
+          tag: 'Comptabilité',
+          title: 'Relance des factures impayées',
+          problem: "Relancer les retards de paiement, c'est la tâche que tout le monde repousse. Résultat : des oublis, et une trésorerie qui attend.",
+          tasks: ['Éplucher les échéances une par une', 'Chercher le bon contact dans vos emails', 'Rédiger et copier-coller chaque relance', 'Tenir à jour qui a été relancé, et quand'],
+          now: "Chaque jour, les retards sont repérés. Le client reçoit le bon message au bon moment : un rappel avant l'échéance, puis de plus en plus ferme. Ses factures sont regroupées dans un seul email, jamais relancées deux fois au même stade. Et vous gardez la main : un client peut être mis en pause à tout moment.",
+          gain: '≈ 3 h / mois',
+          basis: 'pour 40 relances par mois, à 5 minutes chacune',
+        },
+        {
+          tag: 'Stocks',
+          title: 'Alertes de rupture de stock',
+          problem: "On découvre qu'un produit manque le jour où un client le commande. Trop tard.",
+          tasks: ['Vérifier les niveaux à la main', 'Comparer chaque produit à son seuil', 'Prévenir la bonne personne au cas par cas'],
+          now: "Les stocks sont surveillés en continu. Dès qu'un produit passe sous son seuil, la bonne personne reçoit une alerte, une seule fois, pas un email toutes les heures. Quand le stock remonte, la surveillance repart d'elle-même.",
+          gain: '≈ 5 h / mois',
+          basis: 'pour un contrôle de 15 minutes par jour ouvré',
+        },
+        {
+          tag: 'Administratif',
+          title: 'Contrats générés par lot',
+          problem: "Chaque contrat, c'est un modèle Word à dupliquer, des champs à remplacer, des montants à recalculer. Et toujours les mêmes erreurs.",
+          tasks: ['Dupliquer le modèle Word', 'Recopier les infos client une à une', 'Recalculer HT, TVA et TTC à la main', 'Relire pour traquer les erreurs de copier-coller', 'Exporter en PDF, renommer, classer'],
+          now: "Vous remplissez un tableau, une ligne par contrat. Les PDF sortent prêts à envoyer, numérotés et classés. Les montants sont calculés, le SIRET est vérifié, et une ligne incomplète est signalée sans bloquer les autres.",
+          gain: '≈ 7 h / mois',
+          basis: 'pour 30 contrats par mois, à 15 minutes chacun',
+        },
+      ],
+      cta: { text: 'Une tâche du même genre vous prend du temps ?', button: 'Parlons-en' },
     },
     ai: {
       title: 'La bonne IA, pas la plus à la mode.',
@@ -170,6 +208,7 @@ export const content = {
     nav: {
       links: [
         { id: 'offre', label: 'What we do' },
+        { id: 'exemples', label: 'Examples' },
         { id: 'ia', label: 'AI' },
         { id: 'process', label: 'How it works' },
         { id: 'apropos', label: 'Who we are' },
@@ -205,6 +244,43 @@ export const content = {
         { tag: 'Bespoke', title: 'The software you’re missing', desc: "When nothing on the market fits, we build the tool or app made for you.", example: "E.g. the tool you've been after for months that just doesn't exist." },
       ],
       cta: { text: 'Does one of these sound like you?', button: "Let's talk" },
+    },
+    examples: {
+      title: 'Real examples',
+      intro: "Demos we built around tasks almost every SME knows. Each one can be adapted to your tools and set up for you, so these chores drop off your day.",
+      removed: '{n} low-value tasks, gone',
+      after: 'Now',
+      gain: 'Time saved, estimated',
+      items: [
+        {
+          tag: 'Accounting',
+          title: 'Chasing unpaid invoices',
+          problem: 'Chasing late payments is the task everyone puts off. The result: things slip, and your cash flow waits.',
+          tasks: ['Comb through due dates one by one', 'Dig through emails for the right contact', 'Write and copy-paste each reminder', 'Keep track of who was chased, and when'],
+          now: "Every day, late invoices are picked up. The client gets the right message at the right time: a heads-up before the due date, then firmer and firmer. Their invoices are grouped into a single email, never chased twice at the same stage. And you stay in control: any client can be paused at any time.",
+          gain: '≈ 3 h / month',
+          basis: 'for 40 reminders a month, at 5 minutes each',
+        },
+        {
+          tag: 'Inventory',
+          title: 'Low-stock alerts',
+          problem: "You find out a product is missing the day a customer orders it. Too late.",
+          tasks: ['Check stock levels by hand', 'Compare each product to its threshold', 'Warn the right person case by case'],
+          now: "Stock is monitored continuously. As soon as a product drops below its threshold, the right person gets an alert, just once, not an email every hour. When stock is back up, monitoring resets on its own.",
+          gain: '≈ 5 h / month',
+          basis: 'for a 15-minute check every working day',
+        },
+        {
+          tag: 'Admin',
+          title: 'Contracts generated in bulk',
+          problem: 'Every contract means copying a Word template, replacing fields, recalculating amounts. And the same mistakes every time.',
+          tasks: ['Copy the Word template', 'Retype client details one by one', 'Recalculate net, VAT and gross by hand', 'Proofread for copy-paste mistakes', 'Export to PDF, rename, file it'],
+          now: "You fill in a spreadsheet, one row per contract. The PDFs come out ready to send, numbered and filed. Amounts are calculated, company IDs are checked, and an incomplete row is flagged without holding up the rest.",
+          gain: '≈ 7 h / month',
+          basis: 'for 30 contracts a month, at 15 minutes each',
+        },
+      ],
+      cta: { text: 'Does a task like this eat up your time?', button: "Let's talk" },
     },
     ai: {
       title: 'The right AI, not the trendiest.',

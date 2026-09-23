@@ -2,7 +2,7 @@ import { useTheme, useLang } from './hooks.js'
 import { content } from './content.js'
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
-import { Problem, Offer, PricingSection, Process, About } from './components/Sections.jsx'
+import { Problem, Offer, Examples, PricingSection, Process, About } from './components/Sections.jsx'
 import AISection from './components/AISection.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
@@ -26,6 +26,7 @@ export default function App() {
         <Hero t={t} />
         <Problem t={t} />
         <Offer t={t} />
+        <Examples t={t} />
         <PricingSection t={t} />
         <AISection t={t} />
         <Process t={t} />
