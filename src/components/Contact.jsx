@@ -11,16 +11,23 @@ export default function Contact({ t }) {
   // Explicit render: the page is prerendered and React replaces that DOM on
   // mount, so Turnstile's implicit scan could draw into a node that gets thrown away.
   useEffect(() => {
+    const sitekey = import.meta.env.VITE_TURNSTILE_SITE_KEY
+    if (!sitekey) {
+      console.error('VITE_TURNSTILE_SITE_KEY is not set for this build: contact form anti-spam disabled.')
+      return
+    }
     let timer
     const mount = () => {
       if (!window.turnstile || !turnstileRef.current) {
         timer = setTimeout(mount, 200)
         return
       }
-      widgetId.current = window.turnstile.render(turnstileRef.current, {
-        sitekey: import.meta.env.VITE_TURNSTILE_SITE_KEY,
-        theme: 'auto',
-      })
+      // A Turnstile failure must never take the whole page down with it.
+      try {
+        widgetId.current = window.turnstile.render(turnstileRef.current, { sitekey, theme: 'auto' })
+      } catch (err) {
+        console.error(err)
+      }
     }
     mount()
     return () => {
