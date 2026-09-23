@@ -14,8 +14,14 @@ function esc(value) {
     .replaceAll("'", '&#39;')
 }
 
+// Previews and local dev use Cloudflare's always-pass test keys (the real site
+// key only works on myblok.fr), so they must verify with the matching test secret.
+const TURNSTILE_TEST_SECRET = '1x0000000000000000000000000000000AA'
+const turnstileSecretKey = () =>
+  process.env.VERCEL_ENV === 'production' ? process.env.TURNSTILE_SECRET_KEY : TURNSTILE_TEST_SECRET
+
 async function verifyTurnstile(token, ip) {
-  const secret = process.env.TURNSTILE_SECRET_KEY
+  const secret = turnstileSecretKey()
   const form = new URLSearchParams()
   form.append('secret', secret)
   form.append('response', token)
@@ -40,7 +46,7 @@ export default async function handler(req, res) {
   const apiKey = process.env.RESEND_API_KEY
   const from = process.env.CONTACT_FROM_EMAIL
   const to = process.env.CONTACT_TO_EMAIL
-  const turnstileSecret = process.env.TURNSTILE_SECRET_KEY
+  const turnstileSecret = turnstileSecretKey()
 
   if (!apiKey || !from || !to || !turnstileSecret) {
     const missing = Object.entries({

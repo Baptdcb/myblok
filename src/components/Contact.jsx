@@ -2,6 +2,16 @@ import { useEffect, useRef, useState } from 'react'
 import { Icon, Reveal } from './common.jsx'
 import { CONTACT_EMAIL } from '../content.js'
 
+// Cloudflare's always-pass test key: the real key only works on myblok.fr
+// (error 110200 elsewhere), so previews and localhost use this one.
+const TURNSTILE_TEST_SITE_KEY = '1x00000000000000000000AA'
+
+function turnstileSiteKey() {
+  const host = window.location.hostname
+  const isProdHost = host === 'myblok.fr' || host.endsWith('.myblok.fr')
+  return isProdHost ? import.meta.env.VITE_TURNSTILE_SITE_KEY : TURNSTILE_TEST_SITE_KEY
+}
+
 export default function Contact({ t }) {
   const { contact } = t
   const [status, setStatus] = useState('idle') // idle | sending | ok | err
@@ -11,7 +21,7 @@ export default function Contact({ t }) {
   // Explicit render: the page is prerendered and React replaces that DOM on
   // mount, so Turnstile's implicit scan could draw into a node that gets thrown away.
   useEffect(() => {
-    const sitekey = import.meta.env.VITE_TURNSTILE_SITE_KEY
+    const sitekey = turnstileSiteKey()
     if (!sitekey) {
       console.error('VITE_TURNSTILE_SITE_KEY is not set for this build: contact form anti-spam disabled.')
       return
