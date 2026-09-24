@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Icon } from './common.jsx'
+import { Icon } from '../ui/Icon.jsx'
 
 export default function Nav({ t, home = '', theme, toggleTheme, lang, toggleLang }) {
   const [open, setOpen] = useState(false)

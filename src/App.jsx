@@ -2,18 +2,20 @@ import { useTheme, useLang } from './hooks.js'
 import { content } from './content/site.js'
 import { projects } from './content/projects/index.js'
 import { projectSlug } from './routes.js'
-import Nav from './components/Nav.jsx'
-import Hero from './components/Hero.jsx'
-import { Problem, Offer, Examples, PricingSection, Process, About } from './components/Sections.jsx'
-import AISection from './components/AISection.jsx'
-import Contact from './components/Contact.jsx'
-import Footer from './components/Footer.jsx'
-import ProjectPage from './components/ProjectPage.jsx'
+import Background from './components/layout/Background.jsx'
+import Nav from './components/layout/Nav.jsx'
+import Contact from './components/layout/Contact.jsx'
+import Footer from './components/layout/Footer.jsx'
+import Hero from './components/home/Hero.jsx'
+import Problem from './components/home/Problem.jsx'
+import Offer from './components/home/Offer.jsx'
+import Examples from './components/home/Examples.jsx'
+import Pricing from './components/home/Pricing.jsx'
+import AISection from './components/home/AISection.jsx'
+import Process from './components/home/Process.jsx'
+import About from './components/home/About.jsx'
+import ProjectPage from './components/project/ProjectPage.jsx'
 import { Analytics } from "@vercel/analytics/react"
-
-function Background() {
-  return <div className="bg" aria-hidden="true" />
-}
 
 // `path` vient de window.location côté navigateur, et du prérendu au build.
 export default function App({ path = '/' }) {
@@ -46,7 +48,7 @@ export default function App({ path = '/' }) {
           <Problem t={t} />
           <Offer t={t} />
           <Examples t={t} />
-          <PricingSection t={t} />
+          <Pricing t={t} />
           <AISection t={t} />
           <Process t={t} />
           <About t={t} />
