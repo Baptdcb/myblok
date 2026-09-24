@@ -7,4 +7,4 @@ export function render(path) {
 }
 
 // Le prérendu en a besoin pour générer une page HTML par projet.
-export { projects } from './projects.js'
+export { projects } from './content/projects/index.js'

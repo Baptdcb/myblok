@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Icon, Reveal } from './common.jsx'
-import { CONTACT_EMAIL } from '../content.js'
+import { CONTACT_EMAIL } from '../content/site.js'
 
 export default function Contact({ t }) {
   const { contact } = t
