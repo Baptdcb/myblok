@@ -92,8 +92,8 @@ export const content = {
           problem: "Relancer les retards de paiement, c'est la tâche que tout le monde repousse. Résultat : des oublis, et une trésorerie qui attend.",
           tasks: ['Éplucher les échéances une par une', 'Chercher le bon contact dans vos emails', 'Rédiger et copier-coller chaque relance', 'Tenir à jour qui a été relancé, et quand'],
           now: "Chaque jour, les retards sont repérés. Le client reçoit le bon message au bon moment : un rappel avant l'échéance, puis de plus en plus ferme. Ses factures sont regroupées dans un seul email, jamais relancées deux fois au même stade. Et vous gardez la main : un client peut être mis en pause à tout moment.",
-          gain: '≈ 3 h / mois',
-          basis: 'pour 40 relances par mois, à 5 minutes chacune',
+          gain: '≈ 6,5 h / mois',
+          basis: 'pour 40 relances par mois, à 10 minutes chacune',
         },
         {
           tag: 'Stocks',
@@ -266,8 +266,8 @@ export const content = {
           problem: 'Chasing late payments is the task everyone puts off. The result: things slip, and your cash flow waits.',
           tasks: ['Comb through due dates one by one', 'Dig through emails for the right contact', 'Write and copy-paste each reminder', 'Keep track of who was chased, and when'],
           now: "Every day, late invoices are picked up. The client gets the right message at the right time: a heads-up before the due date, then firmer and firmer. Their invoices are grouped into a single email, never chased twice at the same stage. And you stay in control: any client can be paused at any time.",
-          gain: '≈ 3 h / month',
-          basis: 'for 40 reminders a month, at 5 minutes each',
+          gain: '≈ 6,5 h / month',
+          basis: 'for 40 reminders a month, at 10 minutes each',
         },
         {
           tag: 'Inventory',

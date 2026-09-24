@@ -1,7 +1,6 @@
 // Page projet « relance-factures ». Démonstration : données fictives (voir index.js).
 
 export default {
-  // Sert au prérendu : <title>, description et partages sociaux de la page.
   meta: {
     title: 'Relance automatique des factures impayées — myblok',
     description:
@@ -14,7 +13,7 @@ export default {
     lead: "Chaque matin, les factures en retard sont repérées et le client reçoit le bon message, au bon moment. Personne n'a plus à y penser.",
     facts: [
       { value: '4', label: 'tâches sans valeur ajoutée en moins' },
-      { value: '≈ 3 h', label: 'gagnées par mois, pour 40 relances à 5 minutes chacune' },
+      { value: '≈ 6,5 h', label: 'gagnées par mois, pour 40 relances à 10 minutes chacune' },
       { value: '0', label: 'relance en double : la base de données la refuse' },
     ],
 
@@ -153,7 +152,7 @@ export default {
     lead: 'Every morning, late invoices are picked up and the client gets the right message at the right time. Nobody has to think about it anymore.',
     facts: [
       { value: '4', label: 'low-value tasks gone' },
-      { value: '≈ 3 h', label: 'saved a month, for 40 reminders at 5 minutes each' },
+      { value: '≈ 6,5 h', label: 'saved a month, for 40 reminders at 10 minutes each' },
       { value: '0', label: 'duplicate reminders: the database refuses them' },
     ],
 
