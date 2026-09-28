@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Reveal } from '../ui/Reveal.jsx'
 import { Icon } from '../ui/Icon.jsx'
 import { CONTACT_EMAIL } from '../../content/site.js'

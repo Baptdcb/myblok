@@ -49,9 +49,7 @@ for (const [slug, project] of Object.entries(projects)) {
   const html = withApp(withMeta(template, { ...project.meta, url: `${SITE}${pagePath}` }), pagePath)
   await mkdir(path.join(distDir, 'projets'), { recursive: true })
   await writeFile(path.join(distDir, 'projets', `${slug}.html`), html)
-  console.log(`prerender: dist/projets/${slug}.html written`)
 }
 
 await writeFile(htmlPath, withApp(template, '/'))
 await rm(ssrDir, { recursive: true, force: true })
-console.log('prerender: dist/index.html updated')
