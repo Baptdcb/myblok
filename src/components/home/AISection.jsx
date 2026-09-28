@@ -1,4 +1,5 @@
-import { Reveal, Icon } from './common.jsx'
+import { Reveal } from '../ui/Reveal.jsx'
+import { Icon } from '../ui/Icon.jsx'
 
 // Real logos are dropped into /public/logos/<slug>.svg (official brand assets).
 // Until a file is present, the tool name shows on its own (graceful fallback).

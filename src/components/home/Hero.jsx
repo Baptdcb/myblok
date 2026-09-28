@@ -1,4 +1,4 @@
-import { Icon } from './common.jsx'
+import { Icon } from '../ui/Icon.jsx'
 
 export default function Hero({ t }) {
   const { hero } = t

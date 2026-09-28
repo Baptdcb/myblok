@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
-import { Icon, Reveal } from './common.jsx'
-import { CONTACT_EMAIL } from '../content.js'
+import { useState } from 'react'
+import { Reveal } from '../ui/Reveal.jsx'
+import { Icon } from '../ui/Icon.jsx'
+import { CONTACT_EMAIL } from '../../content/site.js'
 
 // Cloudflare's always-pass test key: the real key only works on myblok.fr
 // (error 110200 elsewhere), so previews and localhost use this one.
