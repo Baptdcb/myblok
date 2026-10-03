@@ -1,4 +1,4 @@
-import { Reveal, Icon } from '../components/common.jsx'
+import { Reveal } from '../components/common.jsx'
 
 export default function About({ t }) {
   const { about } = t
@@ -20,10 +20,6 @@ export default function About({ t }) {
                 <div className="ap-v">{pt.v}</div>
               </div>
             ))}
-          </div>
-          <div className="about-loc">
-            <span className="pin"><Icon.pin /></span>
-            <span>{about.location}</span>
           </div>
         </Reveal>
       </div>

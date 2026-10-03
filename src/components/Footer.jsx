@@ -1,8 +1,10 @@
+import { CONTACT_EMAIL, LEGAL, realisations } from '../content/index.js'
 import { pagePath, homeSection } from '../routes.js'
 
 export default function Footer({ t }) {
   const { footer, lang } = t
   const navLabel = (id) => t.nav.links.find((l) => l.id === id)?.label
+  const sections = ['offre', ...(realisations.length > 0 ? ['realisations'] : []), 'faq']
 
   return (
     <footer className="footer">
@@ -14,17 +16,26 @@ export default function Footer({ t }) {
               <span>myblok</span>
             </div>
             <p className="footer-tag">{footer.tagline}</p>
+            <p className="footer-contact">
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+              <span>{footer.location}</span>
+            </p>
           </div>
-          <div className="footer-links">
-            <a href={homeSection(lang, 'offre')}>{navLabel('offre')}</a>
-            <a href={homeSection(lang, 'process')}>{navLabel('process')}</a>
-            <a href={homeSection(lang, 'contact')}>{t.nav.cta}</a>
-            <a href={pagePath('legal', lang)}>{footer.legalLink}</a>
-            <a href={pagePath('privacy', lang)}>{footer.privacyLink}</a>
-          </div>
+          <nav className="footer-links" aria-label="Footer">
+            {sections.map((id) => (
+              <a key={id} href={homeSection(lang, id)}>{navLabel(id)}</a>
+            ))}
+            <a href={homeSection(lang, 'contact')}>{footer.contactLink}</a>
+          </nav>
         </div>
 
-        <p className="footer-made">© {new Date().getFullYear()} myblok · {footer.madeIn}</p>
+        <div className="footer-bottom">
+          <p className="footer-made">© {new Date().getFullYear()} myblok — {LEGAL.name}, {footer.owner}</p>
+          <p className="footer-legal">
+            <a href={pagePath('legal', lang)}>{footer.legalLink}</a>
+            <a href={pagePath('privacy', lang)}>{footer.privacyLink}</a>
+          </p>
+        </div>
       </div>
     </footer>
   )

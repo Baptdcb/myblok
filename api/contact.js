@@ -36,6 +36,7 @@ export default async function handler(req, res) {
   }
   const name = String(body.name || '').trim()
   const email = String(body.email || '').trim()
+  const company = String(body.company || '').trim()
   const message = String(body.message || '').trim()
   // Honeypot: hidden field only bots fill in. Not named "company" so a real
   // company field can be added to the form later.
@@ -53,7 +54,7 @@ export default async function handler(req, res) {
     return json(res, 400, { ok: false, error: 'invalid_email' })
   }
 
-  if (message.length > 4000 || name.length > 120) {
+  if (message.length > 4000 || name.length > 120 || company.length > 160) {
     return json(res, 400, { ok: false, error: 'payload_too_large' })
   }
 
@@ -68,9 +69,9 @@ export default async function handler(req, res) {
         from,
         to: [to],
         reply_to: email,
-        subject: `Nouveau message myblok - ${name}`,
-        text: `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-        html: `<p><strong>Nom:</strong> ${esc(name)}</p><p><strong>Email:</strong> ${esc(email)}</p><p><strong>Message:</strong></p><p>${esc(message).replaceAll('\n', '<br/>')}</p>`,
+        subject: `Nouveau message myblok - ${name}${company ? ` (${company})` : ''}`,
+        text: `Nom: ${name}\nEntreprise: ${company || '-'}\nEmail: ${email}\n\nMessage:\n${message}`,
+        html: `<p><strong>Nom:</strong> ${esc(name)}</p><p><strong>Entreprise:</strong> ${esc(company || '-')}</p><p><strong>Email:</strong> ${esc(email)}</p><p><strong>Message:</strong></p><p>${esc(message).replaceAll('\n', '<br/>')}</p>`,
       }),
     })
 

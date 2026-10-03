@@ -15,6 +15,7 @@ export default function Contact({ t }) {
 
     const payload = {
       name: String(data.get('name') || '').trim(),
+      company: String(data.get('company') || '').trim(),
       email: String(data.get('email') || '').trim(),
       message: String(data.get('message') || '').trim(),
       website: String(data.get('website') || '').trim(), // honeypot
@@ -57,12 +58,18 @@ export default function Contact({ t }) {
             <input id="cf-name" name="name" type="text" autoComplete="name" required placeholder={contact.name} />
           </div>
           <div className="field">
+            <label htmlFor="cf-company">
+              {contact.company} <span className="field-optional">({contact.optional})</span>
+            </label>
+            <input id="cf-company" name="company" type="text" autoComplete="organization" placeholder={contact.company} />
+          </div>
+          <div className="field">
             <label htmlFor="cf-email">{contact.email}</label>
-            <input id="cf-email" name="email" type="email" autoComplete="email" required placeholder="vous@entreprise.fr" />
+            <input id="cf-email" name="email" type="email" autoComplete="email" required placeholder={contact.emailPlaceholder} />
           </div>
           <div className="field">
             <label htmlFor="cf-msg">{contact.message}</label>
-            <textarea id="cf-msg" name="message" required placeholder={contact.message} />
+            <textarea id="cf-msg" name="message" required placeholder={contact.messagePlaceholder} />
           </div>
           <input
             type="text"

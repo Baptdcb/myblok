@@ -40,10 +40,9 @@ Pages séparées : une page par réalisation, une page Mentions légales, une pa
 
 ## 2. Hero
 
-Titre — proposition retenue :
+Titre retenu :
 
-- `Moins de temps sur l'administratif.`
-- `Plus de temps pour votre métier.`
+- `Concentrez-vous sur votre métier, on automatise le reste.`
 
 Alternatives (choisir une seule) :
 
@@ -53,7 +52,7 @@ Alternatives (choisir une seule) :
 
 Sous-titre :
 
-- `On automatise les tâches répétitives et on crée les outils qui manquent à votre entreprise. Simplement, en direct avec la personne qui les construit.`
+- `Ressaisies, relances, tableaux Excel à rallonge : on s'en charge, avec des outils faits pour votre façon de travailler.`
 
 Boutons :
 

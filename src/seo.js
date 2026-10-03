@@ -17,7 +17,7 @@ const meta = (attr, key, value) => `<meta ${attr}="${key}" content="${escapeAttr
 function pageMeta(route, t) {
   if (route.name === 'realisation') {
     const r = route.realisation[t.lang]
-    return { title: `${r.title} — myblok`, description: r.summary }
+    return { title: `${r.title} — myblok`, description: `${r.card.problem} ${r.card.result}` }
   }
   return t.meta[route.name]
 }

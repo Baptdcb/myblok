@@ -7,8 +7,12 @@
 //   fr: {
 //     title: '…',                       // titre de la page et de la carte
 //     sector: '…',                      // ex. « PME du BTP, 15 salariés »
-//     summary: '…',                     // une phrase pour la carte de l'accueil
-//     context: '…',
+//     card: {                           // carte de l'accueil, une phrase chacun
+//       problem: '…',                   // (problème + résultat = description Google)
+//       solution: '…',
+//       result: '…',
+//     },
+//     context: '…',                     // page détaillée
 //     problem: '…',
 //     solution: '…',
 //     result: '…',
