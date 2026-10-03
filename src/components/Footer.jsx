@@ -3,8 +3,8 @@ import { pagePath, homeSection } from '../routes.js'
 
 export default function Footer({ t }) {
   const { footer, lang } = t
-  const navLabel = (id) => t.nav.links.find((l) => l.id === id)?.label
-  const sections = ['offre', ...(realisations.length > 0 ? ['realisations'] : []), 'faq']
+  const navLabel = (key) => t.nav.links.find((l) => l.key === key)?.label
+  const sections = ['offer', ...(realisations.length > 0 ? ['realisations'] : []), 'faq']
 
   return (
     <footer className="footer">
@@ -22,8 +22,8 @@ export default function Footer({ t }) {
             </p>
           </div>
           <nav className="footer-links" aria-label="Footer">
-            {sections.map((id) => (
-              <a key={id} href={homeSection(lang, id)}>{navLabel(id)}</a>
+            {sections.map((key) => (
+              <a key={key} href={homeSection(lang, key)}>{navLabel(key)}</a>
             ))}
             <a href={homeSection(lang, 'contact')}>{footer.contactLink}</a>
           </nav>

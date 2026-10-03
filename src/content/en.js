@@ -1,12 +1,13 @@
 import { LEGAL } from './legal.js'
 
 export default {
+  anchors: { top: 'top', offer: 'services', realisations: 'projects', process: 'how-it-works', about: 'about', faq: 'faq', contact: 'contact' },
   nav: {
     links: [
-      { id: 'offre', label: 'What we do' },
-      { id: 'realisations', label: 'Projects' },
-      { id: 'process', label: 'How it works' },
-      { id: 'faq', label: 'FAQ' },
+      { key: 'offer', label: 'What we do' },
+      { key: 'realisations', label: 'Projects' },
+      { key: 'process', label: 'How it works' },
+      { key: 'faq', label: 'FAQ' },
     ],
     cta: 'Contact us',
   },
@@ -22,14 +23,14 @@ export default {
   },
   problem: {
     title: 'Sound familiar?',
-    intro: 'Situations we see in almost every small business.',
+    intro: 'Chances are you recognise one of them: we see them in almost every small business.',
     items: [
       { icon: 'repeat', title: 'The same data typed twice', desc: 'An order comes in by email, you copy it into your invoicing software, then into an Excel sheet.' },
       { icon: 'sheet', title: 'The Excel file that runs everything', desc: 'A spreadsheet patched together over the years that only one person really knows how to use.' },
       { icon: 'bell', title: 'Chasing everything by hand', desc: 'Pending quotes, unpaid invoices, appointment reminders: it all relies on your memory.' },
       { icon: 'puzzle', title: "Software that doesn't fit", desc: 'You pay a subscription for a tool you have to work around every single day.' },
     ],
-    foot: "Those hours can be won back. That's what we do.",
+    foot: "All that time can be won back. That's what we do.",
   },
   offer: {
     title: 'What we do',
@@ -106,6 +107,7 @@ export default {
   contact: {
     title: "Let's talk about your needs",
     subtitle: 'Describe your situation in two lines. We reply within 48 hours.',
+    next: 'Then we suggest a free, no-commitment 30-minute call to properly understand your need.',
     name: 'Your name',
     company: 'Your company',
     optional: 'optional',
@@ -147,7 +149,7 @@ export default {
         ['Data collected', 'Your name, your email address, your company name if you provide it, and the content of your message. Nothing else: no data gathered without your knowledge.'],
         ['Purpose', 'Answering your enquiry and, if it turns into a project, preparing a proposal. No unsolicited marketing, no resale, no list shared with anyone.'],
         ['Legal basis', 'Your own request: steps taken at your request prior to entering into a contract (Article 6(1)(b) GDPR).'],
-        ['Recipients', `Baptiste, and no one else. The email is delivered through our sending provider ${LEGAL.mailProvider}, covered by a data processing agreement and the European Commission’s standard contractual clauses.`],
+        ['Recipients', `The myblok team (two people), and no one else. The email is delivered through our sending provider ${LEGAL.mailProvider}, covered by a data processing agreement and the European Commission’s standard contractual clauses.`],
         ['Hosting', 'The site and the form are hosted by Vercel Inc. (USA), under the same contractual framework.'],
         ['Retention', 'Three years from our last exchange, then deletion. If an engagement starts, the related data is kept for the duration of the work and the accounting and legal obligations that follow.'],
         ['Cookies and analytics', 'No cookies. We measure site traffic with Vercel Web Analytics, anonymously and in aggregate: no cookies, no personal identification, no tracking across sites. No advertising, no social widgets. Only your theme choice is stored in your browser: it never leaves your device and requires no consent.'],

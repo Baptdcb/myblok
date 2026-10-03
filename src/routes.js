@@ -1,4 +1,4 @@
-import { realisations } from './content/index.js'
+import { content, realisations } from './content/index.js'
 
 // Every page is a real, prerendered HTML file (see scripts/prerender.js): links
 // between pages are plain <a href>, no client-side router needed.
@@ -20,8 +20,8 @@ export function pagePath(name, lang, slug) {
   return `/${lang}/${SLUGS[name][lang]}`
 }
 
-// Link to a section of the home page, valid from any page.
-export const homeSection = (lang, id) => `/${lang}#${id}`
+// Link to a section of the home page (key from `anchors` in the content files), valid from any page.
+export const homeSection = (lang, key) => `/${lang}#${content[lang].anchors[key]}`
 
 // Maps a URL path to the page to render. Unknown paths render the 404 page.
 export function matchRoute(pathname) {

@@ -3,7 +3,7 @@ import { Reveal, SectionCta } from '../components/common.jsx'
 export default function Offer({ t }) {
   const { offer } = t
   return (
-    <section id="offre" className="section" aria-labelledby="offer-title">
+    <section id={t.anchors.offer} className="section" aria-labelledby="offer-title">
       <div className="container">
         <Reveal className="section-head">
           <h2 id="offer-title" className="section-title">{offer.title}</h2>

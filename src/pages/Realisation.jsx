@@ -19,6 +19,15 @@ export default function Realisation({ t, route }) {
             <p>{r[key]}</p>
           </section>
         ))}
+        {route.realisation.images?.length > 0 && (
+          <div className="page-gallery">
+            {route.realisation.images.map((img) => (
+              <figure key={img.src}>
+                <img src={img.src} alt={img.alt[t.lang]} loading="lazy" />
+              </figure>
+            ))}
+          </div>
+        )}
         {r.duration && (
           <section className="page-block">
             <h2>{labels.duration}</h2>

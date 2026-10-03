@@ -3,7 +3,7 @@ import { Reveal, SectionCta } from '../components/common.jsx'
 export default function Process({ t }) {
   const { process } = t
   return (
-    <section id="process" className="section" aria-labelledby="process-title">
+    <section id={t.anchors.process} className="section" aria-labelledby="process-title">
       <div className="container">
         <Reveal className="section-head">
           <h2 id="process-title" className="section-title">{process.title}</h2>

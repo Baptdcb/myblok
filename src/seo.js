@@ -8,6 +8,8 @@ export const SITE_URL = 'https://www.myblok.fr'
 
 const OG_LOCALE = { fr: 'fr_FR', en: 'en_GB' }
 const PRICE_RANGE = { fr: 'Sur devis', en: 'Quote-based' }
+// Share image per language (public/), showing the hero title.
+const OG_IMAGE = { fr: '/og-image.png', en: '/og-image-en.png' }
 
 const escapeAttr = (value) =>
   String(value).replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
@@ -42,7 +44,7 @@ function structuredData(t, url) {
         description: t.meta.home.description,
         url,
         logo: `${SITE_URL}/icon-512.png`,
-        image: `${SITE_URL}/og-image.png`,
+        image: SITE_URL + OG_IMAGE[t.lang],
         email: LEGAL.email,
         priceRange: PRICE_RANGE[t.lang],
         address: { '@type': 'PostalAddress', addressLocality: 'Lyon', addressRegion: 'Auvergne-Rhône-Alpes', addressCountry: 'FR' },
@@ -66,17 +68,20 @@ function structuredData(t, url) {
 export function headTags(route) {
   const t = content[route.lang]
   const { title, description } = pageMeta(route, t)
+  const imageAlt = `myblok — ${t.hero.pre} ${t.hero.grad} ${t.hero.post}`
   const tags = [
     `<title>${escapeAttr(title)}</title>`,
     meta('name', 'description', description),
     meta('property', 'og:title', title),
     meta('property', 'og:description', description),
-    // Same share image on every page: describe the image, not the page.
-    meta('property', 'og:image:alt', t.meta.home.title),
+    meta('property', 'og:image', SITE_URL + OG_IMAGE[route.lang]),
+    // Same share image on every page of a language: describe the image, not the page.
+    meta('property', 'og:image:alt', imageAlt),
     meta('property', 'og:locale', OG_LOCALE[route.lang]),
     meta('name', 'twitter:title', title),
     meta('name', 'twitter:description', description),
-    meta('name', 'twitter:image:alt', t.meta.home.title),
+    meta('name', 'twitter:image', SITE_URL + OG_IMAGE[route.lang]),
+    meta('name', 'twitter:image:alt', imageAlt),
   ]
 
   if (route.name === 'notFound') {

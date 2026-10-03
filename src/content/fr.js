@@ -1,13 +1,15 @@
 import { LEGAL } from './legal.js'
 
 export default {
+  // Ancres des sections de l'accueil (/fr#offre…). Ne pas renommer : d'anciens liens y pointent.
+  anchors: { top: 'top', offer: 'offre', realisations: 'realisations', process: 'process', about: 'apropos', faq: 'faq', contact: 'contact' },
   nav: {
     // L'entrée « realisations » n'apparaît que s'il y a au moins un projet dans realisations.js.
     links: [
-      { id: 'offre', label: "Ce qu'on fait" },
-      { id: 'realisations', label: 'Réalisations' },
-      { id: 'process', label: 'Comment ça marche' },
-      { id: 'faq', label: 'FAQ' },
+      { key: 'offer', label: "Ce qu'on fait" },
+      { key: 'realisations', label: 'Réalisations' },
+      { key: 'process', label: 'Comment ça se passe' },
+      { key: 'faq', label: 'FAQ' },
     ],
     cta: 'Nous contacter',
   },
@@ -24,14 +26,14 @@ export default {
   },
   problem: {
     title: 'Ça vous parle ?',
-    intro: "Des situations qu'on retrouve dans presque toutes les PME.",
+    intro: 'Vous vous reconnaissez sûrement dans l’une d’elles : on les retrouve dans presque toutes les PME.',
     items: [
       { icon: 'repeat', title: 'Les mêmes infos tapées deux fois', desc: 'Une commande arrive par mail, vous la recopiez dans le logiciel de facturation, puis dans un tableau Excel.' },
       { icon: 'sheet', title: 'Le fichier Excel qui fait tout tourner', desc: 'Un tableur bricolé au fil des années, que seule une personne sait vraiment utiliser.' },
       { icon: 'bell', title: 'Les relances à la main', desc: 'Devis en attente, factures impayées, rappels de rendez-vous : tout repose sur votre mémoire.' },
       { icon: 'puzzle', title: 'Le logiciel qui ne colle pas', desc: 'Vous payez un abonnement pour un outil qui vous oblige à contourner sa logique tous les jours.' },
     ],
-    foot: "Ces heures-là peuvent être récupérées. C'est notre métier.",
+    foot: "Tout ce temps-là peut être récupéré. C'est notre métier.",
   },
   offer: {
     title: "Ce qu'on fait",
@@ -108,6 +110,7 @@ export default {
   contact: {
     title: 'Parlons de votre besoin',
     subtitle: 'Décrivez votre situation en deux lignes. On vous répond sous 48 h.',
+    next: 'Ensuite, on vous propose un appel de 30 minutes, gratuit et sans engagement, pour bien comprendre votre besoin.',
     name: 'Votre nom',
     company: 'Votre entreprise',
     optional: 'facultatif',
@@ -149,7 +152,7 @@ export default {
         ['Données collectées', 'Votre nom, votre adresse email, le nom de votre entreprise si vous le donnez, et le contenu de votre message. Rien d’autre : aucune donnée récupérée à votre insu.'],
         ['Finalité', 'Répondre à votre demande et, si ça débouche sur un projet, préparer une proposition. Pas de prospection non sollicitée, pas de revente, pas de fichier partagé avec qui que ce soit.'],
         ['Base légale', 'Votre demande elle-même : l’exécution de mesures précontractuelles prises à votre initiative (article 6.1.b du RGPD).'],
-        ['Destinataires', `Baptiste, et personne d’autre. L’acheminement de l’email passe par notre prestataire d’envoi ${LEGAL.mailProvider}, encadré par un accord de sous-traitance et les clauses contractuelles types de la Commission européenne.`],
+        ['Destinataires', `L’équipe myblok (deux personnes), et personne d’autre. L’acheminement de l’email passe par notre prestataire d’envoi ${LEGAL.mailProvider}, encadré par un accord de sous-traitance et les clauses contractuelles types de la Commission européenne.`],
         ['Hébergement', 'Le site et le formulaire sont hébergés par Vercel Inc. (États-Unis), sous le même encadrement contractuel.'],
         ['Conservation', 'Trois ans à compter de notre dernier échange, puis suppression. Si une prestation démarre, les données liées sont gardées le temps de la mission et des obligations comptables et légales qui en découlent.'],
         ['Cookies et mesure d’audience', 'Aucun cookie. On mesure la fréquentation du site avec Vercel Web Analytics, de façon anonyme et agrégée : pas de cookie, pas d’identification personnelle, pas de suivi d’un site à l’autre. Pas de publicité ni de bouton de réseau social. Seul votre choix de thème est mémorisé dans votre navigateur : cette information ne quitte jamais votre appareil et ne nécessite pas de consentement.'],

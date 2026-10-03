@@ -3,7 +3,10 @@
 // Uniquement des projets réels ; le nom du client seulement avec son accord.
 //
 // {
-//   slug: 'suivi-de-chantier',          // URL : /realisations/suivi-de-chantier
+//   slug: 'suivi-de-chantier',          // URL : /fr/realisations/suivi-de-chantier, /en/projects/suivi-de-chantier
+//   images: [                           // facultatif : captures sans données sensibles,
+//     { src: '/realisations/suivi-de-chantier/1.webp', alt: { fr: '…', en: '…' } },  // fichiers dans public/realisations/<slug>/
+//   ],
 //   fr: {
 //     title: '…',                       // titre de la page et de la carte
 //     sector: '…',                      // ex. « PME du BTP, 15 salariés »

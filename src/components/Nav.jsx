@@ -8,7 +8,7 @@ export default function Nav({ t, theme, toggleTheme, altHref }) {
   const [open, setOpen] = useState(false)
   const { lang } = t
   const altLang = lang === 'fr' ? 'en' : 'fr'
-  const links = t.nav.links.filter((l) => l.id !== 'realisations' || realisations.length > 0)
+  const links = t.nav.links.filter((l) => l.key !== 'realisations' || realisations.length > 0)
   return (
     <div className="nav-wrap">
       <div className="container">
@@ -20,7 +20,7 @@ export default function Nav({ t, theme, toggleTheme, altHref }) {
 
           <div className={`nav-links ${open ? 'open' : ''}`}>
             {links.map((l) => (
-              <a key={l.id} href={homeSection(lang, l.id)} onClick={() => setOpen(false)}>{l.label}</a>
+              <a key={l.key} href={homeSection(lang, l.key)} onClick={() => setOpen(false)}>{l.label}</a>
             ))}
           </div>
 

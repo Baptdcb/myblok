@@ -632,6 +632,13 @@ h3 {
 	font-size: 17px;
 	max-width: 34ch;
 }
+.contact-next {
+	margin-top: 12px;
+	color: var(--ink-2);
+	font-size: 15px;
+	max-width: 38ch;
+	line-height: 1.55;
+}
 .contact-direct {
 	margin-top: 26px;
 	font-size: 14px;
@@ -997,6 +1004,31 @@ h3 {
 }
 .page-actions {
 	margin-top: 28px;
+}
+.page-alt-lang {
+	margin-top: 56px;
+	padding-top: 40px;
+	border-top: 1.5px solid var(--line);
+}
+.page-alt-lang .section-title {
+	font-size: clamp(22px, 3vw, 32px);
+}
+.page-gallery {
+	margin-top: 34px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 18px;
+}
+.page-gallery figure {
+	margin: 0;
+}
+.page-gallery img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border: 1.5px solid var(--ink);
+	border-radius: var(--radius-sm);
+	background: var(--pap-2);
 }
 
 /* ======================================================

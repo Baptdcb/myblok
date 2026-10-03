@@ -42,11 +42,12 @@ export default function Contact({ t }) {
   }
 
   return (
-    <section id="contact" className="section" aria-labelledby="contact-title">
+    <section id={t.anchors.contact} className="section" aria-labelledby="contact-title">
       <div className="container contact-wrap">
         <Reveal className="contact-left">
           <h2 id="contact-title">{contact.title}</h2>
           <p className="contact-sub">{contact.subtitle}</p>
+          <p className="contact-next">{contact.next}</p>
           <p className="contact-direct">
             {contact.or} <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
           </p>

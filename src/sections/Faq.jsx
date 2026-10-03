@@ -4,7 +4,7 @@ import { Reveal } from '../components/common.jsx'
 export default function Faq({ t }) {
   const { faq } = t
   return (
-    <section id="faq" className="section" aria-labelledby="faq-title">
+    <section id={t.anchors.faq} className="section" aria-labelledby="faq-title">
       <div className="container">
         <Reveal className="section-head">
           <h2 id="faq-title" className="section-title">{faq.title}</h2>

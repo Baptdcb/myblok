@@ -1,6 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
+// Fonts served from the site itself (no request to Google: privacy, and faster).
+import '@fontsource/archivo/700.css'
+import '@fontsource/archivo/800.css'
+import '@fontsource/hanken-grotesk/400.css'
+import '@fontsource/hanken-grotesk/500.css'
+import '@fontsource/hanken-grotesk/600.css'
+import '@fontsource/hanken-grotesk/700.css'
+import '@fontsource/hanken-grotesk/800.css'
 import './styles.css'
 
 // "/" is redirected to /fr by Vercel (vercel.json); same thing in dev.

@@ -7,7 +7,7 @@ export default function Realisations({ t }) {
   if (realisations.length === 0) return null
   const { realisations: section, realisation: labels, lang } = t
   return (
-    <section id="realisations" className="section" aria-labelledby="realisations-title">
+    <section id={t.anchors.realisations} className="section" aria-labelledby="realisations-title">
       <div className="container">
         <Reveal className="section-head">
           <h2 id="realisations-title" className="section-title">{section.title}</h2>
