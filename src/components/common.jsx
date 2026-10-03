@@ -1,4 +1,5 @@
 import { useReveal } from '../hooks.js'
+import { homeSection } from '../routes.js'
 
 // Reveal wrapper — fade/rise in on scroll.
 export function Reveal({ children, as: Tag = 'div', delay, className = '', ...rest }) {
@@ -7,6 +8,30 @@ export function Reveal({ children, as: Tag = 'div', delay, className = '', ...re
     <Tag ref={ref} className={`reveal ${className}`.trim()} data-d={delay} {...rest}>
       {children}
     </Tag>
+  )
+}
+
+// Closing call-to-action of a section, always pointing to the contact form.
+export function SectionCta({ cta, lang }) {
+  return (
+    <Reveal className="section-cta" delay={2}>
+      <span>{cta.text}</span>
+      <a href={homeSection(lang, 'contact')} className="btn btn-primary">{cta.button} <Icon.arrow /></a>
+    </Reveal>
+  )
+}
+
+// Two-column definition list used by the legal pages.
+export function LegalList({ lines }) {
+  return (
+    <dl>
+      {lines.map(([k, v], i) => (
+        <div key={i} style={{ display: 'contents' }}>
+          <dt>{k}</dt>
+          <dd>{v}</dd>
+        </div>
+      ))}
+    </dl>
   )
 }
 

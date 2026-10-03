@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { Icon, Reveal } from './common.jsx'
-import { CONTACT_EMAIL } from '../content.js'
+import { Icon, Reveal } from '../components/common.jsx'
+import { CONTACT_EMAIL } from '../content/index.js'
+import { pagePath } from '../routes.js'
 
 export default function Contact({ t }) {
   const { contact } = t
@@ -16,7 +17,7 @@ export default function Contact({ t }) {
       name: String(data.get('name') || '').trim(),
       email: String(data.get('email') || '').trim(),
       message: String(data.get('message') || '').trim(),
-      company: String(data.get('company') || '').trim(), // honeypot
+      website: String(data.get('website') || '').trim(), // honeypot
     }
 
     try {
@@ -65,7 +66,7 @@ export default function Contact({ t }) {
           </div>
           <input
             type="text"
-            name="company"
+            name="website"
             autoComplete="off"
             tabIndex={-1}
             aria-hidden="true"
@@ -76,7 +77,7 @@ export default function Contact({ t }) {
             {status !== 'sending' && <Icon.arrow />}
           </button>
           <p className="form-note">
-            {contact.privacy} <a href="#mentions-legales">{contact.privacyLink}</a>
+            {contact.privacy} <a href={pagePath('privacy', t.lang)}>{contact.privacyLink}</a>
           </p>
           {status === 'ok' && <p className="form-msg ok" role="status">{contact.success}</p>}
           {status === 'err' && (

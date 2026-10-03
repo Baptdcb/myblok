@@ -1,27 +1,31 @@
 import { useState } from 'react'
 import { Icon } from './common.jsx'
+import { homeSection } from '../routes.js'
 
-export default function Nav({ t, theme, toggleTheme, lang, toggleLang }) {
+// `altHref`: the current page in the other language.
+export default function Nav({ t, theme, toggleTheme, altHref }) {
   const [open, setOpen] = useState(false)
+  const { lang } = t
+  const altLang = lang === 'fr' ? 'en' : 'fr'
   return (
     <div className="nav-wrap">
       <div className="container">
         <nav className="nav">
-          <a href="#top" className="brand" aria-label="myblok">
+          <a href={homeSection(lang, 'top')} className="brand" aria-label="myblok">
             <img className="brand-mark" src="/logos/myblok.svg" alt="" aria-hidden="true" />
             <span>myblok</span>
           </a>
 
           <div className={`nav-links ${open ? 'open' : ''}`}>
             {t.nav.links.map((l) => (
-              <a key={l.id} href={`#${l.id}`} onClick={() => setOpen(false)}>{l.label}</a>
+              <a key={l.id} href={homeSection(lang, l.id)} onClick={() => setOpen(false)}>{l.label}</a>
             ))}
           </div>
 
           <div className="nav-right">
-            <button className="icon-btn lang-btn" onClick={toggleLang} aria-label="Language / Langue">
-              {lang === 'fr' ? 'EN' : 'FR'}
-            </button>
+            <a className="icon-btn lang-btn" href={altHref} hrefLang={altLang} lang={altLang} aria-label={altLang === 'en' ? 'English version' : 'Version française'}>
+              {altLang.toUpperCase()}
+            </a>
             <button
               className="icon-btn"
               onClick={toggleTheme}
@@ -29,7 +33,7 @@ export default function Nav({ t, theme, toggleTheme, lang, toggleLang }) {
             >
               {theme === 'dark' ? <Icon.sun /> : <Icon.moon />}
             </button>
-            <a href="#contact" className="nav-cta">{t.nav.cta}</a>
+            <a href={homeSection(lang, 'contact')} className="nav-cta">{t.nav.cta}</a>
             <button
               className="icon-btn nav-burger"
               onClick={() => setOpen((o) => !o)}

@@ -1,4 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": [{ "source": "/((?!api/).*)", "destination": "/" }]
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/", "destination": "/fr", "permanent": true },
+    { "source": "/mentions-legales", "destination": "/fr/mentions-legales", "permanent": true },
+    { "source": "/confidentialite", "destination": "/fr/confidentialite", "permanent": true }
+  ]
 }

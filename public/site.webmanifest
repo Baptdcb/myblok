@@ -1,8 +1,8 @@
 {
-  "name": "myblok — Automatisation & IA sur mesure pour PME",
+  "name": "myblok",
   "short_name": "myblok",
   "lang": "fr",
-  "start_url": "/",
+  "start_url": "/fr",
   "display": "browser",
   "background_color": "#f4f2ec",
   "theme_color": "#f4f2ec",

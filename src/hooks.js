@@ -1,4 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+
+// useLayoutEffect warns during build-time prerendering (no DOM); fall back there.
+const useIsomorphicLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect
 
 // Reveal-on-scroll: adds .in when the element enters the viewport once.
 export function useReveal() {
@@ -25,34 +28,29 @@ export function useReveal() {
   return ref
 }
 
-// localStorage read that is safe during build-time prerendering (no window).
-function readStored(key) {
-  if (typeof window === 'undefined') return null
-  try { return window.localStorage.getItem(key) } catch { return null }
-}
+// Theme, light by default, remembered in localStorage. The first render always
+// uses 'light' so it matches the prerendered HTML (hydration); the stored theme
+// is applied right after, before the browser paints. The inline script in
+// index.html has already set it on <html>, so nothing flashes.
+const THEME_KEY = 'myblok-theme'
 
-// Persisted theme, light by default.
 export function useTheme() {
-  const [theme, setTheme] = useState(() => {
-    return readStored('myblok-theme') || 'light'
-  })
-  useEffect(() => {
+  const [theme, setTheme] = useState('light')
+  useIsomorphicLayoutEffect(() => {
+    try {
+      const stored = window.localStorage.getItem(THEME_KEY)
+      if (stored) setTheme(stored)
+    } catch { /* storage unavailable: keep the default */ }
+  }, [])
+  useIsomorphicLayoutEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
-    try { localStorage.setItem('myblok-theme', theme) } catch { /* ignore */ }
     const meta = document.querySelector('meta[name="theme-color"]')
     if (meta) meta.setAttribute('content', theme === 'dark' ? '#15140e' : '#f4f2ec')
   }, [theme])
-  return [theme, () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))]
-}
-
-// Language, FR by default, persisted; also drives <html lang>.
-export function useLang() {
-  const [lang, setLang] = useState(() => {
-    return readStored('myblok-lang') || 'fr'
-  })
-  useEffect(() => {
-    document.documentElement.setAttribute('lang', lang)
-    try { localStorage.setItem('myblok-lang', lang) } catch { /* ignore */ }
-  }, [lang])
-  return [lang, () => setLang((l) => (l === 'fr' ? 'en' : 'fr'))]
+  const toggle = () => {
+    const next = theme === 'dark' ? 'light' : 'dark'
+    try { window.localStorage.setItem(THEME_KEY, next) } catch { /* ignore */ }
+    setTheme(next)
+  }
+  return [theme, toggle]
 }

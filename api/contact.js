@@ -28,13 +28,20 @@ export default async function handler(req, res) {
     return json(res, 500, { ok: false, error: 'server_not_configured' })
   }
 
-  const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {})
+  let body
+  try {
+    body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {})
+  } catch {
+    return json(res, 400, { ok: false, error: 'invalid_json' })
+  }
   const name = String(body.name || '').trim()
   const email = String(body.email || '').trim()
   const message = String(body.message || '').trim()
-  const company = String(body.company || '').trim() // honeypot
+  // Honeypot: hidden field only bots fill in. Not named "company" so a real
+  // company field can be added to the form later.
+  const website = String(body.website || '').trim()
 
-  if (company) {
+  if (website) {
     return json(res, 200, { ok: true })
   }
 
