@@ -20,11 +20,11 @@ Present Baptiste's independent (auto-entrepreneur) custom-software service under
 
 ## Positioning
 
-A two-person micro-business, not an agency — and this is the selling point, not something to hide: direct contact with the people who write the code, no intermediary, no sales layer, lower cost and lighter process than a big ESN. Honesty is the differentiator.
+A one-person micro-business (entreprise individuelle), not an agency — and this is the selling point, not something to hide: one point of contact who leads and writes the code, no intermediary, no sales layer, lower cost and lighter process than a big ESN. Honesty is the differentiator.
 
 ## Operating Context
 
-Two people run the activity and share the projects, in parallel with studies, ~5-10h/week. Currently a work-study student (alternance) at Crédit Agricole T&S as a mainframe COBOL developer — real professional-grade dev experience that lends credibility without implying scale. Based in Lyon; works on site or remotely.
+Baptiste runs the activity alone, in parallel with studies, ~5-10h/week. When a project calls for it, he subcontracts part of the work to a trusted independent developer; the client keeps Baptiste as single point of contact. The subcontractor is not presented as a partner or a team, and is named only once the collaboration is real and they consent. Currently a work-study student (alternance) at Crédit Agricole T&S as a mainframe COBOL developer — real professional-grade dev experience that lends credibility without implying scale. Based in Lyon; works on site or remotely.
 
 Engagement process (to be shown as steps): 1) free exchange, 2) paid scoping/cadrage step (principle explained, no price shown — price discussed during the free exchange), 3) quote/devis, 4) development, 5) delivery.
 
@@ -44,13 +44,13 @@ Engagement process (to be shown as steps): 1) free exchange, 2) paid scoping/cad
 
 ## Evidence on Hand
 
-A few real projects already delivered (to be shown as case studies, client names only with consent). **No testimonials, no client logos, no team, no project counts, no metrics may be fabricated.** The site must stay credible without inventing social proof. Real, honest credibility only: real projects, a two-person team, work-study COBOL developer at Crédit Agricole T&S, students in computer science.
+A few real projects already delivered (to be shown as case studies, client names only with consent). **No testimonials, no client logos, no team, no project counts, no metrics may be fabricated.** The site must stay credible without inventing social proof. Real, honest credibility only: real projects, a solo developer who can bring in a trusted subcontractor, work-study COBOL developer at Crédit Agricole T&S, students in computer science.
 
 Legal requirement (auto-entrepreneur, France): the mentions légales must display full name, statut, SIREN number, contact address, and the host — to be completed by Baptiste (SIREN is a placeholder to fill).
 
 ## Product Principles
 
-1. Honesty is the strategy — small (two people), framed as an advantage (direct contact, no intermediary), never hidden.
+1. Honesty is the strategy — small (one person, occasional subcontracting), framed as an advantage (single point of contact, no intermediary), never hidden.
 2. Speak to the SME, not to developers — concrete situations and outcomes, no jargon.
 3. Prove through clarity, not fake proof — no invented testimonials, team, or numbers.
 4. Low friction to contact — the path from "this is for me" to "get in touch" stays short throughout the scroll.

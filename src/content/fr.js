@@ -22,7 +22,7 @@ export default {
     // Le bouton secondaire mène aux réalisations s'il y en a, sinon à la méthode.
     ctaRealisations: 'Voir nos réalisations',
     ctaProcess: 'Comment ça se passe',
-    note: 'Premier échange gratuit et sans engagement · Basés à Lyon',
+    note: 'Premier échange gratuit et sans engagement · À Lyon ou à distance',
   },
   problem: {
     title: 'Ça vous parle ?',
@@ -85,12 +85,13 @@ export default {
   },
   about: {
     title: 'Qui on est',
-    lead: "Pas d'agence. Vous parlez directement à la personne qui construit votre outil.",
+    lead: "Pas d'agence, pas de commercial. Vous parlez directement à celui qui pilote et développe votre projet.",
     paragraphs: [
       "myblok, c'est Baptiste, développeur basé à Lyon. Au quotidien, il travaille en alternance au Crédit Agricole T&S, sur des systèmes où l'à-peu-près n'existe pas. Il applique la même rigueur à vos projets.",
+      "Quand un projet le demande, il s'appuie sur un développeur indépendant avec qui il travaille régulièrement. Vous gardez un seul interlocuteur du début à la fin.",
     ],
     points: [
-      { k: 'Contact direct', v: "Pas de commercial, pas d'intermédiaire." },
+      { k: 'Un seul interlocuteur', v: "Pas de commercial, pas d'intermédiaire." },
       { k: 'Prix juste', v: "Sans la marge d'une grosse structure." },
       { k: 'Sur place ou à distance', v: 'On se déplace si besoin, sinon tout se gère à distance.' },
     ],
@@ -103,6 +104,7 @@ export default {
       { q: 'Je ne suis pas du tout technique, est-ce un problème ?', a: "Non, c'est même le cas de la plupart de nos clients. Vous nous expliquez comment vous travaillez, on s'occupe du reste, et on vous explique l'outil avec des mots simples." },
       { q: 'Faut-il changer nos logiciels actuels ?', a: "Le plus souvent, non. On part de ce que vous utilisez déjà et on le fait mieux fonctionner. On ne propose de remplacer un outil que si c'est vraiment plus simple pour vous." },
       { q: 'Que se passe-t-il si quelque chose ne marche plus après la livraison ?', a: "On reste joignable. Les corrections liées à notre travail sont prises en charge, et on peut convenir d'un suivi si votre outil doit évoluer." },
+      { q: "Et si vous n'êtes pas disponible ?", a: "On prend volontairement peu de projets à la fois. Si un projet demande plus de bras, Baptiste s'appuie sur un développeur indépendant de confiance, et vous gardez le même interlocuteur. Chaque outil est livré documenté, pour ne jamais dépendre d'une seule personne." },
       { q: 'Nos données sont-elles en sécurité ?', a: "On n'accède qu'à ce qui est nécessaire au projet, et vos données restent chez vous ou dans les outils que vous avez choisis. Si vous préférez des solutions hébergées en Europe, on en tient compte dès le cadrage." },
       { q: "Vous utilisez de l'IA ?", a: "Quand elle est utile, oui. Mais la plupart des gains de temps viennent d'automatisations simples, sans IA. On choisit l'outil le plus adapté, pas le plus à la mode." },
     ],
@@ -152,7 +154,7 @@ export default {
         ['Données collectées', 'Votre nom, votre adresse email, le nom de votre entreprise si vous le donnez, et le contenu de votre message. Rien d’autre : aucune donnée récupérée à votre insu.'],
         ['Finalité', 'Répondre à votre demande et, si ça débouche sur un projet, préparer une proposition. Pas de prospection non sollicitée, pas de revente, pas de fichier partagé avec qui que ce soit.'],
         ['Base légale', 'Votre demande elle-même : l’exécution de mesures précontractuelles prises à votre initiative (article 6.1.b du RGPD).'],
-        ['Destinataires', `L’équipe myblok (deux personnes), et personne d’autre. L’acheminement de l’email passe par notre prestataire d’envoi ${LEGAL.mailProvider}, encadré par un accord de sous-traitance et les clauses contractuelles types de la Commission européenne.`],
+        ['Destinataires', `${LEGAL.name}, seul destinataire des messages envoyés via le formulaire. L’acheminement de l’email passe par notre prestataire d’envoi ${LEGAL.mailProvider}, encadré par un accord de sous-traitance et les clauses contractuelles types de la Commission européenne.`],
         ['Hébergement', 'Le site et le formulaire sont hébergés par Vercel Inc. (États-Unis), sous le même encadrement contractuel.'],
         ['Conservation', 'Trois ans à compter de notre dernier échange, puis suppression. Si une prestation démarre, les données liées sont gardées le temps de la mission et des obligations comptables et légales qui en découlent.'],
         ['Cookies et mesure d’audience', 'Aucun cookie. On mesure la fréquentation du site avec Vercel Web Analytics, de façon anonyme et agrégée : pas de cookie, pas d’identification personnelle, pas de suivi d’un site à l’autre. Pas de publicité ni de bouton de réseau social. Seul votre choix de thème est mémorisé dans votre navigateur : cette information ne quitte jamais votre appareil et ne nécessite pas de consentement.'],

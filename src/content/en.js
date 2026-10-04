@@ -19,7 +19,7 @@ export default {
     ctaPrimary: "Let's talk about your needs",
     ctaRealisations: 'See our projects',
     ctaProcess: 'How it works',
-    note: 'Free, no-commitment first call · Based in Lyon, France',
+    note: 'Free, no-commitment first call · In Lyon, France, or remotely',
   },
   problem: {
     title: 'Sound familiar?',
@@ -82,12 +82,13 @@ export default {
   },
   about: {
     title: 'Who we are',
-    lead: 'No agency. You talk directly to the person who builds your tool.',
+    lead: 'No agency, no salespeople. You talk directly to the person who leads and builds your project.',
     paragraphs: [
       'myblok is Baptiste, a developer based in Lyon. Day to day, he works as a work-study developer at Crédit Agricole T&S, on systems where "roughly right" does not exist. He brings the same rigour to your projects.',
+      'When a project calls for it, he works with an independent developer he regularly partners with. You keep a single point of contact from start to finish.',
     ],
     points: [
-      { k: 'Direct contact', v: 'No salesperson, no middleman.' },
+      { k: 'One point of contact', v: 'No salesperson, no middleman.' },
       { k: 'Fair price', v: "Without a big firm's markup." },
       { k: 'On site or remote', v: 'We come to you when needed, otherwise everything is handled remotely.' },
     ],
@@ -100,6 +101,7 @@ export default {
       { q: "I'm not technical at all. Is that a problem?", a: 'No, that is the case for most of our clients. You explain how you work, we handle the rest, and we explain the tool in plain words.' },
       { q: 'Do we need to change our current software?', a: 'Usually not. We start from what you already use and make it work better. We only suggest replacing a tool when it is genuinely simpler for you.' },
       { q: 'What if something stops working after delivery?', a: 'We stay reachable. Fixes related to our work are covered, and we can agree on follow-up if your tool needs to evolve.' },
+      { q: "What if you're not available?", a: 'We deliberately take on only a few projects at a time. If a project needs more hands, Baptiste brings in a trusted independent developer, and you keep the same point of contact. Every tool is delivered with documentation, so it never depends on a single person.' },
       { q: 'Is our data safe?', a: 'We only access what the project needs, and your data stays with you or in the tools you chose. If you prefer solutions hosted in Europe, we take that into account from scoping.' },
       { q: 'Do you use AI?', a: 'When it is useful, yes. But most time savings come from simple automations, without AI. We pick the best-suited tool, not the trendiest one.' },
     ],
@@ -149,7 +151,7 @@ export default {
         ['Data collected', 'Your name, your email address, your company name if you provide it, and the content of your message. Nothing else: no data gathered without your knowledge.'],
         ['Purpose', 'Answering your enquiry and, if it turns into a project, preparing a proposal. No unsolicited marketing, no resale, no list shared with anyone.'],
         ['Legal basis', 'Your own request: steps taken at your request prior to entering into a contract (Article 6(1)(b) GDPR).'],
-        ['Recipients', `The myblok team (two people), and no one else. The email is delivered through our sending provider ${LEGAL.mailProvider}, covered by a data processing agreement and the European Commission’s standard contractual clauses.`],
+        ['Recipients', `${LEGAL.name}, the sole recipient of messages sent through the form. The email is delivered through our sending provider ${LEGAL.mailProvider}, covered by a data processing agreement and the European Commission’s standard contractual clauses.`],
         ['Hosting', 'The site and the form are hosted by Vercel Inc. (USA), under the same contractual framework.'],
         ['Retention', 'Three years from our last exchange, then deletion. If an engagement starts, the related data is kept for the duration of the work and the accounting and legal obligations that follow.'],
         ['Cookies and analytics', 'No cookies. We measure site traffic with Vercel Web Analytics, anonymously and in aggregate: no cookies, no personal identification, no tracking across sites. No advertising, no social widgets. Only your theme choice is stored in your browser: it never leaves your device and requires no consent.'],
