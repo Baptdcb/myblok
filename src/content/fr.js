@@ -2,11 +2,12 @@ import { LEGAL } from './legal.js'
 
 export default {
   // Ancres des sections de l'accueil (/fr#offre…). Ne pas renommer : d'anciens liens y pointent.
-  anchors: { top: 'top', offer: 'offre', realisations: 'realisations', process: 'process', about: 'apropos', faq: 'faq', contact: 'contact' },
+  anchors: { top: 'top', offer: 'offre', realisations: 'realisations', examples: 'exemples', process: 'process', about: 'apropos', faq: 'faq', contact: 'contact' },
   nav: {
     // L'entrée « realisations » n'apparaît que s'il y a au moins un projet dans realisations.js.
     links: [
       { key: 'offer', label: "Ce qu'on fait" },
+      { key: 'examples', label: 'Exemples' },
       { key: 'realisations', label: 'Réalisations' },
       { key: 'process', label: 'Comment ça se passe' },
       { key: 'faq', label: 'FAQ' },
@@ -21,8 +22,20 @@ export default {
     ctaPrimary: 'Parlons de votre besoin',
     // Le bouton secondaire mène aux réalisations s'il y en a, sinon à la méthode.
     ctaRealisations: 'Voir nos réalisations',
+    ctaExamples: 'Voir des exemples concrets',
     ctaProcess: 'Comment ça se passe',
     note: 'Premier échange gratuit et sans engagement · À Lyon ou à distance',
+    flow: {
+      label: 'Exemple : une nouvelle commande',
+      caption: 'Pendant que vous faites autre chose',
+      steps: [
+        { t: 'Commande reçue par mail', d: '8 h 02 · d’un client habituel' },
+        { t: 'Informations reprises', d: 'Client, 3 articles, livraison vendredi' },
+        { t: 'Facture préparée', d: 'Dans votre logiciel de facturation' },
+        { t: 'Tableau de suivi à jour', d: "L'équipe est prévenue" },
+      ],
+      done: 'Prêt à valider',
+    },
   },
   problem: {
     title: 'Ça vous parle ?',
@@ -65,6 +78,29 @@ export default {
       },
     ],
     cta: { text: "Vous vous reconnaissez dans l'un de ces besoins ?", button: 'Parlons-en' },
+  },
+  examples: {
+    title: 'À quoi ça ressemble, concrètement',
+    intro: "Des automatisations telles qu'on les met en place, de la boîte mail au tableau de bord. Chaque projet est adapté à votre entreprise, mais le principe est là.",
+    all: 'Tout',
+    tags: { auto: 'Automatisation', script: 'Programme sur mesure', ia: 'IA', outil: 'Application' },
+    filterLabel: 'Filtrer les exemples',
+    prev: 'Exemple précédent',
+    next: 'Exemple suivant',
+    read: "Lire l'exemple",
+    cta: { text: 'Une de ces situations ressemble à la vôtre ?', button: 'Parlons-en' },
+  },
+  article: {
+    back: 'Tous les exemples',
+    before: 'La situation de départ',
+    steps: 'Comment ça marche',
+    stack: 'Sous le capot',
+    after: 'Ce qui change au quotidien',
+    watch: 'Les garde-fous',
+    code: 'Un extrait du code',
+    more: "D'autres exemples",
+    note: 'Exemple type : chaque projet est adapté à vos outils et à votre façon de travailler.',
+    cta: { text: 'Vous voulez la même chose, à votre façon ?', button: 'Parlons-en' },
   },
   realisations: {
     title: "Ce qu'on a déjà mis en place",

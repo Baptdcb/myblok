@@ -6,6 +6,7 @@ import en from './en.js'
 
 export { LEGAL, CONTACT_EMAIL } from './legal.js'
 export { realisations } from './realisations.js'
+export { articles } from './articles.js'
 
 // `t.lang` lets any component build links to the current language.
 export const content = { fr: { ...fr, lang: 'fr' }, en: { ...en, lang: 'en' } }

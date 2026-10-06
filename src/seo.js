@@ -21,6 +21,10 @@ function pageMeta(route, t) {
     const r = route.realisation[t.lang]
     return { title: `${r.title} — myblok`, description: `${r.card.problem} ${r.card.result}` }
   }
+  if (route.name === 'article') {
+    const a = route.article[t.lang]
+    return { title: `${a.title} — myblok`, description: a.summary }
+  }
   return t.meta[route.name]
 }
 

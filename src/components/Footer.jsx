@@ -4,7 +4,7 @@ import { pagePath, homeSection } from '../routes.js'
 export default function Footer({ t }) {
   const { footer, lang } = t
   const navLabel = (key) => t.nav.links.find((l) => l.key === key)?.label
-  const sections = ['offer', ...(realisations.length > 0 ? ['realisations'] : []), 'faq']
+  const sections = ['offer', 'examples', ...(realisations.length > 0 ? ['realisations'] : []), 'faq']
 
   return (
     <footer className="footer">

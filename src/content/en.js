@@ -1,10 +1,11 @@
 import { LEGAL } from './legal.js'
 
 export default {
-  anchors: { top: 'top', offer: 'services', realisations: 'projects', process: 'how-it-works', about: 'about', faq: 'faq', contact: 'contact' },
+  anchors: { top: 'top', offer: 'services', realisations: 'projects', examples: 'examples', process: 'how-it-works', about: 'about', faq: 'faq', contact: 'contact' },
   nav: {
     links: [
       { key: 'offer', label: 'What we do' },
+      { key: 'examples', label: 'Examples' },
       { key: 'realisations', label: 'Projects' },
       { key: 'process', label: 'How it works' },
       { key: 'faq', label: 'FAQ' },
@@ -18,8 +19,20 @@ export default {
     sub: 'Re-typing data, chasing reminders, endless Excel sheets: we take care of it, with tools built around the way you work.',
     ctaPrimary: "Let's talk about your needs",
     ctaRealisations: 'See our projects',
+    ctaExamples: 'See concrete examples',
     ctaProcess: 'How it works',
     note: 'Free, no-commitment first call · In Lyon, France, or remotely',
+    flow: {
+      label: 'Example: a new order',
+      caption: 'While you get on with something else',
+      steps: [
+        { t: 'Order received by email', d: '8:02 · from a regular customer' },
+        { t: 'Details picked up', d: 'Customer, 3 items, delivery Friday' },
+        { t: 'Invoice drafted', d: 'In your invoicing software' },
+        { t: 'Tracking sheet updated', d: 'The team is notified' },
+      ],
+      done: 'Ready to approve',
+    },
   },
   problem: {
     title: 'Sound familiar?',
@@ -62,6 +75,29 @@ export default {
       },
     ],
     cta: { text: 'Recognise one of these needs?', button: "Let's talk" },
+  },
+  examples: {
+    title: 'What it looks like, concretely',
+    intro: 'Automations as we actually set them up, from the inbox to the dashboard. Every project is adapted to your business, but this is the idea.',
+    all: 'All',
+    tags: { auto: 'Automation', script: 'Custom program', ia: 'AI', outil: 'Application' },
+    filterLabel: 'Filter examples',
+    prev: 'Previous example',
+    next: 'Next example',
+    read: 'Read the example',
+    cta: { text: 'Does one of these sound like you?', button: "Let's talk" },
+  },
+  article: {
+    back: 'All examples',
+    before: 'The starting point',
+    steps: 'How it works',
+    stack: 'Under the hood',
+    after: 'What changes day to day',
+    watch: 'Safeguards',
+    code: 'A code excerpt',
+    more: 'More examples',
+    note: 'Typical example: every project is adapted to your tools and the way you work.',
+    cta: { text: 'Want the same thing, your way?', button: "Let's talk" },
   },
   realisations: {
     title: "What we've already built",

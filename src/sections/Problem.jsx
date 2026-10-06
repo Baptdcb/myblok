@@ -13,7 +13,7 @@ export default function Problem({ t }) {
           {problem.items.map((item, i) => {
             const ItemIcon = Icon[item.icon]
             return (
-              <Reveal key={i} className="glass problem-item" delay={i + 1}>
+              <Reveal key={i} className="problem-item" delay={i + 1}>
                 <span className="p-icon" aria-hidden="true"><ItemIcon /></span>
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>

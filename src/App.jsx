@@ -9,9 +9,10 @@ import Home from './pages/Home.jsx'
 import Legal from './pages/Legal.jsx'
 import Privacy from './pages/Privacy.jsx'
 import Realisation from './pages/Realisation.jsx'
+import Article from './pages/Article.jsx'
 import NotFound from './pages/NotFound.jsx'
 
-const PAGES = { home: Home, legal: Legal, privacy: Privacy, realisation: Realisation, notFound: NotFound }
+const PAGES = { home: Home, legal: Legal, privacy: Privacy, realisation: Realisation, article: Article, notFound: NotFound }
 
 function Background() {
   return <div className="bg" aria-hidden="true" />

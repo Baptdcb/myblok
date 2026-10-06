@@ -1,4 +1,4 @@
-import { content, realisations } from './content/index.js'
+import { content, realisations, articles } from './content/index.js'
 
 // Every page is a real, prerendered HTML file (see scripts/prerender.js): links
 // between pages are plain <a href>, no client-side router needed.
@@ -11,12 +11,13 @@ const SLUGS = {
   legal: { fr: 'mentions-legales', en: 'legal-notice' },
   privacy: { fr: 'confidentialite', en: 'privacy-policy' },
   realisation: { fr: 'realisations', en: 'projects' },
+  article: { fr: 'exemples', en: 'examples' },
 }
 
-// URL of a page in a given language. `slug` is only used by realisation pages.
+// URL of a page in a given language. `slug` is only used by realisation and article pages.
 export function pagePath(name, lang, slug) {
   if (name === 'home' || name === 'notFound') return `/${lang}`
-  if (name === 'realisation') return `/${lang}/${SLUGS.realisation[lang]}/${slug}`
+  if (name === 'realisation' || name === 'article') return `/${lang}/${SLUGS[name][lang]}/${slug}`
   return `/${lang}/${SLUGS[name][lang]}`
 }
 
@@ -35,6 +36,10 @@ export function matchRoute(pathname) {
     const realisation = realisations.find((r) => r.slug === rest[1])
     if (realisation) return { name: 'realisation', lang, slug: realisation.slug, realisation }
   }
+  if (rest.length === 2 && rest[0] === SLUGS.article[lang]) {
+    const article = articles.find((a) => a.slug === rest[1])
+    if (article) return { name: 'article', lang, slug: article.slug, article }
+  }
   return { name: 'notFound', lang }
 }
 
@@ -48,5 +53,6 @@ export function allPaths() {
     pagePath('legal', lang),
     pagePath('privacy', lang),
     ...realisations.map((r) => pagePath('realisation', lang, r.slug)),
+    ...articles.map((a) => pagePath('article', lang, a.slug)),
   ])
 }
