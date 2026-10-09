@@ -28,9 +28,7 @@ function HeroFlow({ flow }) {
         {flow.steps.map((s, i) => (
           <li key={i} className={`hf-step ${i < step ? 'is-done' : ''} ${i === step ? 'is-active' : ''}`}>
             <span className="hf-blok" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12.5l4.5 4.5L19 7.5" />
-              </svg>
+              <span className="hf-number">{i + 1}</span>
             </span>
             <span className="hf-text">
               <strong>{s.t}</strong>

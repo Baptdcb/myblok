@@ -14,6 +14,7 @@ export default function ExampleCard({ article, t }) {
         <span className="ex-tag">{t.examples.tags[article.tag]}</span>
         <h3>{a.title}</h3>
         <p className="ex-summary">{a.summary}</p>
+        <p className="ex-proof">{a.proof}</p>
         <span className="ex-read">{t.examples.read} <Icon.arrow /></span>
       </div>
     </a>

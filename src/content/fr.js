@@ -77,6 +77,16 @@ export default {
         example: 'Ex : les demandes reçues par mail triées et transmises à la bonne personne.',
       },
     ],
+    pricing: {
+      label: 'Quelques repères de prix',
+      note: 'Prix indicatifs HT. Le montant exact est défini après le cadrage du besoin.',
+      items: [
+        { label: 'Cadrage', price: '250 € HT' },
+        { label: 'Automatisation', price: 'dès 490 € HT' },
+        { label: 'Automatisation avancée', price: 'dès 900 € HT' },
+        { label: 'Outil sur mesure', price: 'dès 2 500 € HT' },
+      ],
+    },
     cta: { text: "Vous vous reconnaissez dans l'un de ces besoins ?", button: 'Parlons-en' },
   },
   examples: {
@@ -122,6 +132,7 @@ export default {
   about: {
     title: 'Qui on est',
     lead: "Pas d'agence, pas de commercial. Vous parlez directement à celui qui pilote et développe votre projet.",
+    photoAlt: 'Baptiste, fondateur et développeur de myblok',
     paragraphs: [
       "myblok, c'est Baptiste, développeur basé à Lyon. Au quotidien, il travaille en alternance au Crédit Agricole T&S, sur des systèmes où l'à-peu-près n'existe pas. Il applique la même rigueur à vos projets.",
       "Quand un projet le demande, il s'appuie sur un développeur indépendant avec qui il travaille régulièrement. Vous gardez un seul interlocuteur du début à la fin.",
@@ -135,7 +146,7 @@ export default {
   faq: {
     title: "Les questions qu'on nous pose souvent",
     items: [
-      { q: 'Combien ça coûte ?', a: "Ça dépend du besoin, c'est pour ça qu'on commence par un échange gratuit. Après le cadrage, vous recevez un devis précis : vous savez exactement ce que vous payez avant qu'on commence." },
+      { q: 'Combien ça coûte ?', a: "Pour donner un ordre de grandeur, une automatisation démarre à 490 € HT, une automatisation avancée à 900 € HT et un outil sur mesure à 2 500 € HT. Le cadrage est à 250 € HT, déduit si le projet démarre. Le devis final reste précis et adapté à votre besoin." },
       { q: 'Combien de temps faut-il ?', a: 'Une automatisation simple peut être en place en quelques jours, un outil sur mesure prend plutôt quelques semaines. Le délai exact est fixé au cadrage.' },
       { q: 'Je ne suis pas du tout technique, est-ce un problème ?', a: "Non, c'est même le cas de la plupart de nos clients. Vous nous expliquez comment vous travaillez, on s'occupe du reste, et on vous explique l'outil avec des mots simples." },
       { q: 'Faut-il changer nos logiciels actuels ?', a: "Le plus souvent, non. On part de ce que vous utilisez déjà et on le fait mieux fonctionner. On ne propose de remplacer un outil que si c'est vraiment plus simple pour vous." },

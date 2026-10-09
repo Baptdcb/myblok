@@ -13,14 +13,9 @@ export default function About({ t }) {
           </div>
         </Reveal>
         <Reveal className="glass about-side" delay={1}>
-          <div className="about-points">
-            {about.points.map((pt, i) => (
-              <div className="about-point" key={i}>
-                <div className="ap-k">{pt.k}</div>
-                <div className="ap-v">{pt.v}</div>
-              </div>
-            ))}
-          </div>
+          <figure className="about-portrait">
+            <img src="/image%20copy.png" alt={about.photoAlt} />
+          </figure>
         </Reveal>
       </div>
     </section>

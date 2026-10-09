@@ -12,7 +12,7 @@ export default function Process({ t }) {
         <div className="process-track">
           {process.steps.map((s, i) => (
             <Reveal key={i} className="glass step" delay={(i % 4) + 1}>
-              <span className="step-n">{s.n}</span>
+              <span className="step-n">{String(i + 1).padStart(2, '0')}</span>
               <h3>{s.name}</h3>
               <p className="step-desc">{s.desc}</p>
               {s.badge && <span className="step-badge">{s.badge}</span>}

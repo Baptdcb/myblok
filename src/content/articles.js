@@ -28,6 +28,7 @@ export const articles = [
     fr: {
       title: 'Les commandes reçues par mail créées toutes seules dans la facturation',
       summary: "Une commande arrive par mail : le client, les articles et les quantités sont repris automatiquement, la facture est préparée et le tableau de suivi mis à jour.",
+      proof: 'Ordre de grandeur : une facture prête en 30 secondes au lieu de 15 minutes.',
       before: "Chaque matin, quelqu'un ouvre la boîte mail, recopie chaque commande dans le logiciel de facturation, puis une deuxième fois dans le tableau Excel de suivi. Une faute de frappe sur une quantité, et c'est une facture à refaire et un client à rappeler.",
       steps: [
         { t: 'La commande arrive', d: "Le mail est repéré dès sa réception, qu'il vienne d'un formulaire du site, d'un client habituel ou d'une plateforme." },
@@ -51,6 +52,7 @@ export const articles = [
     en: {
       title: 'Orders received by email created automatically in your invoicing tool',
       summary: 'An order arrives by email: customer, items and quantities are picked up automatically, the invoice is drafted and the tracking sheet updated.',
+      proof: 'Typical guidepost: an invoice ready in 30 seconds instead of 15 minutes.',
       before: 'Every morning, someone opens the inbox, copies each order into the invoicing software, then a second time into the Excel tracking sheet. One typo on a quantity, and it is an invoice to redo and a customer to call back.',
       steps: [
         { t: 'The order arrives', d: 'The email is picked up as soon as it lands, whether it comes from the website form, a regular customer or a marketplace.' },
@@ -95,6 +97,7 @@ def classer(mail):
     fr: {
       title: "Les demandes entrantes triées par l'IA et transmises à la bonne personne",
       summary: "Demandes de devis, SAV, questions de facturation : chaque mail reçu sur l'adresse générale est lu, classé, résumé et transmis à la bonne personne.",
+      proof: 'Ordre de grandeur : environ 4 heures par semaine récupérées sur le tri des demandes.',
       before: "Tout arrive sur contact@. Quelqu'un doit tout lire, comprendre de quoi il s'agit et faire suivre. Quand cette personne est absente, les demandes de devis attendent trois jours et les clients mécontents attendent aussi.",
       steps: [
         { t: 'Le mail arrive sur l’adresse générale', d: 'Rien ne change pour vos clients : ils écrivent toujours au même endroit.' },
@@ -118,6 +121,7 @@ def classer(mail):
     en: {
       title: 'Incoming requests sorted by AI and forwarded to the right person',
       summary: 'Quote requests, after-sales, billing questions: every email sent to the general address is read, sorted, summarised and forwarded to the right person.',
+      proof: 'Typical guidepost: around 4 hours a week recovered from sorting requests.',
       before: 'Everything lands in contact@. Someone has to read it all, work out what it is about and forward it. When that person is away, quote requests wait three days, and so do unhappy customers.',
       steps: [
         { t: 'The email reaches the general address', d: 'Nothing changes for your customers: they still write to the same place.' },
@@ -146,6 +150,7 @@ def classer(mail):
     fr: {
       title: 'Les relances de devis qui partent toutes seules',
       summary: "Un devis sans réponse depuis une semaine ? Une relance polie part automatiquement, signée par vous, et s'arrête dès que le client répond.",
+      proof: 'Ordre de grandeur : 100 % des relances prévues partent au bon moment, sans suivi manuel.',
       before: "Les devis partent, puis plus rien. On se dit qu'on relancera, on oublie, et le client a signé ailleurs. Les relances dépendent de la mémoire de chacun et d'un post-it sur l'écran.",
       steps: [
         { t: 'Chaque matin, les devis sont passés en revue', d: 'La liste des devis envoyés est lue dans votre logiciel, avec leur date et leur statut.' },
@@ -169,6 +174,7 @@ def classer(mail):
     en: {
       title: 'Quote follow-ups that go out on their own',
       summary: 'A quote with no answer for a week? A polite follow-up goes out automatically, signed by you, and stops as soon as the customer replies.',
+      proof: 'Typical guidepost: 100% of planned follow-ups go out on time, without manual tracking.',
       before: 'Quotes go out, then nothing. You plan to follow up, you forget, and the customer signs elsewhere. Follow-ups depend on everyone’s memory and a sticky note on the screen.',
       steps: [
         { t: 'Every morning, quotes are reviewed', d: 'The list of sent quotes is read from your software, with their date and status.' },
@@ -212,6 +218,7 @@ envoyer(rapport.pdf(), a=["direction@votre-pme.fr"])`,
     fr: {
       title: 'Le rapport mensuel prêt le 1er du mois, sans y toucher',
       summary: "Chiffre d'affaires, marge, devis en attente, meilleurs clients : le tableau de bord du mois arrive en PDF dans votre boîte mail le 1er à 7 h.",
+      proof: 'Ordre de grandeur : un rapport mensuel prêt en 2 minutes au lieu d’une demi-journée.',
       before: "Le dernier jour du mois, quelqu'un exporte les ventes, puis les achats, colle le tout dans un fichier Excel, refait les graphiques et envoie le résultat. Une demi-journée, et des chiffres qui ne correspondent jamais tout à fait à ceux du mois dernier.",
       steps: [
         { t: 'Le 1er du mois, à 7 h', d: 'Un petit programme se lance tout seul sur un serveur, sans que personne ait à y penser.' },
@@ -235,6 +242,7 @@ envoyer(rapport.pdf(), a=["direction@votre-pme.fr"])`,
     en: {
       title: 'The monthly report ready on the 1st, without touching it',
       summary: 'Revenue, margin, pending quotes, top customers: the month’s dashboard lands in your inbox as a PDF on the 1st at 7am.',
+      proof: 'Typical guidepost: a monthly report ready in 2 minutes instead of half a day.',
       before: 'On the last day of the month, someone exports sales, then purchases, pastes it all into Excel, rebuilds the charts and sends the result. Half a day, and figures that never quite match last month’s.',
       steps: [
         { t: 'On the 1st of the month, at 7am', d: 'A small program starts on its own on a server, without anyone having to think about it.' },
@@ -263,6 +271,7 @@ envoyer(rapport.pdf(), a=["direction@votre-pme.fr"])`,
     fr: {
       title: 'Les factures fournisseurs lues, vérifiées et rangées',
       summary: "Les factures PDF reçues par mail sont lues automatiquement : fournisseur, montant, TVA et échéance sont extraits, vérifiés, puis classés au bon endroit.",
+      proof: 'Ordre de grandeur : une facture classée en 20 secondes au lieu de 3 minutes.',
       before: "Les factures fournisseurs arrivent par mail, en PDF, chacune avec sa mise en page. Il faut les ouvrir une par une, recopier les montants dans le tableau des échéances, les renommer, les ranger dans le bon dossier pour le comptable.",
       steps: [
         { t: 'La facture arrive en pièce jointe', d: 'Sur une adresse dédiée, ou directement depuis votre boîte habituelle.' },
@@ -286,6 +295,7 @@ envoyer(rapport.pdf(), a=["direction@votre-pme.fr"])`,
     en: {
       title: 'Supplier invoices read, checked and filed',
       summary: 'PDF invoices received by email are read automatically: supplier, amount, VAT and due date are extracted, checked, then filed in the right place.',
+      proof: 'Typical guidepost: an invoice filed in 20 seconds instead of 3 minutes.',
       before: 'Supplier invoices arrive by email as PDFs, each with its own layout. They have to be opened one by one, amounts copied into the due-dates sheet, files renamed and stored in the right folder for the accountant.',
       steps: [
         { t: 'The invoice arrives as an attachment', d: 'At a dedicated address, or straight from your usual inbox.' },
@@ -314,6 +324,7 @@ envoyer(rapport.pdf(), a=["direction@votre-pme.fr"])`,
     fr: {
       title: 'Un outil de suivi de chantier qui remplace trois fichiers Excel',
       summary: "Planning, avancement par lot, photos et réserves : une application simple, sur ordinateur et sur téléphone, à la place des fichiers qui circulent par mail.",
+      proof: 'Ordre de grandeur : environ 5 heures par semaine récupérées sur la mise à jour du suivi.',
       before: "Un fichier pour le planning, un pour l'avancement, un pour les réserves. Chacun a sa version, envoyée par mail. Sur le chantier, impossible de mettre à jour depuis le téléphone : on note sur papier et on ressaisit le soir.",
       steps: [
         { t: 'Un chantier, une fiche', d: 'Adresse, client, équipe, dates clés : tout au même endroit, consultable par chacun selon ses droits.' },
@@ -337,6 +348,7 @@ envoyer(rapport.pdf(), a=["direction@votre-pme.fr"])`,
     en: {
       title: 'A site-tracking tool that replaces three Excel files',
       summary: 'Schedule, progress per trade, photos and snag lists: one simple app, on desktop and phone, instead of files passed around by email.',
+      proof: 'Typical guidepost: around 5 hours a week recovered from updating project tracking.',
       before: 'One file for the schedule, one for progress, one for snags. Everyone has their own version, sent by email. On site, nothing can be updated from a phone: notes go on paper and get typed in at night.',
       steps: [
         { t: 'One site, one record', d: 'Address, client, team, key dates: all in one place, visible to each person according to their access.' },

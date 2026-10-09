@@ -74,6 +74,16 @@ export default {
         example: 'E.g. incoming email requests sorted and sent to the right person.',
       },
     ],
+    pricing: {
+      label: 'A few pricing guideposts',
+      note: 'Indicative prices excluding VAT. The exact amount is defined after scoping the need.',
+      items: [
+        { label: 'Scoping', price: '€250 + VAT' },
+        { label: 'Automation', price: 'from €490 + VAT' },
+        { label: 'Advanced automation', price: 'from €900 + VAT' },
+        { label: 'Custom tool', price: 'from €2,500 + VAT' },
+      ],
+    },
     cta: { text: 'Recognise one of these needs?', button: "Let's talk" },
   },
   examples: {
@@ -119,6 +129,7 @@ export default {
   about: {
     title: 'Who we are',
     lead: 'No agency, no salespeople. You talk directly to the person who leads and builds your project.',
+    photoAlt: 'Baptiste, founder and developer at myblok',
     paragraphs: [
       'myblok is Baptiste, a developer based in Lyon. Day to day, he works as a work-study developer at Crédit Agricole T&S, on systems where "roughly right" does not exist. He brings the same rigour to your projects.',
       'When a project calls for it, he works with an independent developer he regularly partners with. You keep a single point of contact from start to finish.',
@@ -132,7 +143,7 @@ export default {
   faq: {
     title: 'Questions we often get',
     items: [
-      { q: 'How much does it cost?', a: 'It depends on the need, which is why we start with a free call. After scoping, you get a precise quote: you know exactly what you pay before we start.' },
+      { q: 'How much does it cost?', a: 'As a guide, automation starts at €490 excluding VAT, advanced automation at €900 excluding VAT, and a custom tool at €2,500 excluding VAT. Scoping costs €250 excluding VAT, deducted if the project goes ahead. The final quote is precise and adapted to your need.' },
       { q: 'How long does it take?', a: 'A simple automation can be up and running in a few days; a custom tool usually takes a few weeks. The exact timeline is set during scoping.' },
       { q: "I'm not technical at all. Is that a problem?", a: 'No, that is the case for most of our clients. You explain how you work, we handle the rest, and we explain the tool in plain words.' },
       { q: 'Do we need to change our current software?', a: 'Usually not. We start from what you already use and make it work better. We only suggest replacing a tool when it is genuinely simpler for you.' },

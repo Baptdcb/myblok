@@ -19,6 +19,20 @@ export default function Offer({ t }) {
             </Reveal>
           ))}
         </div>
+        <Reveal className="offer-pricing" delay={2}>
+          <div>
+            <span className="offer-pricing-label">{offer.pricing.label}</span>
+            <p>{offer.pricing.note}</p>
+          </div>
+          <div className="offer-pricing-list">
+            {offer.pricing.items.map((item) => (
+              <div className="offer-price" key={item.label}>
+                <span>{item.label}</span>
+                <strong>{item.price}</strong>
+              </div>
+            ))}
+          </div>
+        </Reveal>
         <SectionCta cta={offer.cta} lang={t.lang} />
       </div>
     </section>
