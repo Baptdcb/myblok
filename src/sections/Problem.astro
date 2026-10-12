@@ -1,0 +1,39 @@
+---
+import Reveal from '../components/Reveal.astro'
+import Icon, { type IconName } from '../components/Icon.astro'
+import type { T } from '../content'
+import { sectionHead, sectionIntro, sectionTitle } from '../lib/ui'
+
+interface Props {
+  t: T
+}
+
+const { problem } = Astro.props.t
+// The closing line turns the section: the promise (first sentence) in ink, the payoff in the gradient.
+const cut = problem.foot.indexOf('. ') + 1
+const footLead = cut > 0 ? problem.foot.slice(0, cut) : problem.foot
+const footPay = cut > 0 ? problem.foot.slice(cut).trim() : ''
+---
+
+<section class="section-y" aria-labelledby="problem-title">
+  <div class="wrap">
+    <Reveal class={sectionHead}>
+      <h2 id="problem-title" class={sectionTitle}>{problem.title}</h2>
+      <p class={sectionIntro}>{problem.intro}</p>
+    </Reveal>
+    <div class="grid grid-cols-1 gap-x-[clamp(28px,5vw,64px)] border-t border-line md:grid-cols-2">
+      {problem.items.map((item, i) => (
+        <Reveal class="grid grid-cols-[44px_1fr] gap-x-4 border-b border-line py-7" delay={i + 1}>
+          <span class="row-span-2 grid size-11 place-items-center rounded-xl border border-line-2 bg-pap-2 text-red" aria-hidden="true">
+            <Icon name={item.icon as IconName} />
+          </span>
+          <h3 class="self-center text-xl tracking-[-0.025em]">{item.title}</h3>
+          <p class="mt-2 max-w-[46ch] text-[15.5px] text-ink-2">{item.desc}</p>
+        </Reveal>
+      ))}
+    </div>
+    <Reveal class="mt-[clamp(40px,6vw,64px)] max-w-[22ch] font-display text-[clamp(28px,4vw,46px)] leading-[1.02] font-extrabold tracking-[-0.04em] text-balance" delay={2}>
+      <p>{footLead} {footPay && <span class="text-grad">{footPay}</span>}</p>
+    </Reveal>
+  </div>
+</section>

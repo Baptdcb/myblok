@@ -10,7 +10,6 @@ colors:
   signal-red: "#ff3b23"
   signal-orange: "#ff8a34"
   signal-gradient: "linear-gradient(100deg, #ff3b23, #ff8a34)"
-  signal-gradient-deep: "linear-gradient(100deg, #c22a15, #e06c1e)"
   line: "#ddd8cd"
   line-strong: "#c7c1b3"
   grid: "rgba(20, 16, 10, 0.06)"
@@ -121,26 +120,26 @@ components:
 
 myblok reads like a well-set Swiss editorial page that a builder has assembled out of parts. The ground is warm paper (#f4f2ec) printed with a faint 46px graph-paper grid; the text is near-black ink; and every piece of energy in the layout comes from a single warm signal — a red-to-orange gradient — used sparingly and always for the same reason: to mark the thing that matters. The personality is sober, confident, and typographically loud where it counts, with tight-tracked Archivo headlines running large against generous whitespace. Nothing floats, nothing frosts, nothing glows for decoration.
 
-Depth is drawn, not blurred. Cards are solid white panels bounded by a crisp 1.5px ink hairline — the same weight that underlines the nav and tops the footer — so the whole system feels ruled and printed rather than layered in glass. Motion is disciplined: content rises into place on scroll, the hero headline lifts on load, and the signature 3x3 grid of "blok" tiles pops in one after another and shimmers, dramatizing the product idea (modular blocks assembling into the exact tool a client needs) without ever becoming ambient noise.
+Depth is drawn, not blurred. Cards are solid white panels bounded by a crisp 1.5px ink hairline — the same weight that underlines the nav and tops the footer — so the whole system feels ruled and printed rather than layered in glass. Motion is disciplined: content rises into place on scroll, the hero headline lifts on load, the hero card plays an order travelling through an automation step by step, and each example's drawing assembles itself part by part when it comes into view. Motion always tells what the tool does; it never becomes ambient noise.
 
 This world explicitly rejects the two looks its own brief named off-limits: cream-plus-serif-plus-terracotta, and near-black-plus-neon. It also rejects the generic frosted-glass/dark-gradient SaaS hero and the flat freelance-dev card grid. The warmth here is paper warmth, not sepia; the accent is a printed-ink signal, not a glow.
 
 **Key Characteristics:**
 - Light-first warm-paper ground with a faint graph-paper grid; a full warm near-black dark editorial variant.
-- One signal only: a red-to-orange gradient, rationed to headlines' hero word, CTAs, numbers, tags, and the blok tiles.
+- One signal only: a red-to-orange gradient, rationed to headlines' hero word, CTAs, numbers, tags, and the key parts of the drawings.
 - Tight-tracked Archivo display against Hanken Grotesk body; headlines run very large.
 - Solid panels with 1.5px ink hairlines — ruled, not glassy.
-- A signature 3x3 grid of modular gradient "blok" tiles that assemble on load.
+- Ink bands (process, contact, footer) printed in reverse give the long page its rhythm.
+- Drawings that tell the automation step by step: the hero card, and each example's illustration.
 
 ## Colors
 
 A warm monochrome paper-and-ink base carrying exactly one chromatic voice: the red-to-orange signal gradient.
 
 ### Primary
-- **Signal Gradient** (`linear-gradient(100deg, #ff3b23, #ff8a34)`): the brand's one voice. Fills primary and nav CTAs (pills), the `.grad` hero headline word (clipped to text), section/step numbers and markers, offer and step tag pills, the filled hero blok tiles, and the small square accent dots (brand mark, list bullets). Rendered as a gradient every time it appears as a fill or clipped-text accent.
+- **Signal Gradient** (`linear-gradient(100deg, #ff3b23, #ff8a34)`): the brand's one voice. Fills primary and nav CTAs (pills), the `.grad` hero headline word (clipped to text), section/step numbers and markers, offer and step tag pills, the gradient parts of the drawings, and the small square accent dots (brand mark, list bullets). Rendered as a gradient every time it appears as a fill or clipped-text accent.
 - **Signal Red** (#ff3b23): the gradient's hot end, used on its own for hairline accents — link text in contact/footer, the dashed blok slot border, the step connector bar, the map pin, focus-ring border, and error text. Also the `::selection` highlight (with white text).
 - **Signal Orange** (#ff8a34): the gradient's warm end; not used standalone, only as the gradient terminus.
-- **Signal Gradient Deep** (`linear-gradient(100deg, #c22a15, #e06c1e)`): a darker gradient variant tinting the `dk` hero blok tiles (positions 2, 5, 6) for tonal variation within the 3x3 grid.
 
 ### Neutral
 - **Paper** (#f4f2ec): the page ground; also the fill of ghost buttons and input fields.
@@ -158,7 +157,7 @@ Activated by `[data-theme='dark']`: paper becomes warm near-black (#15140e), car
 ### Named Rules
 **The One Signal Rule.** There is exactly one accent voice — the red-to-orange gradient — and it never competes with a second hue. If something needs to draw the eye, it wears the gradient; if it doesn't, it stays ink on paper.
 
-**The Ration Rule.** The signal marks only what matters: the hero word, CTAs, numbers, tags, and blok tiles. A screen that turns mostly warm has spent the signal; pull it back to ink-on-paper.
+**The Ration Rule.** The signal marks only what matters: the hero word, CTAs, numbers, tags, and the key parts of the drawings. A screen that turns mostly warm has spent the signal; pull it back to ink-on-paper.
 
 ## Typography
 
@@ -191,10 +190,10 @@ Internal spacing rhythm runs on a small set of steps — 14px and 18px grid gaps
 
 ## Elevation & Depth
 
-Hybrid, but hairline-first. At rest, depth comes entirely from the 1.5px solid ink borders and the printed grid — surfaces are flat and ruled, like a broadsheet. Shadows are reserved for two jobs: the warm glow that sits under signal-gradient elements (CTAs, filled blok tiles), and the lift that appears on hover.
+Hybrid, but hairline-first. At rest, depth comes entirely from the 1.5px solid ink borders and the printed grid — surfaces are flat and ruled, like a broadsheet. Shadows are reserved for two jobs: the warm glow that sits under signal-gradient elements (CTAs, gradient badges of the drawings), and the lift that appears on hover.
 
 ### Shadow Vocabulary
-- **Signal Glow** (`box-shadow: 0 12px 28px rgba(255,90,30,0.32)`; buttons deepen to `0 18px 40px` on hover): warm cast under gradient CTAs, nav CTA, and filled blok tiles. It is a colored glow, not a neutral drop shadow.
+- **Signal Glow** (`box-shadow: 0 12px 28px rgba(255,90,30,0.32)`; buttons deepen to `0 18px 40px` on hover): warm cast under gradient CTAs, nav CTA, and the gradient badges of the drawings. It is a colored glow, not a neutral drop shadow.
 - **Card Lift** (`box-shadow: 0 16px 34px rgba(30,20,10,0.10)`, small variant `0 8px 18px rgba(30,20,10,0.08)`): appears only on hover over cards, steps, and side panels, paired with a `translateY(-4px)` rise.
 - **Focus Ring** (`box-shadow: 0 0 0 3px rgba(255,90,30,0.32)` plus red border): input focus state.
 
@@ -203,7 +202,7 @@ Hybrid, but hairline-first. At rest, depth comes entirely from the 1.5px solid i
 
 ## Shapes
 
-Two corner registers. Panels and inputs use a soft editorial radius — 18px on cards (`--radius`), 12px on inputs (`--radius-sm`), 16px on blok tiles. Everything interactive-as-a-marker is a full pill: buttons, chips, tag pills, and icon buttons all use a 100px radius. Tiny square accents (the 9px brand dot, 10px list bullets) use a 2px radius, echoing the modular block motif in miniature.
+Two corner registers. Panels and inputs use a soft editorial radius — 18px on cards (`--radius`), 12px on inputs (`--radius-sm`). Everything interactive-as-a-marker is a full pill: buttons, chips, tag pills, and icon buttons all use a 100px radius. Tiny square accents (the 9px brand dot, 10px list bullets) use a 2px radius, echoing the modular block motif in miniature.
 
 Borders are the defining silhouette: a consistent 1.5px solid ink hairline draws cards, nav, footer, ghost buttons, and chips; softer dividers use 1.5px in the muted line tones; the hero's empty blok slot is a 1.6px dashed red outline.
 
@@ -235,15 +234,15 @@ Borders are the defining silhouette: a consistent 1.5px solid ink hairline draws
 ### Navigation
 - **Style:** sticky top bar, 62px tall, translucent paper (`color-mix` 88%) with an 8px backdrop blur, closed by a 1.5px ink border-bottom. Brand is Archivo 800 wordmark with a 9px gradient square dot.
 - **States:** links are 11.5px uppercase tracked ink-2, hovering to signal red; icon buttons (lang, theme) are pill outlines that invert to ink-fill on hover.
-- **Mobile:** links collapse into a burger-triggered drawer at 720px (full-width, ink border-bottom); CTA drops at 460px.
+- **Mobile:** links collapse into a burger-triggered drawer below 940px (full-width, ink border-bottom), which also carries a red Contact link; the bar CTA drops below 460px, where a contact button pinned to the bottom of the screen takes over once the first screen is scrolled past.
 
-### The Blok Cluster (signature)
-A 3x3 grid of square tiles (`.hero-blocks` / `.blk`, 16px radius, 380px max) in the hero. Eight tiles are gradient-filled — three in the deep-gradient variant for tonal rhythm — and the top-right slot is an empty 1.6px dashed-red "+ votre besoin" placeholder waiting to clip in. On load each tile pops in on a staggered 0.05-0.61s delay (scale/translate settle); filled tiles run a slow diagonal shimmer sweep; every tile lifts `-5px` / scales 1.03 on hover. This motif is the literal expression of the product idea (modular blocks assembling into the exact tool) and is the system's one permitted piece of ambient animation.
+### Storytelling motion (signature)
+Motion only ever tells what the tool does. The hero card plays an order travelling through an automation, step by step, on a loop. On an example page, the drawing (`Visual.astro` with `animate`) assembles itself once when it comes into view: panels rise, connectors draw, gradient badges pop, in the order the automation runs. The process steps draw a gradient line over their top rule one after the other. Everything else only fades up briefly on scroll (0.5s, 12px), and all of it is off with reduced motion. The early 3x3 "blok" tile cluster was dropped: the page reads better without it.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep the accent as the one red-to-orange signal gradient (`linear-gradient(100deg, #ff3b23, #ff8a34)`), and ration it to headlines' hero word, CTAs, numbers, tags, and blok tiles.
+- **Do** keep the accent as the one red-to-orange signal gradient (`linear-gradient(100deg, #ff3b23, #ff8a34)`), and ration it to headlines' hero word, CTAs, numbers, tags, and the key parts of the drawings.
 - **Do** bound solid panels with the 1.5px solid ink hairline (`.glass` recipe) — the same weight on nav, footer, cards, and chips.
 - **Do** set headlines in Archivo 800 with negative tracking (-0.035em to -0.05em) and line-height at or below 1.0.
 - **Do** reserve neutral shadow for hover lift and colored glow for signal-gradient elements; keep resting surfaces flat and ruled.
@@ -256,3 +255,15 @@ A 3x3 grid of square tiles (`.hero-blocks` / `.blk`, 16px radius, 380px max) in 
 - **Don't** use tracked uppercase on body or headline text; positive tracking and uppercase belong to labels only.
 - **Don't** fabricate social proof — no testimonials, client logos, team, project counts, or metrics; credibility comes from clarity, not invented proof.
 - **Don't** loosen or lighten display type toward a delicate setting, and don't drop the negative tracking — the headlines are meant to feel heavy and printed.
+
+## Lighter pass (October 2026)
+
+The site was simplified for a calmer read. These rules override the ones above where they differ:
+
+- **Soft panels.** Cards (offer, examples, contact form, side panels, hero flow) use a 1px `line-strong` (#c7c1b3) border instead of the 1.5px ink hairline. The ink hairline stays on buttons only; the nav and footer are closed by a 1px `line` rule.
+- **No page grid.** The fixed 46px graph-paper background is gone; the page is plain paper. The 23px grid survives only behind the example drawings, as their frame.
+- **Signal rationed further.** Tags (offer blocks, example categories, the "étape payante" badge) are plain uppercase red labels, no gradient pill. The gradient is left to CTAs, the hero word, the hero flow and step numbers. The about lead is ink, not gradient.
+- **One mid-page CTA.** Only the "Comment ça se passe" section closes with a call to action; the hero, nav and contact form cover the rest.
+- **Smaller headlines.** Section titles run clamp(28px, 4.2vw, 44px); the example page title clamp(30px, 4vw, 46px). Sections breathe on clamp(64px, 8vw, 104px).
+- **Quieter blocks.** Problem items lose their icon boxes (red icon only); the process steps are open columns under a top rule, not cards; nav links are sentence case (14px, 600) rather than tracked uppercase.
+- **Simpler carousel.** Arrows only: no counter, no category filter (six examples don't need one).

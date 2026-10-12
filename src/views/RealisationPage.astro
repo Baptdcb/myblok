@@ -1,0 +1,58 @@
+---
+// Detail page of a project, filled from src/content/realisations.ts.
+import Layout from '../layouts/Layout.astro'
+import SectionCta from '../components/SectionCta.astro'
+import { content, type Lang, type Realisation } from '../content'
+import { homeSection } from '../lib/routes'
+import { backLink, sectionTitle } from '../lib/ui'
+
+interface Props {
+  lang: Lang
+  realisation: Realisation
+}
+
+const { lang, realisation } = Astro.props
+const t = content[lang]
+const r = realisation[lang]
+const labels = t.realisation
+const block = 'mt-[34px] max-w-[70ch]'
+const blockTitle = 'mb-2.5 text-[clamp(20px,2.4vw,26px)]'
+const gallery = 'mt-[34px] grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-[18px]'
+const galleryImg = 'block h-auto w-full rounded-field border border-line-2 bg-pap-2'
+---
+
+<Layout lang={lang} page={{ name: 'realisation', slug: realisation.slug }} meta={{ title: `${r.title} — myblok`, description: `${r.card.problem} ${r.card.result}` }}>
+  <article class="section-y min-h-[60vh]" aria-labelledby="page-title">
+    <div class="wrap">
+      <a href={homeSection(lang, 'realisations')} class={backLink}>← {labels.back}</a>
+      {r.sector && <p class="mb-3 text-sm font-bold text-ink-3">{r.sector}</p>}
+      <h1 id="page-title" class={`${sectionTitle} mb-6`}>{r.title}</h1>
+      {(['context', 'problem', 'solution', 'result'] as const).map((key) => (
+        <section class={block}>
+          <h2 class={blockTitle}>{labels[key]}</h2>
+          <p class="leading-[1.7] text-ink-2">{r[key]}</p>
+        </section>
+      ))}
+      {realisation.images && realisation.images.length > 0 && (
+        <div class={gallery}>
+          {realisation.images.map((img) => (
+            <figure><img src={img.src} alt={img.alt[lang]} loading="lazy" class={galleryImg} /></figure>
+          ))}
+        </div>
+      )}
+      {r.duration && (
+        <section class={block}>
+          <h2 class={blockTitle}>{labels.duration}</h2>
+          <p class="leading-[1.7] text-ink-2">{r.duration}</p>
+        </section>
+      )}
+      {r.quote && (
+        <blockquote class="mt-[34px] max-w-[70ch] border-l-[3px] border-red pl-[18px] leading-[1.7] text-ink-2">
+          <p>« {r.quote.text} »</p>
+          <footer>— {r.quote.author}</footer>
+        </blockquote>
+      )}
+      <SectionCta cta={labels.cta} lang={lang} />
+    </div>
+  </article>
+</Layout>

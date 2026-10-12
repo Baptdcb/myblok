@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-React (Vite) deployed on Vercel, domain myblok.fr. Multi-page static site: every page is prerendered to HTML at build time (`scripts/prerender.js`), head tags built in `src/seo.js`. Bilingual with language in the URL: `/fr/...` and `/en/...` with translated slugs, `/` redirects to `/fr`. Contact form posts to a Vercel Function (`api/contact.js`) that sends the email through Resend. Vercel Web Analytics (cookieless). Light and dark mode.
+Astro (static output, TypeScript, Tailwind CSS v4) deployed on Vercel, domain myblok.fr. Multi-page static site: every page is generated as HTML at build time, with no client framework (a few small TypeScript scripts for the menu, theme, carousel, hero animation and contact form); head tags built in `src/lib/seo.ts`. Bilingual with language in the URL: `/fr/...` and `/en/...` with translated slugs, `/` redirects to `/fr`. Contact form posts to a Vercel Function (`api/contact.js`) that sends the email through Resend. Vercel Web Analytics (cookieless). Light and dark mode.
 
 ## Users
 
@@ -16,7 +16,7 @@ Primary users: decision-makers at French SMEs (PME) — owners, managers, operat
 
 ## Product Purpose
 
-Present Baptiste's independent (auto-entrepreneur) custom-software service under the brand **myblok**. He builds tailored tools and software for SMEs: automation of repetitive tasks, small business tools, and bespoke applications for SMEs that have a precise need but can't afford a large ESN (IT services firm). AI is one tool among others, used where it truly saves time — never the headline. The site must be a credible vitrine that supports direct prospecting.
+Present the custom-software service of Baptiste and Nathan, two independent developers (each a micro-entrepreneur) working together on an equal footing under the brand **myblok**. They build tailored tools and software for SMEs: automation of repetitive tasks, small business tools, and bespoke applications for SMEs that have a precise need but can't afford a large ESN (IT services firm). AI is one tool among others, used where it truly saves time — never the headline. The site must be a credible vitrine that supports direct prospecting.
 
 ## Positioning
 
@@ -24,7 +24,7 @@ A one-person micro-business (entreprise individuelle), not an agency — and thi
 
 ## Operating Context
 
-Baptiste runs the activity alone, in parallel with studies, ~5-10h/week. When a project calls for it, he subcontracts part of the work to a trusted independent developer; the client keeps Baptiste as single point of contact. The subcontractor is not presented as a partner or a team, and is named only once the collaboration is real and they consent. Currently a work-study student (alternance) at Crédit Agricole T&S as a mainframe COBOL developer — real professional-grade dev experience that lends credibility without implying scale. Based in Lyon; works on site or remotely.
+Baptiste and Nathan each run their own micro-enterprise and collaborate on myblok projects as equals: there is no founder and no subcontracting hierarchy. The "Qui on est" section presents both of them the same way, each with a photo, a role and a short bio. Baptiste works on it in parallel with studies, ~5-10h/week; he is currently a work-study student (alternance) at Crédit Agricole T&S as a mainframe COBOL developer. Nathan works as an IT project manager (chef de projet SI), on data exchange between systems and application development. Real professional-grade experience on both sides lends credibility without implying scale. Both are based in Lyon; they work on site or remotely.
 
 Engagement process (to be shown as steps): 1) free exchange, 2) paid scoping/cadrage step (principle explained, no price shown — price discussed during the free exchange), 3) quote/devis, 4) development, 5) delivery.
 
@@ -39,7 +39,7 @@ Engagement process (to be shown as steps): 1) free exchange, 2) paid scoping/cad
 ## Brand Commitments
 
 - Brand name: **myblok** (domain myblok.fr). The name evokes "blocks" / modular blocks — may be used visually if it serves the design, without forcing it.
-- Founder referred to by first name only ("Baptiste") in the body; no photo. Full legal identity belongs only in the legal notices (mentions légales).
+- People referred to by first name only ("Baptiste", "Nathan") in the body, each with a photo in "Qui on est". Full legal identity belongs only in the legal notices (mentions légales).
 - Design brief: very modern, strongly designed, a clear distinctive identity — explicitly NOT the generic AI look. Must avoid: cream+serif+terracotta; near-black+neon. Must ship light AND dark mode. Balance between professional/credible and startup wow-factor. Sober but dynamic, tech.
 
 ## Evidence on Hand

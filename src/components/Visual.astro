@@ -1,0 +1,352 @@
+---
+// Drawn illustrations of each example (src/content/articles.ts → `visual`).
+// Colours come from the theme tokens, so they follow light and dark mode.
+// Labels are short and translated here; the article text carries the real content.
+import type { Lang, VisualName } from '../content'
+
+interface Props {
+  name: VisualName
+  lang: Lang
+  // Accessible description of the picture (the article title).
+  label: string
+  class?: string
+  // Plays the drawing step by step when it comes into view (article pages).
+  animate?: boolean
+}
+
+const { name, lang, label, class: className, animate = false } = Astro.props
+
+const L = {
+  fr: {
+    order: 'Nouvelle commande', invoice: 'Facture', draft: 'Brouillon', total: 'Total TTC',
+    inbox: 'contact@votre-pme.fr', quote: 'Devis', sav: 'SAV', billing: 'Facturation', check: 'À vérifier',
+    sent: 'Devis envoyé', r1: 'Relance 1', r2: 'Relance 2', human: 'Appel', every: 'Chaque matin · 8 h',
+    d0: 'J0', d7: 'J+7', d14: 'J+14', d21: 'J+21',
+    report: 'Activité du mois', first: '1er · 7 h 00',
+    supplier: 'Fournisseur', amount: 'Montant TTC', due: 'Échéance', sum: 'HT + TVA = TTC',
+    site: 'Chantier rue Garibaldi', lots: ['Gros œuvre', 'Électricité', 'Plomberie', 'Finitions'], photo: 'Photo du jour',
+  },
+  en: {
+    order: 'New order', invoice: 'Invoice', draft: 'Draft', total: 'Total',
+    inbox: 'contact@your-company.com', quote: 'Quote', sav: 'After-sales', billing: 'Billing', check: 'To check',
+    sent: 'Quote sent', r1: 'Follow-up 1', r2: 'Follow-up 2', human: 'Call', every: 'Every morning · 8am',
+    d0: 'Day 0', d7: 'Day 7', d14: 'Day 14', d21: 'Day 21',
+    report: 'Monthly activity', first: '1st · 7:00am',
+    supplier: 'Supplier', amount: 'Total', due: 'Due date', sum: 'Net + VAT = Total',
+    site: 'Garibaldi St. site', lots: ['Structure', 'Electrics', 'Plumbing', 'Finishing'], photo: "Today's photo",
+  },
+}[lang]
+
+// Gradient id: one per drawing, identical definitions if a drawing appears twice.
+const g = `vg-${name}`
+const grad = `url(#${g})`
+
+// Shapes.
+const panel = 'fill-pap-2 stroke-ink stroke-[1.5]'
+const stroke = 'stroke-ink stroke-[1.5]'
+const line = 'fill-none stroke-line-2 stroke-[1.5]'
+const soft = 'fill-line'
+const ink = 'fill-ink'
+const red = 'fill-none stroke-red'
+const glow = 'drop-shadow-[0_6px_10px_var(--grad-glow)]'
+
+// Text styles.
+const tx = {
+  base: 'font-sans text-[13px] font-semibold fill-ink',
+  strong: 'font-display text-[13px] font-extrabold tracking-[-0.02em] fill-ink',
+  muted: 'font-sans text-[13px] font-semibold fill-ink-3',
+  small: 'font-sans text-[11.5px] font-bold fill-ink',
+  mutedSmall: 'font-sans text-[11.5px] font-bold fill-ink-3',
+  redSmall: 'font-sans text-[11.5px] font-bold fill-red',
+  onGrad: 'font-sans text-[13px] font-extrabold fill-white',
+  onGradSmall: 'font-sans text-[11.5px] font-extrabold fill-white',
+  onGradBig: 'font-display text-[22px] font-extrabold fill-white',
+}
+
+// Soft text placeholder line.
+const bar = (x: number, y: number, w: number, h = 7) => ({ class: soft, x, y, width: w, height: h, rx: h / 2 })
+// Check mark drawn on the gradient.
+const check = (x: number, y: number, s = 1) => ({
+  class: 'fill-none stroke-white',
+  d: `M${x - 6 * s} ${y}l${4 * s} ${4 * s} ${8 * s}-${9 * s}`,
+  'stroke-width': 2.4,
+  'stroke-linecap': 'round' as const,
+  'stroke-linejoin': 'round' as const,
+})
+
+const inboxRows = [
+  { label: L.quote, kind: 'grad', w: 120 },
+  { label: L.sav, kind: 'ink', w: 96 },
+  { label: L.billing, kind: 'ink', w: 132 },
+  { label: L.check, kind: 'dash', w: 104 },
+]
+const reminderNodes = [
+  { x: 64, day: L.d0, label: L.sent, kind: 'out' },
+  { x: 180, day: L.d7, label: L.r1, kind: 'grad' },
+  { x: 296, day: L.d14, label: L.r2, kind: 'grad' },
+  { x: 412, day: L.d21, label: L.human, kind: 'ink' },
+]
+const reportBars = [52, 74, 60, 92, 80, 118]
+const invoiceFields = [
+  { y: 72, label: L.supplier },
+  { y: 132, label: L.amount },
+  { y: 192, label: L.due },
+]
+const appProgress = [100, 72, 40, 8]
+
+// Animation of one part of the drawing (global.css, "Article illustrations"): how it
+// enters (up, pop, fade, grow from the left, rise from the bottom), its delay and
+// duration in seconds. Nothing is added when the drawing is not animated.
+type Entrance = 'up' | 'pop' | 'fade' | 'grow' | 'rise'
+const va = (kind: Entrance, delay: number, duration = 0.7) =>
+  animate ? { 'data-va': kind, style: `--d: ${delay}s; --t: ${duration}s` } : {}
+---
+
+<svg class:list={['block size-full overflow-visible', className]} viewBox="0 0 480 300" role="img" aria-label={label} preserveAspectRatio="xMidYMid meet" data-animate={animate || undefined}>
+  <defs>
+    <linearGradient id={g} x1="0" y1="0" x2="1" y2="0.35">
+      <stop offset="0" style="stop-color: var(--red)" />
+      <stop offset="1" style="stop-color: var(--org)" />
+    </linearGradient>
+  </defs>
+
+  {name === 'orders' && (
+    <>
+      <g {...va('up', 0)}>
+        <!-- Wide enough for "Nouvelle commande" (~119px at 12px) after the envelope. -->
+        <rect class={panel} x="12" y="52" width="180" height="196" rx="14" />
+        <path class={stroke} d="M32 74h22v15H32zM32 74l11 8 11-8" fill="none" />
+        <text class="font-display text-[12px] font-extrabold tracking-[-0.02em] fill-ink" x="62" y="86">{L.order}</text>
+        <rect {...bar(36, 106, 116)} />
+        <rect {...bar(36, 120, 84)} />
+        {[0, 1, 2].map((i) => (
+          <g>
+            <rect x="32" y={142 + i * 30} width="140" height="22" rx="6" fill="none" stroke={grad} stroke-width="1.6" />
+            <rect {...bar(42, 150 + i * 30, 14)} />
+            <rect {...bar(64, 150 + i * 30, 72 - i * 12)} />
+          </g>
+        ))}
+      </g>
+      <path class={red} d="M192 150h20" stroke-width="1.8" stroke-dasharray="4 4" {...va('grow', 0.4)} />
+      <g {...va('pop', 0.6)}>
+        <rect x="212" y="114" width="72" height="72" rx="16" fill={grad} class={glow} />
+        <path class="fill-none stroke-white" d="M251 130l-12 22h12l-4 18 14-24h-12z" stroke-width="2.2" stroke-linejoin="round" />
+      </g>
+      <path class={red} d="M284 150h28" stroke-width="1.8" stroke-dasharray="4 4" {...va('grow', 0.9)} />
+      <g {...va('up', 1.05)}>
+        <rect class={panel} x="312" y="40" width="148" height="220" rx="14" />
+        <text class={tx.strong} x="328" y="70">{L.invoice}</text>
+        <text class={tx.muted} x="328" y="86">F-0142 · {L.draft}</text>
+        {[0, 1, 2].map((i) => (
+          <g>
+            <rect {...bar(328, 110 + i * 22, 64)} />
+            <rect {...bar(412, 110 + i * 22, 32)} />
+          </g>
+        ))}
+        <path class={line} d="M328 184h116" />
+        <text class={tx.strong} x="328" y="206">{L.total}</text>
+      </g>
+      <rect x="400" y="196" width="44" height="12" rx="6" fill={grad} {...va('grow', 1.4)} />
+      <g {...va('pop', 1.65)}>
+        <circle cx="456" cy="44" r="17" fill={grad} class={glow} />
+        <path {...check(456, 44)} />
+      </g>
+    </>
+  )}
+
+  {name === 'inbox' && (
+    <>
+      <g {...va('up', 0)}>
+        <rect class={panel} x="24" y="34" width="408" height="236" rx="14" />
+        <text class={tx.strong} x="44" y="62">{L.inbox}</text>
+        <path class={line} d="M24 76h408" />
+      </g>
+      {inboxRows.map((r, i) => {
+        const y = 96 + i * 42
+        const pw = r.label.length * 6.6 + 22
+        return (
+          <g>
+            <g {...va('up', 0.2 + i * 0.12)}>
+              <rect class={soft} x="44" y={y - 2} width="26" height="26" rx="7" />
+              <rect class={ink} x="82" y={y} width={r.w} height="8" rx="4" opacity="0.85" />
+              <rect {...bar(82, y + 14, r.w + 50, 6)} />
+            </g>
+            <g {...va('pop', 0.95 + i * 0.25)}>
+              <rect
+                x={412 - pw} y={y - 1} width={pw} height="24" rx="12"
+                fill={r.kind === 'grad' ? grad : 'none'}
+                class={r.kind === 'grad' ? '' : r.kind === 'dash' ? red : stroke}
+                stroke-dasharray={r.kind === 'dash' ? '4 3' : undefined}
+                stroke-width="1.5"
+              />
+              <text class={r.kind === 'grad' ? tx.onGradSmall : r.kind === 'dash' ? tx.redSmall : tx.small} x={412 - pw / 2} y={y + 15} text-anchor="middle">{r.label}</text>
+            </g>
+          </g>
+        )
+      })}
+      <g {...va('pop', 0.7)}>
+        <rect x="396" y="10" width="64" height="64" rx="16" fill={grad} class={glow} />
+        <text class={tx.onGradBig} x="428" y="49" text-anchor="middle">IA</text>
+      </g>
+    </>
+  )}
+
+  {name === 'reminders' && (
+    <>
+      <g {...va('up', 0)}>
+        <rect class={panel} x="24" y="24" width="150" height="30" rx="15" />
+        <circle cx="44" cy="39" r="6" class={stroke} fill="none" />
+        <path class={stroke} d="M44 36v3l2 2" fill="none" />
+        <text class={tx.small} x="58" y="43">{L.every}</text>
+      </g>
+      <path class={line} d="M40 170h400" stroke-width="1.5" {...va('fade', 0.15)} />
+      <!-- A thin rect, not a path: a gradient sized on its box paints nothing on a flat line. -->
+      <rect x="64" y="168.5" width="232" height="3" rx="1.5" fill={grad} {...va('grow', 0.5, 1.4)} />
+      {reminderNodes.map((n, i) => (
+        <g>
+          <g {...va('up', 0.2 + i * 0.12)}>
+            <rect class={panel} x={n.x - 40} y="86" width="80" height="54" rx="10" />
+            <path class={stroke} d={`M${n.x - 26} 100h20v13h-20zM${n.x - 26} 100l10 7 10-7`} fill="none" />
+            <rect {...bar(n.x - 26, 122, 52, 6)} />
+            <path class={line} d={`M${n.x} 140v18`} />
+            <text class={tx.strong} x={n.x} y="206" text-anchor="middle">{n.day}</text>
+            <text class={tx.mutedSmall} x={n.x} y="224" text-anchor="middle">{n.label}</text>
+          </g>
+          <g {...va('pop', 0.5 + i * 0.45)}>
+            <rect
+              x={n.x - 12} y="158" width="24" height="24" rx="6"
+              fill={n.kind === 'grad' ? grad : n.kind === 'ink' ? 'var(--ink)' : 'var(--pap-2)'}
+              class={n.kind === 'out' ? stroke : n.kind === 'grad' ? glow : ''}
+              stroke-width="1.5"
+            />
+            {n.kind === 'grad' && <path {...check(n.x, 170, 0.75)} />}
+          </g>
+        </g>
+      ))}
+    </>
+  )}
+
+  {name === 'report' && (
+    <>
+      <g {...va('up', 0)}>
+        <rect class={panel} x="24" y="30" width="300" height="236" rx="14" />
+        <text class={tx.strong} x="44" y="60">{L.report}</text>
+        <rect {...bar(44, 72, 90, 6)} />
+        <path class={line} d="M44 236h260" />
+      </g>
+      {reportBars.map((h, i) => (
+        <rect x={52 + i * 42} y={236 - h} width="26" height={h} rx="5" fill={i === reportBars.length - 1 ? grad : 'var(--line-2)'} {...va('rise', 0.3 + i * 0.1)} />
+      ))}
+      <g {...va('up', 1.05)}>
+        <g transform="rotate(5 380 190)">
+          <rect class={panel} x="318" y="104" width="130" height="164" rx="12" />
+          <path class={line} d="M418 104v26h30" />
+          <rect x="334" y="122" width="44" height="20" rx="5" fill={grad} />
+          <text class={tx.onGradSmall} x="356" y="136" text-anchor="middle">PDF</text>
+          <rect {...bar(334, 156, 98, 6)} />
+          <rect {...bar(334, 170, 70, 6)} />
+          {[0, 1, 2].map((i) => <rect x={336 + i * 30} y={230 - (i + 2) * 10} width="18" height={(i + 2) * 10} rx="3" class={soft} />)}
+        </g>
+      </g>
+      <g {...va('pop', 1.4)}>
+        <rect x="338" y="30" width="118" height="34" rx="17" fill={grad} class={glow} />
+        <text class={tx.onGrad} x="397" y="52" text-anchor="middle">{L.first}</text>
+      </g>
+    </>
+  )}
+
+  {name === 'invoice' && (
+    <>
+      <g {...va('up', 0)}>
+        <rect class={panel} x="24" y="28" width="176" height="244" rx="12" />
+        <rect class={ink} x="40" y="46" width="60" height="12" rx="3" opacity="0.85" />
+        <rect {...bar(40, 66, 90, 6)} />
+        <rect {...bar(44, 89, 74, 6)} />
+        {[0, 1, 2].map((i) => <rect {...bar(40, 118 + i * 14, 140 - i * 20, 6)} />)}
+        <rect {...bar(104, 177, 60, 6)} />
+        <rect {...bar(44, 235, 56, 6)} />
+      </g>
+      {invoiceFields.map((f, i) => {
+        // The three fields read on the invoice, each linked to the box it fills.
+        const source = [
+          { box: { x: 36, y: 80, w: 110 }, link: 'M146 92C210 92 220 82 262 82' },
+          { box: { x: 96, y: 168, w: 94 }, link: 'M190 180C228 180 230 142 262 142' },
+          { box: { x: 36, y: 226, w: 96 }, link: 'M132 238C210 238 220 202 262 202' },
+        ][i]
+        const d = 0.4 + i * 0.35
+        return (
+          <g>
+            <rect x={source.box.x} y={source.box.y} width={source.box.w} height="24" rx="6" fill="none" stroke={grad} stroke-width="1.8" {...va('pop', d)} />
+            <path class={red} d={source.link} stroke-dasharray="4 4" stroke-width="1.4" {...va('fade', d + 0.15)} />
+            <g {...va('up', d + 0.25)}>
+              <rect class={panel} x="262" y={f.y - 8} width="196" height="36" rx="10" />
+              <text class={tx.mutedSmall} x="276" y={f.y + 14}>{f.label}</text>
+              <rect class={ink} x="372" y={f.y + 6} width={60 - i * 8} height="8" rx="4" opacity="0.85" />
+            </g>
+          </g>
+        )
+      })}
+      <g {...va('pop', 1.65)}>
+        <rect x="262" y="236" width="196" height="30" rx="15" fill={grad} class={glow} />
+        <path {...check(282, 250, 0.7)} />
+        <text class={tx.onGradSmall} x="296" y="255">{L.sum}</text>
+      </g>
+    </>
+  )}
+
+  {name === 'app' && (
+    <>
+      <g {...va('up', 0)}>
+        <rect class={panel} x="20" y="26" width="400" height="244" rx="14" />
+        <path class={line} d="M20 54h400M104 54v216" />
+        {[0, 1, 2].map((i) => <circle cx={38 + i * 14} cy="40" r="4" class={soft} />)}
+        {[0, 1, 2, 3].map((i) => <rect {...bar(34, 74 + i * 22, 54 - (i % 2) * 14, 6)} />)}
+        <rect x="30" y="66" width="64" height="22" rx="6" fill="none" stroke={grad} stroke-width="1.5" />
+        <text class={tx.strong} x="122" y="82">{L.site}</text>
+      </g>
+      {L.lots.map((lot, i) => {
+        const y = 110 + i * 38
+        return (
+          <g>
+            <g {...va('fade', 0.2 + i * 0.1)}>
+              <text class={tx.small} x="122" y={y}>{lot}</text>
+              <rect class={soft} x="122" y={y + 8} width="200" height="10" rx="5" />
+            </g>
+            <rect x="122" y={y + 8} width={Math.max(10, 2 * appProgress[i])} height="10" rx="5" fill={grad} {...va('grow', 0.45 + i * 0.15, 1)} />
+          </g>
+        )
+      })}
+      <g {...va('up', 1)}>
+        <rect class={panel} x="350" y="104" width="104" height="180" rx="18" />
+        <rect class={soft} x="362" y="128" width="80" height="80" rx="8" />
+        <path class={stroke} d="M368 196l20-26 14 16 10-10 24 20" fill="none" stroke-linejoin="round" />
+        <circle cx="424" cy="146" r="7" fill={grad} />
+        <text class={tx.small} x="362" y="226">{L.photo}</text>
+      </g>
+      <g {...va('pop', 1.4)}>
+        <rect x="362" y="240" width="80" height="26" rx="13" fill={grad} class={glow} />
+        <path {...check(402, 252, 0.7)} />
+      </g>
+    </>
+  )}
+</svg>
+
+<script>
+  // Plays the drawings that ask for it (`animate`) once, when they come into view.
+  const drawings = document.querySelectorAll<SVGElement>('[data-animate]')
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    drawings.forEach((el) => el.classList.add('is-playing'))
+  } else {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue
+          e.target.classList.add('is-playing')
+          io.unobserve(e.target)
+        }
+      },
+      { threshold: 0.35 },
+    )
+    drawings.forEach((el) => io.observe(el))
+  }
+</script>

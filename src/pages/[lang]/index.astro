@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Hero from '../../sections/Hero.astro'
+import Problem from '../../sections/Problem.astro'
+import Offer from '../../sections/Offer.astro'
+import Examples from '../../sections/Examples.astro'
+import Realisations from '../../sections/Realisations.astro'
+import Process from '../../sections/Process.astro'
+import About from '../../sections/About.astro'
+import Faq from '../../sections/Faq.astro'
+import Contact from '../../sections/Contact.astro'
+import { content, LANGS, type Lang } from '../../content'
+import { pagePath } from '../../lib/routes'
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }))
+}
+
+const lang = Astro.params.lang as Lang
+const t = content[lang]
+---
+
+<Layout lang={lang} page={{ name: 'home' }}>
+  <!-- Legal notices used to open in the footer at /#mentions-legales: keep old links working. -->
+  <script is:inline define:vars={{ legal: pagePath('legal', lang) }}>
+    if (window.location.hash === '#mentions-legales') window.location.replace(legal)
+  </script>
+  <Hero t={t} />
+  <Problem t={t} />
+  <Offer t={t} />
+  <Examples t={t} />
+  <Realisations t={t} />
+  <Process t={t} />
+  <About t={t} />
+  <Faq t={t} />
+  <Contact t={t} />
+</Layout>

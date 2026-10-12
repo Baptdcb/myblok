@@ -1,0 +1,75 @@
+---
+// Shell of every page: <head>, background, navigation, footer, analytics.
+import Analytics from '@vercel/analytics/astro'
+// Fonts served from the site itself (no request to Google: privacy, and faster).
+import '@fontsource/archivo/700.css'
+import '@fontsource/archivo/800.css'
+import '@fontsource/hanken-grotesk/400.css'
+import '@fontsource/hanken-grotesk/500.css'
+import '@fontsource/hanken-grotesk/600.css'
+import '@fontsource/hanken-grotesk/700.css'
+import '@fontsource/hanken-grotesk/800.css'
+import '../styles/global.css'
+import Seo from '../components/Seo.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+import MobileCta from '../components/MobileCta.astro'
+import { content, type Lang } from '../content'
+import { otherLang, translatedPath, type PageRef } from '../lib/routes'
+import { seoData } from '../lib/seo'
+
+interface Props {
+  lang: Lang
+  page: PageRef
+  // Title and description, when they don't come from `meta` in the content files.
+  meta?: { title: string; description: string }
+}
+
+const { lang, page, meta } = Astro.props
+const t = content[lang]
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <Seo seo={seoData(page, lang, meta)} lang={lang} />
+    <!-- Applies the remembered theme before the first paint (no flash). -->
+    <script is:inline>
+      try {
+        var theme = localStorage.getItem('myblok-theme')
+        if (theme) document.documentElement.setAttribute('data-theme', theme)
+      } catch (e) {}
+    </script>
+    <meta name="theme-color" content="#f4f2ec" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="myblok" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Without JS the content stays visible (.reveal is hidden until it animates). -->
+    <noscript><style>.reveal, [data-animate] [data-va] { opacity: 1 !important; transform: none !important; translate: none !important; scale: none !important; }</style></noscript>
+  </head>
+  <body>
+    <Nav t={t} altHref={translatedPath(page, otherLang(lang))} />
+    <main>
+      <slot />
+    </main>
+    <Footer t={t} />
+    <MobileCta t={t} />
+    <Analytics />
+  </body>
+</html>
+
+<script>
+  import '../scripts/reveal'
+</script>

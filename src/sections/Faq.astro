@@ -1,0 +1,32 @@
+---
+// Native <details> accordion: accessible, works without JavaScript.
+// The opening is animated in CSS (.faq in global.css).
+import Reveal from '../components/Reveal.astro'
+import type { T } from '../content'
+import { sectionHead, sectionTitle } from '../lib/ui'
+
+interface Props {
+  t: T
+}
+
+const { t } = Astro.props
+const { faq } = t
+---
+
+<section id={t.anchors.faq} class="section-y" aria-labelledby="faq-title">
+  <div class="wrap grid grid-cols-1 items-start gap-x-[clamp(32px,6vw,80px)] lg:grid-cols-[0.8fr_1.2fr]">
+    <Reveal class={`${sectionHead} lg:sticky lg:top-28`}>
+      <h2 id="faq-title" class={`${sectionTitle} max-w-[14ch]`}>{faq.title}</h2>
+    </Reveal>
+    <Reveal class="faq border-t border-line" delay={1}>
+      {faq.items.map((item) => (
+        <details class="group border-b border-line">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-5 px-0.5 py-5 text-[clamp(16px,1.6vw,18px)] font-semibold transition-colors hover:text-red focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red after:flex-none after:text-[26px] after:leading-none after:text-red after:transition-transform after:duration-250 after:ease-out-expo after:content-['+'] group-open:after:rotate-45 [&::-webkit-details-marker]:hidden">
+            {item.q}
+          </summary>
+          <p class="faq-a max-w-[68ch] px-0.5 pb-[22px] text-[15.5px] leading-[1.65] text-ink-2">{item.a}</p>
+        </details>
+      ))}
+    </Reveal>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+---
+// Two-column definition list used by the legal pages.
+interface Props {
+  lines: string[][]
+}
+
+const { lines } = Astro.props
+---
+
+<dl class="grid grid-cols-1 gap-x-0 gap-y-[3px] text-[13.5px] md:grid-cols-[180px_1fr] md:gap-x-[18px] md:gap-y-[9px]">
+  {lines.map(([k, v]) => (
+    <>
+      <dt class="mt-2.5 font-bold text-ink-3 md:mt-0">{k}</dt>
+      <dd class="leading-[1.6] text-ink-2">{v}</dd>
+    </>
+  ))}
+</dl>

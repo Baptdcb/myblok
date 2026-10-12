@@ -1,0 +1,87 @@
+---
+import Icon from './Icon.astro'
+import { realisations, type T } from '../content'
+import { homeSection, otherLang } from '../lib/routes'
+import { iconBtn, iconBtnBase, focusRing } from '../lib/ui'
+
+interface Props {
+  t: T
+  // The current page in the other language.
+  altHref: string
+}
+
+const { t, altHref } = Astro.props
+const { lang } = t
+const altLang = otherLang(lang)
+const links = t.nav.links.filter((l) => l.key !== 'realisations' || realisations.length > 0)
+---
+
+<div class="sticky top-0 z-50 border-b border-line bg-pap/88 backdrop-blur-sm">
+  <div class="wrap">
+    <nav class="mx-auto flex h-[62px] max-w-page items-center justify-between px-[26px]">
+      <a href={homeSection(lang, 'top')} class="inline-flex items-center gap-2.5 font-display text-[21px] font-extrabold tracking-[-0.04em]" aria-label="myblok">
+        <img class="block size-[30px] flex-none object-contain" src="/logos/myblok.svg" alt="" aria-hidden="true" />
+        <span>myblok</span>
+      </a>
+
+      <div
+        id="nav-links"
+        class="flex items-center gap-[26px] max-lg:absolute max-lg:inset-x-0 max-lg:top-[62px] max-lg:hidden max-lg:flex-col max-lg:items-start max-lg:gap-[18px] max-lg:border-b max-lg:border-line max-lg:bg-pap max-lg:px-[26px] max-lg:py-[22px] max-lg:data-open:flex"
+      >
+        {links.map((l) => (
+          <a href={homeSection(lang, l.key as keyof T['anchors'])} class="text-sm font-semibold text-ink-2 transition-colors hover:text-red">{l.label}</a>
+        ))}
+        <!-- In the open menu only: on phones the contact button of the bar is hidden. -->
+        <a href={homeSection(lang, 'contact')} class="text-sm font-bold text-red lg:hidden">{t.footer.contactLink}</a>
+      </div>
+
+      <div class="flex items-center gap-2.5">
+        <a class={`${iconBtnBase} h-[38px] px-[13px] text-xs font-extrabold tracking-[0.06em]`} href={altHref} hreflang={altLang} lang={altLang} aria-label={altLang === 'en' ? 'English version' : 'Version française'}>
+          {altLang.toUpperCase()}
+        </a>
+        <button type="button" class={iconBtn} id="theme-toggle" aria-label={t.theme.toDark} data-to-dark={t.theme.toDark} data-to-light={t.theme.toLight}>
+          <Icon name="moon" class="dark:hidden" />
+          <Icon name="sun" class="hidden dark:block" />
+        </button>
+        <a href={homeSection(lang, 'contact')} class={`hidden rounded-full bg-grad px-[18px] py-2.5 text-[13px] font-bold text-white shadow-[0_8px_20px_var(--grad-glow)] transition-[translate,filter] duration-300 ease-out-expo hover:-translate-y-px hover:brightness-105 sm:inline-block ${focusRing}`}>{t.nav.cta}</a>
+        <button type="button" class={`${iconBtn} lg:hidden`} id="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+          <Icon name="menu" />
+        </button>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<script>
+  // Mobile menu: the burger opens the links, choosing one closes them.
+  const links = document.getElementById('nav-links')!
+  const burger = document.getElementById('nav-burger')!
+  const setOpen = (open: boolean) => {
+    links.toggleAttribute('data-open', open)
+    burger.setAttribute('aria-expanded', String(open))
+  }
+  burger.addEventListener('click', () => setOpen(!links.hasAttribute('data-open')))
+  links.addEventListener('click', (e) => {
+    if ((e.target as Element).closest('a')) setOpen(false)
+  })
+
+  // Theme, light by default, remembered in localStorage. The inline script of
+  // the layout has already applied the stored one before the first paint.
+  const THEME_KEY = 'myblok-theme'
+  const toggle = document.getElementById('theme-toggle')!
+  const applyTheme = (theme: string) => {
+    document.documentElement.setAttribute('data-theme', theme)
+    toggle.setAttribute('aria-label', (theme === 'dark' ? toggle.dataset.toLight : toggle.dataset.toDark) ?? '')
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#15140e' : '#f4f2ec')
+  }
+  applyTheme(document.documentElement.getAttribute('data-theme') ?? 'light')
+  toggle.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+    try {
+      localStorage.setItem(THEME_KEY, next)
+    } catch {
+      /* storage unavailable: the theme just won't be remembered */
+    }
+    applyTheme(next)
+  })
+</script>

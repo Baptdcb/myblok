@@ -1,0 +1,121 @@
+---
+// Detail page of an example, filled from src/content/articles.ts.
+// One reading column, top to bottom, like a short story: the gain, before, after,
+// how it works, the safeguards, the tools.
+import Layout from '../layouts/Layout.astro'
+import SectionCta from '../components/SectionCta.astro'
+import Visual from '../components/Visual.astro'
+import ExampleCard from '../components/ExampleCard.astro'
+import Icon from '../components/Icon.astro'
+import { articles, content, type Article, type Lang } from '../content'
+import { homeSection } from '../lib/routes'
+import { backLink, kicker, tag } from '../lib/ui'
+
+interface Props {
+  lang: Lang
+  article: Article
+}
+
+const { lang, article } = Astro.props
+const t = content[lang]
+const a = article[lang]
+const labels = t.article
+const others = articles.filter((o) => o.slug !== article.slug).slice(0, 3)
+// The card's proof line starts with its own label ("Ordre de grandeur : …"): here the label is shown apart.
+const proof = a.proof.replace(/^[^:]*:\s*/, '')
+const proofText = proof.charAt(0).toUpperCase() + proof.slice(1)
+const section = 'mt-[clamp(44px,6vw,64px)]'
+const h2 = 'mb-4 text-[clamp(22px,2.4vw,28px)] tracking-[-0.03em]'
+const body = 'text-[17px] leading-[1.65] text-ink-2'
+const bullet = 'relative before:absolute before:top-[0.5em] before:left-0 before:rounded-[2px] before:bg-grad'
+const gallery = 'mt-[34px] grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-[18px]'
+const galleryImg = 'block h-auto w-full rounded-field border border-line-2 bg-pap-2'
+---
+
+<Layout lang={lang} page={{ name: 'article', slug: article.slug }} meta={{ title: `${a.title} — myblok`, description: a.summary }}>
+  <article class="section-y min-h-[60vh]" aria-labelledby="page-title">
+    <div class="wrap">
+      <div class="mx-auto max-w-[760px]">
+        <a href={homeSection(lang, 'examples')} class={backLink}>← {labels.back}</a>
+        <header>
+          <span class={tag}>{t.examples.tags[article.tag]}</span>
+          <h1 id="page-title" class="mt-3 text-[clamp(30px,4vw,46px)] leading-[1.05] tracking-[-0.035em]">{a.title}</h1>
+          <p class="mt-5 text-[clamp(17px,1.7vw,20px)] leading-normal text-ink-2">{a.summary}</p>
+          <!-- The gain comes first: it is what the reader is here for. -->
+          <p class="mt-7 border-l-4 border-red pl-5">
+            <span class={`${kicker} block text-red`}>{labels.proof}</span>
+            <span class="mt-1.5 block font-display text-[clamp(20px,2.4vw,27px)] leading-[1.2] font-extrabold tracking-[-0.03em]">{proofText}</span>
+          </p>
+        </header>
+
+        <figure class="mt-[clamp(30px,4vw,44px)] rounded-card border border-line-2 bg-grid px-[clamp(18px,6vw,64px)] py-[clamp(18px,4vw,40px)]">
+          <Visual name={article.visual} lang={lang} label={a.title} class="max-h-[380px]" animate />
+        </figure>
+        <p class="mt-3 text-[13px] font-semibold text-ink-3">{labels.note}</p>
+
+        <section class={section}>
+          <h2 class={h2}>{labels.before}</h2>
+          <p class={body}>{a.before}</p>
+        </section>
+
+        <section class={section}>
+          <h2 class={h2}>{labels.after}</h2>
+          <ul class="flex flex-col gap-3">
+            {a.after.map((line) => (
+              <li class={`${bullet} pl-6 text-[17px] leading-normal font-semibold before:size-2.5`}>{line}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section class={section}>
+          <h2 class={h2}>{labels.steps}</h2>
+          <ol class="border-t border-line">
+            {a.steps.map((s, i) => (
+              <li class="grid grid-cols-[44px_1fr] gap-[18px] border-b border-line py-5">
+                <span class="grid size-11 place-items-center rounded-xl bg-grad font-display text-lg font-extrabold text-white shadow-[0_8px_18px_var(--grad-glow)]" aria-hidden="true">{i + 1}</span>
+                <div>
+                  <h3 class="mt-[3px] text-lg tracking-[-0.02em]">{s.t}</h3>
+                  <p class="mt-1.5 text-[15.5px] leading-[1.6] text-ink-2">{s.d}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        {article.images && article.images.length > 0 && (
+          <div class={gallery}>
+            {article.images.map((img) => (
+              <figure><img src={img.src} alt={img.alt[lang]} loading="lazy" class={galleryImg} /></figure>
+            ))}
+          </div>
+        )}
+
+        <!-- The one highlighted block of the page: for a non-technical reader, it is what makes it safe to say yes. -->
+        <section class={`${section} card grid grid-cols-[44px_1fr] gap-x-[18px] p-[clamp(22px,2.6vw,30px)]`}>
+          <span class="row-span-2 grid size-11 place-items-center rounded-xl bg-pap text-red" aria-hidden="true"><Icon name="shield" /></span>
+          <h2 class="self-center text-[clamp(20px,2vw,24px)] tracking-[-0.03em]">{labels.watch}</h2>
+          <p class="mt-2.5 text-base leading-[1.65] text-ink-2">{a.watch}</p>
+        </section>
+
+        <section class={section}>
+          <h2 class={h2}>{labels.stack}</h2>
+          <p class={body}>{labels.stackNote}</p>
+          <ul class="mt-4 flex flex-col gap-2.5">
+            {a.stack.map((line) => (
+              <li class={`${bullet} pl-5 text-[15px] leading-normal text-ink-2 before:size-2`}>{line}</li>
+            ))}
+          </ul>
+        </section>
+
+        <SectionCta cta={labels.cta} lang={lang} />
+      </div>
+
+      <section class="mt-[clamp(64px,9vw,110px)]" aria-labelledby="more-title">
+        <h2 id="more-title" class="mb-6 text-[clamp(26px,3.4vw,38px)] tracking-[-0.04em]">{labels.more}</h2>
+        <div class="grid grid-cols-1 gap-[18px] md:grid-cols-2 lg:grid-cols-3">
+          {others.map((o) => <ExampleCard article={o} t={t} />)}
+        </div>
+      </section>
+    </div>
+  </article>
+</Layout>
