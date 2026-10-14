@@ -1,0 +1,31 @@
+---
+// Legal notice and privacy policy, at their translated URL (/fr/mentions-legales, /en/legal-notice…).
+import Layout from '../../layouts/Layout.astro'
+import LegalList from '../../components/LegalList.astro'
+import { content, LANGS, type Lang } from '../../content'
+import { SLUGS } from '../../lib/routes'
+import { sectionTitle } from '../../lib/ui'
+
+export function getStaticPaths() {
+  return LANGS.flatMap((lang) =>
+    (['legal', 'privacy'] as const).map((name) => ({ params: { lang, page: SLUGS[name][lang] }, props: { name } })),
+  )
+}
+
+const lang = Astro.params.lang as Lang
+const { name } = Astro.props
+const { legal } = content[lang]
+const doc = name === 'legal' ? { ...legal, intro: undefined } : legal.privacy
+---
+
+<Layout lang={lang} page={{ name }}>
+  <section class="section-y min-h-[60vh]" aria-labelledby="page-title">
+    <div class="wrap">
+      <h1 id="page-title" class={`${sectionTitle} mb-6`}>{doc.title}</h1>
+      {doc.intro && <p class="mb-3.5 max-w-[70ch] text-[13.5px] leading-[1.6] text-ink-2">{doc.intro}</p>}
+      <div class="card mt-6 px-6 py-[22px]">
+        <LegalList lines={doc.lines} />
+      </div>
+    </div>
+  </section>
+</Layout>

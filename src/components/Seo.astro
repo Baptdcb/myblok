@@ -1,0 +1,40 @@
+---
+// <head> tags of a page: title, description, canonical, hreflang, social previews, structured data.
+import type { Lang } from '../content'
+import { LANGS } from '../content'
+import { OG_LOCALE, SITE_URL, type SeoData } from '../lib/seo'
+
+interface Props {
+  seo: SeoData
+  lang: Lang
+}
+
+const { seo, lang } = Astro.props
+const image = SITE_URL + seo.image
+// "<" escaped so the JSON can never close the <script> tag.
+const jsonLd = seo.jsonLd && JSON.stringify(seo.jsonLd).replaceAll('<', '\\u003c')
+---
+
+<title>{seo.title}</title>
+<meta name="description" content={seo.description} />
+<meta property="og:title" content={seo.title} />
+<meta property="og:description" content={seo.description} />
+<meta property="og:image" content={image} />
+<meta property="og:image:alt" content={seo.imageAlt} />
+<meta property="og:locale" content={OG_LOCALE[lang]} />
+<meta name="twitter:title" content={seo.title} />
+<meta name="twitter:description" content={seo.description} />
+<meta name="twitter:image" content={image} />
+<meta name="twitter:image:alt" content={seo.imageAlt} />
+{seo.canonical ? (
+  <>
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href={seo.canonical} />
+    <meta property="og:url" content={seo.canonical} />
+    {LANGS.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={OG_LOCALE[l]} />)}
+    {seo.alternates?.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+  </>
+) : (
+  <meta name="robots" content="noindex" />
+)}
+{jsonLd && <script type="application/ld+json" set:html={jsonLd} />}

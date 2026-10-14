@@ -1,0 +1,49 @@
+---
+// Contact button pinned to the bottom of the screen on phones, where the one of the
+// navigation bar is hidden. It shows once the reader has scrolled past the first
+// screen and hides again when the contact form or the footer is in view.
+import Icon from './Icon.astro'
+import type { T } from '../content'
+import { homeSection } from '../lib/routes'
+import { btnPrimary } from '../lib/ui'
+
+interface Props {
+  t: T
+}
+
+const { t } = Astro.props
+---
+
+<div
+  class="pointer-events-none fixed inset-x-0 bottom-0 z-40 translate-y-full px-4 pt-6 pb-[max(16px,env(safe-area-inset-bottom))] opacity-0 transition-[translate,opacity] duration-400 ease-out-expo data-show:pointer-events-auto data-show:translate-y-0 data-show:opacity-100 motion-reduce:transition-none sm:hidden"
+  data-mobile-cta
+  data-contact={t.anchors.contact}
+>
+  <a href={homeSection(t.lang, 'contact')} class={`${btnPrimary} w-full justify-center`} tabindex="-1">
+    {t.hero.ctaPrimary} <Icon name="arrow" />
+  </a>
+</div>
+
+<script>
+  const bar = document.querySelector<HTMLElement>('[data-mobile-cta]')
+  if (bar) {
+    const link = bar.querySelector('a')!
+    const blockers = [document.getElementById(bar.dataset.contact ?? ''), document.querySelector('footer')].filter(
+      (el): el is HTMLElement => el !== null,
+    )
+    const inView = new Set<Element>()
+    const update = () => {
+      const show = window.scrollY > window.innerHeight * 0.6 && inView.size === 0
+      bar.toggleAttribute('data-show', show)
+      // Out of the tab order while hidden.
+      link.tabIndex = show ? 0 : -1
+    }
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) (e.isIntersecting ? inView.add(e.target) : inView.delete(e.target))
+      update()
+    })
+    blockers.forEach((el) => io.observe(el))
+    window.addEventListener('scroll', update, { passive: true })
+    update()
+  }
+</script>

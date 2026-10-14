@@ -1,0 +1,68 @@
+---
+// The two people behind myblok, one card each. Baptiste stays the single point of
+// contact (intro text); the cards say who builds the tool.
+import { Image } from 'astro:assets'
+import Reveal from '../components/Reveal.astro'
+import type { T } from '../content'
+import { lift, sectionTitle } from '../lib/ui'
+import portraitBaptiste from '../assets/portrait-baptiste.png'
+import portraitNathan from '../assets/portrait-nathan.jpg'
+
+interface Props {
+  t: T
+}
+
+const { t } = Astro.props
+const { about } = t
+// `photo` in the content files points here. Each photo has its own framing, so both
+// faces come out at about the same size (Nathan's is a wider shot, hence the zoom).
+const photos = {
+  baptiste: { src: portraitBaptiste, frame: 'object-[center_30%]' },
+  nathan: { src: portraitNathan, frame: '' },
+}
+---
+
+<section id={t.anchors.about} class="section-y" aria-labelledby="about-title">
+  <div class="wrap">
+    <Reveal class="mb-[clamp(34px,5vw,56px)] grid grid-cols-1 gap-x-[clamp(32px,6vw,80px)] gap-y-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+      <div>
+        <h2 id="about-title" class={`${sectionTitle} mb-[18px]`}>{about.title}</h2>
+        <p class="max-w-[30ch] font-display text-[clamp(19px,2vw,23px)] leading-[1.35] font-bold tracking-[-0.02em]">{about.lead}</p>
+      </div>
+      <p class="max-w-[56ch] text-base leading-[1.62] text-ink-2">{about.intro}</p>
+    </Reveal>
+
+    <div class="grid grid-cols-1 gap-[18px] md:grid-cols-2">
+      {about.people.map((person, i) => (
+        <Reveal as="article" class={`card flex flex-col overflow-hidden ${lift}`} delay={i + 1}>
+          <!-- Photos not offered for saving: a transparent layer takes the right-click and the
+               long press (iOS callout off), the image itself can't be dragged out. This only
+               discourages: a screenshot or the dev tools still get the picture. -->
+          <div class="relative aspect-4/3 overflow-hidden bg-line select-none [-webkit-touch-callout:none]" data-no-save>
+            <Image
+              src={photos[person.photo as keyof typeof photos].src}
+              alt={person.photoAlt}
+              widths={[480, 960]}
+              sizes="(min-width: 721px) 560px, 100vw"
+              draggable="false"
+              class={`pointer-events-none block size-full object-cover ${photos[person.photo as keyof typeof photos].frame}`}
+            />
+            <div class="absolute inset-0" aria-hidden="true"></div>
+          </div>
+          <div class="flex flex-1 flex-col border-t border-line-2 p-[clamp(20px,2.4vw,28px)]">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h3 class="text-[22px] tracking-[-0.03em]">{person.name}</h3>
+              <span class="text-[11px] font-extrabold tracking-widest text-red uppercase">{person.role}</span>
+            </div>
+            <p class="mt-3 text-[15.5px] leading-[1.6] text-ink-2">{person.bio}</p>
+          </div>
+        </Reveal>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // No context menu on the photos (on the transparent layer, it would offer nothing useful anyway).
+  document.querySelectorAll('[data-no-save]').forEach((el) => el.addEventListener('contextmenu', (e) => e.preventDefault()))
+</script>

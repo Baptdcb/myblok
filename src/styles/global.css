@@ -1,0 +1,360 @@
+/* ============================================================
+   myblok — Swiss-editorial, paper + ink + red→orange gradient
+   Light (default) + dark editorial. Archivo display / Hanken body.
+   Styling is done with Tailwind utilities in the components; this file
+   holds the design tokens and the few things utilities do badly.
+   ============================================================ */
+@import "tailwindcss";
+
+/* Theme switch (see Layout.astro): the tokens below change, the utilities follow. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+	color-scheme: light;
+	--pap: #f4f2ec;
+	--pap-2: #ffffff;
+	--ink: #141210;
+	--ink-2: #4a463d;
+	--ink-3: #6e695f;
+	--red: #ff3b23;
+	--org: #ff8a34;
+	--grad: linear-gradient(100deg, #ff3b23, #ff8a34);
+	--grad-glow: rgba(255, 90, 30, 0.32);
+	--line: #ddd8cd;
+	--line-2: #c7c1b3;
+	--grid: rgba(20, 16, 10, 0.06);
+	--shadow: 0 16px 34px rgba(30, 20, 10, 0.1);
+	--shadow-sm: 0 8px 18px rgba(30, 20, 10, 0.08);
+}
+
+[data-theme="dark"] {
+	color-scheme: dark;
+	--pap: #292720;
+	--pap-2: #353229;
+	--ink: #f4f1e6;
+	--ink-2: #d0c8b7;
+	--ink-3: #aaa391;
+	--red: #ff5a43;
+	--org: #ff9d52;
+	--grad: linear-gradient(100deg, #ff5a43, #ff9d52);
+	--grad-glow: rgba(255, 110, 60, 0.34);
+	--line: #514c40;
+	--line-2: #716957;
+	--grid: rgba(255, 245, 230, 0.08);
+	--shadow: 0 20px 44px rgba(15, 12, 8, 0.28);
+	--shadow-sm: 0 8px 22px rgba(15, 12, 8, 0.2);
+}
+
+/* Colors point to the variables above so they switch with the theme. */
+@theme inline {
+	--color-pap: var(--pap);
+	--color-pap-2: var(--pap-2);
+	--color-ink: var(--ink);
+	--color-ink-2: var(--ink-2);
+	--color-ink-3: var(--ink-3);
+	--color-red: var(--red);
+	--color-org: var(--org);
+	--color-line: var(--line);
+	--color-line-2: var(--line-2);
+	--color-glow: var(--grad-glow);
+	--shadow-card: var(--shadow);
+	--shadow-card-sm: var(--shadow-sm);
+}
+
+@theme {
+	--color-ok: #17915a;
+	--font-sans: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, Arial, sans-serif;
+	--font-display: "Archivo", "Hanken Grotesk", system-ui, sans-serif;
+	--font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+	--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+	--radius-card: 18px;
+	--radius-field: 12px;
+	--container-page: 1160px;
+
+	/* Font sizes only: line heights come from the body (1.5), the headings (1)
+	   or a leading-* utility, as in the design. */
+	--text-*: initial;
+	--text-xs: 12px;
+	--text-sm: 14px;
+	--text-base: 16px;
+	--text-lg: 18px;
+	--text-xl: 20px;
+
+	/* The design's breakpoints: 460px (small phones), 720px (menu), 940px (columns). */
+	--breakpoint-sm: 28.8125rem;
+	--breakpoint-md: 45.0625rem;
+	--breakpoint-lg: 58.8125rem;
+
+	--animate-rise: rise 0.8s var(--ease-out-expo) both;
+	--animate-pulse-glow: pulse-glow 1.3s var(--ease-out-expo) infinite;
+
+	@keyframes rise {
+		from {
+			opacity: 0;
+			transform: translateY(24px);
+		}
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+	@keyframes pulse-glow {
+		50% {
+			box-shadow: 0 0 0 6px var(--grad-glow);
+		}
+	}
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+	}
+	body {
+		@apply bg-pap font-sans text-ink antialiased;
+		line-height: 1.5;
+		text-rendering: optimizeLegibility;
+		overflow-x: hidden;
+	}
+	h1,
+	h2,
+	h3 {
+		@apply font-display font-extrabold;
+		line-height: 1;
+		letter-spacing: -0.035em;
+		text-wrap: balance;
+	}
+	/* Form controls keep the browser line height, as in the design. */
+	button,
+	input,
+	textarea,
+	select {
+		line-height: normal;
+	}
+	button:not(:disabled) {
+		cursor: pointer;
+	}
+	::selection {
+		background: var(--red);
+		color: #fff;
+	}
+}
+
+/* Page width with its side margins. */
+@utility wrap {
+	width: 100%;
+	max-width: var(--container-page);
+	margin-inline: auto;
+	padding-inline: 18px;
+	@variant sm {
+		padding-inline: 26px;
+	}
+}
+
+/* Vertical rhythm of the page sections. */
+@utility section-y {
+	padding-block: clamp(56px, 7vw, 92px);
+}
+
+/* Ink band: a full-width section printed in reverse (dark ground, light ink), to
+   give the page a rhythm. It redefines the tokens, so everything inside follows.
+   In the dark theme it is lifted a notch instead, to stay distinct from the page. */
+@layer components {
+	.band {
+		color-scheme: dark;
+		--pap: #20201b;
+		--pap-2: #2f2e27;
+		--ink: #f4f1e6;
+		--ink-2: #d0c8b7;
+		--ink-3: #aaa391;
+		--red: #ff5a43;
+		--org: #ff9d52;
+		--grad: linear-gradient(100deg, #ff5a43, #ff9d52);
+		--grad-glow: rgba(255, 110, 60, 0.3);
+		--line: #514c40;
+		--line-2: #716957;
+		--grid: rgba(255, 245, 230, 0.08);
+		--shadow: 0 20px 44px rgba(15, 12, 8, 0.28);
+		--shadow-sm: 0 8px 22px rgba(15, 12, 8, 0.2);
+		background: var(--pap);
+		color: var(--ink);
+	}
+	[data-theme="dark"] .band {
+		--pap: #323129;
+		--pap-2: #3c3a31;
+		--line: #5a5548;
+		--line-2: #797160;
+	}
+}
+
+/* FAQ accordion: the answer slides open where the browser can animate the
+   height (::details-content + interpolate-size), and fades in everywhere. */
+@layer components {
+	.faq {
+		interpolate-size: allow-keywords;
+	}
+	.faq details::details-content {
+		height: 0;
+		overflow: clip;
+		transition:
+			height 0.45s var(--ease-out-expo),
+			content-visibility 0.45s allow-discrete;
+	}
+	.faq details[open]::details-content {
+		height: auto;
+	}
+	.faq details[open] .faq-a {
+		animation: faq-in 0.45s var(--ease-out-expo) both;
+	}
+	@keyframes faq-in {
+		from {
+			opacity: 0;
+			transform: translateY(-6px);
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.faq details::details-content {
+			transition: none;
+		}
+		.faq details[open] .faq-a {
+			animation: none;
+		}
+	}
+}
+
+/* Card: white paper, soft border (the ink hairline is kept for the nav and buttons). */
+@utility card {
+	background: var(--pap-2);
+	border: 1px solid var(--line-2);
+	border-radius: var(--radius-card);
+	transition:
+		translate 0.35s var(--ease-out-expo),
+		box-shadow 0.35s var(--ease-out-expo);
+	@media (prefers-reduced-motion: reduce) {
+		transition: none;
+	}
+}
+
+@utility bg-grad {
+	background-image: var(--grad);
+}
+
+@utility text-grad {
+	background-image: var(--grad);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+/* Squared paper behind the drawings. */
+@utility bg-grid {
+	background-color: var(--pap);
+	background-image:
+		linear-gradient(var(--grid) 1px, transparent 1px),
+		linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+	background-size: 23px 23px;
+}
+
+/* Reveal on scroll (src/scripts/reveal.ts adds .in). Short and subtle on purpose:
+   a fast scroll on a phone must never show empty areas for long. Unlayered: its
+   transition must win over the one of .card, and it lists translate and
+   box-shadow so the hover of the cards stays animated. The delays only apply
+   to the appearance, the hover starts right away. */
+.reveal {
+	opacity: 0;
+	transform: translateY(12px);
+	transition:
+		opacity 0.5s var(--ease-out-expo),
+		transform 0.5s var(--ease-out-expo),
+		translate 0.35s var(--ease-out-expo),
+		box-shadow 0.35s var(--ease-out-expo);
+}
+.reveal.in {
+	opacity: 1;
+	transform: none;
+}
+.reveal[data-d="1"] { transition-delay: 0.05s, 0.05s, 0s, 0s; }
+.reveal[data-d="2"] { transition-delay: 0.1s, 0.1s, 0s, 0s; }
+.reveal[data-d="3"] { transition-delay: 0.15s, 0.15s, 0s, 0s; }
+.reveal[data-d="4"] { transition-delay: 0.2s, 0.2s, 0s, 0s; }
+/* Article illustrations (Visual.astro with `animate`): each part waits hidden, then
+   enters in turn when the drawing comes into view (.is-playing). Delay and duration
+   come from the part (--d, --t). Without JS the layout's <noscript> shows them. */
+[data-animate] [data-va] {
+	transform-box: fill-box;
+	transform-origin: center;
+}
+[data-animate]:not(.is-playing) [data-va] {
+	opacity: 0;
+}
+[data-animate].is-playing [data-va] {
+	animation: va-up var(--t, 0.7s) var(--ease-out-expo) var(--d, 0s) both;
+}
+[data-animate].is-playing [data-va="pop"] { animation-name: va-pop; }
+[data-animate].is-playing [data-va="fade"] { animation-name: va-fade; }
+[data-animate].is-playing [data-va="grow"] { animation-name: va-grow; transform-origin: left center; }
+[data-animate].is-playing [data-va="rise"] { animation-name: va-rise; transform-origin: center bottom; }
+@keyframes va-up {
+	from { opacity: 0; translate: 0 14px; }
+	to { opacity: 1; translate: 0 0; }
+}
+@keyframes va-pop {
+	from { opacity: 0; scale: 0.4; }
+	60% { opacity: 1; scale: 1.08; }
+	to { opacity: 1; scale: 1; }
+}
+@keyframes va-fade {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+@keyframes va-grow {
+	from { opacity: 0; scale: 0 1; }
+	to { opacity: 1; scale: 1 1; }
+}
+@keyframes va-rise {
+	from { opacity: 0; scale: 1 0; }
+	to { opacity: 1; scale: 1 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+	[data-animate] [data-va] {
+		opacity: 1 !important;
+		animation: none !important;
+	}
+}
+
+/* Process steps: a gradient line draws over each step's top rule, one after the
+   other, when the steps appear (they are .reveal, data-d = 1 to 4). */
+.step::before {
+	content: "";
+	position: absolute;
+	top: -1px;
+	left: 0;
+	right: 0;
+	height: 2px;
+	background: var(--grad);
+	transform-origin: left;
+	scale: 0 1;
+	transition: scale 0.9s var(--ease-out-expo) 0.1s;
+}
+.step.in::before {
+	scale: 1 1;
+}
+.step[data-d="2"]::before { transition-delay: 0.35s; }
+.step[data-d="3"]::before { transition-delay: 0.6s; }
+.step[data-d="4"]::before { transition-delay: 0.85s; }
+
+@media (prefers-reduced-motion: reduce) {
+	.step::before {
+		scale: 1 1;
+		transition: none;
+	}
+	.reveal {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+}

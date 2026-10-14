@@ -1,0 +1,99 @@
+---
+// Carousel of concrete examples: native horizontal scroll with snap points,
+// arrows for mouse users, and one dot per example to show where you are.
+import Reveal from '../components/Reveal.astro'
+import Icon from '../components/Icon.astro'
+import ExampleCard from '../components/ExampleCard.astro'
+import { articles, type T } from '../content'
+import { focusRing, iconBtnBase, sectionIntro, sectionTitle } from '../lib/ui'
+
+interface Props {
+  t: T
+}
+
+const { t } = Astro.props
+const { examples } = t
+const arrow = `${iconBtnBase} size-[46px]`
+---
+
+{articles.length > 0 && (
+  <section id={t.anchors.examples} class="section-y" aria-labelledby="examples-title" data-examples>
+    <div class="wrap">
+      <Reveal class="mb-[clamp(28px,4vw,40px)] flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+        <div>
+          <h2 id="examples-title" class={sectionTitle}>{examples.title}</h2>
+          <p class={sectionIntro}>{examples.intro}</p>
+        </div>
+        <div class="flex flex-none items-center gap-2.5">
+          <button type="button" class={arrow} data-move="-1" disabled aria-label={examples.prev}>
+            <Icon name="arrow" class="-scale-x-100" />
+          </button>
+          <button type="button" class={arrow} data-move="1" aria-label={examples.next}>
+            <Icon name="arrow" />
+          </button>
+        </div>
+      </Reveal>
+    </div>
+    <ul
+      class={`flex snap-x snap-mandatory gap-[18px] overflow-x-auto overscroll-x-contain px-(--edge) pt-1.5 pb-[22px] scroll-px-(--edge) [--edge:18px] [scrollbar-color:var(--line-2)_transparent] [scrollbar-width:thin] sm:[--edge:max(26px,calc((100vw-var(--container-page))/2+26px))] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-md [&::-webkit-scrollbar-thumb]:bg-line-2 ${focusRing}`}
+      tabindex="0"
+      aria-label={examples.title}
+      data-track
+    >
+      {articles.map((a) => (
+        <li class="flex flex-[0_0_min(84vw,340px)] snap-start md:flex-[0_0_clamp(286px,31vw,372px)]">
+          <ExampleCard article={a} t={t} />
+        </li>
+      ))}
+    </ul>
+    <div class="wrap">
+      <div class="-ml-1.5 flex items-center" data-dots>
+        {articles.map((a, i) => (
+          <button type="button" class={`group p-1.5 ${focusRing}`} aria-label={a[t.lang].title} data-dot={i}>
+            <span class="block h-1.5 w-5 rounded-full bg-line-2 transition-[width,background-color] duration-300 ease-out-expo group-hover:bg-ink-3 group-data-active:w-9 group-data-active:bg-red motion-reduce:transition-none"></span>
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<script>
+  const GAP = 18
+  const section = document.querySelector<HTMLElement>('[data-examples]')
+  if (section) {
+    const track = section.querySelector<HTMLElement>('[data-track]')!
+    const [prev, next] = [...section.querySelectorAll<HTMLButtonElement>('[data-move]')]
+    const step = () => (track.firstElementChild?.getBoundingClientRect().width ?? 0) + GAP
+
+    const dots = [...section.querySelectorAll<HTMLButtonElement>('[data-dot]')]
+
+    // The arrows are disabled at each end of the track. The active dot is the first
+    // card in view, or the last one once the track can't scroll any further.
+    const sync = () => {
+      const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4
+      prev.disabled = track.scrollLeft <= 4
+      next.disabled = atEnd
+      const active = atEnd ? dots.length - 1 : Math.round(track.scrollLeft / step())
+      dots.forEach((dot, i) => {
+        dot.toggleAttribute('data-active', i === active)
+        if (i === active) dot.setAttribute('aria-current', 'true')
+        else dot.removeAttribute('aria-current')
+      })
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => track.scrollTo({ left: i * step(), behavior: 'smooth' }))
+    })
+
+    for (const button of [prev, next]) {
+      button.addEventListener('click', () => {
+        track.scrollBy({ left: Number(button.dataset.move) * step(), behavior: 'smooth' })
+      })
+    }
+
+    track.addEventListener('scroll', sync, { passive: true })
+    window.addEventListener('resize', sync)
+    sync()
+  }
+</script>

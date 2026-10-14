@@ -1,0 +1,35 @@
+---
+// Vercel serves one 404 page for the whole site, whatever the language of the
+// URL: the message is shown in every language, French first.
+import Layout from '../layouts/Layout.astro'
+import Icon from '../components/Icon.astro'
+import { content, LANGS, DEFAULT_LANG } from '../content'
+import { pagePath } from '../lib/routes'
+import { btnGhost, btnPrimary, sectionIntro, sectionTitle } from '../lib/ui'
+
+const langs = [DEFAULT_LANG, ...LANGS.filter((l) => l !== DEFAULT_LANG)]
+---
+
+<Layout lang={DEFAULT_LANG} page={{ name: 'notFound' }}>
+  <section class="section-y min-h-[60vh]" aria-labelledby="page-title">
+    <div class="wrap">
+      {langs.map((lang, i) => {
+        const { notFound } = content[lang]
+        const Title = i === 0 ? 'h1' : 'h2'
+        return (
+          <div lang={lang} class={i === 0 ? '' : 'mt-14 border-t-[1.5px] border-line pt-10'}>
+            <Title id={i === 0 ? 'page-title' : undefined} class={i === 0 ? `${sectionTitle} mb-6` : 'mb-6 text-[clamp(22px,3vw,32px)] tracking-[-0.04em]'}>
+              {notFound.title}
+            </Title>
+            <p class={sectionIntro}>{notFound.text}</p>
+            <p class="mt-7">
+              <a href={pagePath('home', lang)} class={i === 0 ? btnPrimary : btnGhost}>
+                {notFound.back} <Icon name="arrow" />
+              </a>
+            </p>
+          </div>
+        )
+      })}
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,10 @@
+---
+// Fade/rise in on scroll (src/scripts/reveal.ts). `delay` staggers siblings (1 to 4).
+import type { HTMLTag, Polymorphic } from 'astro/types'
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & { delay?: number }
+
+const { as: Tag = 'div', delay, class: className, ...rest } = Astro.props
+---
+
+<Tag class:list={['reveal', className]} data-d={delay} {...rest}><slot /></Tag>

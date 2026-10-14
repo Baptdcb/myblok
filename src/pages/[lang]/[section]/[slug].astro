@@ -1,0 +1,28 @@
+---
+// Detail pages of the examples (/fr/exemples/<slug>, /en/examples/<slug>)
+// and of the projects (/fr/realisations/<slug>, /en/projects/<slug>).
+import ArticlePage from '../../../views/ArticlePage.astro'
+import RealisationPage from '../../../views/RealisationPage.astro'
+import { articles, realisations, LANGS, type Article, type Lang, type Realisation } from '../../../content'
+import { SLUGS } from '../../../lib/routes'
+
+type Props = { kind: 'article'; article: Article } | { kind: 'realisation'; realisation: Realisation }
+
+export function getStaticPaths() {
+  return LANGS.flatMap((lang) => [
+    ...articles.map((article) => ({
+      params: { lang, section: SLUGS.article[lang], slug: article.slug },
+      props: { kind: 'article' as const, article },
+    })),
+    ...realisations.map((realisation) => ({
+      params: { lang, section: SLUGS.realisation[lang], slug: realisation.slug },
+      props: { kind: 'realisation' as const, realisation },
+    })),
+  ])
+}
+
+const lang = Astro.params.lang as Lang
+const props = Astro.props
+---
+
+{props.kind === 'article' ? <ArticlePage lang={lang} article={props.article} /> : <RealisationPage lang={lang} realisation={props.realisation} />}
