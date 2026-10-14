@@ -72,7 +72,7 @@ const links = t.nav.links.filter((l) => l.key !== 'realisations' || realisations
   const applyTheme = (theme: string) => {
     document.documentElement.setAttribute('data-theme', theme)
     toggle.setAttribute('aria-label', (theme === 'dark' ? toggle.dataset.toLight : toggle.dataset.toDark) ?? '')
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#15140e' : '#f4f2ec')
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#292720' : '#f4f2ec')
   }
   applyTheme(document.documentElement.getAttribute('data-theme') ?? 'light')
   toggle.addEventListener('click', () => {

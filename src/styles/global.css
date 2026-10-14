@@ -29,20 +29,20 @@
 
 [data-theme="dark"] {
 	color-scheme: dark;
-	--pap: #15140e;
-	--pap-2: #1e1c15;
+	--pap: #292720;
+	--pap-2: #353229;
 	--ink: #f4f1e6;
-	--ink-2: #bab3a2;
-	--ink-3: #837d6c;
+	--ink-2: #d0c8b7;
+	--ink-3: #aaa391;
 	--red: #ff5a43;
 	--org: #ff9d52;
 	--grad: linear-gradient(100deg, #ff5a43, #ff9d52);
 	--grad-glow: rgba(255, 110, 60, 0.34);
-	--line: #33302a;
-	--line-2: #45413a;
-	--grid: rgba(255, 245, 230, 0.05);
-	--shadow: 0 20px 44px rgba(0, 0, 0, 0.5);
-	--shadow-sm: 0 8px 22px rgba(0, 0, 0, 0.4);
+	--line: #514c40;
+	--line-2: #716957;
+	--grid: rgba(255, 245, 230, 0.08);
+	--shadow: 0 20px 44px rgba(15, 12, 8, 0.28);
+	--shadow-sm: 0 8px 22px rgba(15, 12, 8, 0.2);
 }
 
 /* Colors point to the variables above so they switch with the theme. */
@@ -166,28 +166,28 @@
 @layer components {
 	.band {
 		color-scheme: dark;
-		--pap: #15140e;
-		--pap-2: #1e1c15;
+		--pap: #20201b;
+		--pap-2: #2f2e27;
 		--ink: #f4f1e6;
-		--ink-2: #bab3a2;
-		--ink-3: #948d7c;
+		--ink-2: #d0c8b7;
+		--ink-3: #aaa391;
 		--red: #ff5a43;
 		--org: #ff9d52;
 		--grad: linear-gradient(100deg, #ff5a43, #ff9d52);
 		--grad-glow: rgba(255, 110, 60, 0.3);
-		--line: #33302a;
-		--line-2: #45413a;
-		--grid: rgba(255, 245, 230, 0.05);
-		--shadow: 0 20px 44px rgba(0, 0, 0, 0.5);
-		--shadow-sm: 0 8px 22px rgba(0, 0, 0, 0.4);
+		--line: #514c40;
+		--line-2: #716957;
+		--grid: rgba(255, 245, 230, 0.08);
+		--shadow: 0 20px 44px rgba(15, 12, 8, 0.28);
+		--shadow-sm: 0 8px 22px rgba(15, 12, 8, 0.2);
 		background: var(--pap);
 		color: var(--ink);
 	}
 	[data-theme="dark"] .band {
-		--pap: #211f17;
-		--pap-2: #2a271e;
-		--line: #3b372f;
-		--line-2: #4d4840;
+		--pap: #323129;
+		--pap-2: #3c3a31;
+		--line: #5a5548;
+		--line-2: #797160;
 	}
 }
 
