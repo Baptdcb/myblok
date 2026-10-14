@@ -18,7 +18,7 @@ const fr = {
     pre: 'Concentrez-vous sur votre métier,',
     grad: 'on automatise',
     post: 'le reste',
-    sub: "Ressaisies, relances, tableaux Excel à rallonge : on s'en charge, avec des outils faits pour votre façon de travailler.",
+    sub: 'On automatise les tâches répétitives avec des outils faits pour votre façon de travailler.',
     ctaPrimary: 'Parlons de votre besoin',
     // Le bouton secondaire mène aux réalisations s'il y en a, sinon à la méthode.
     ctaRealisations: 'Voir nos réalisations',
@@ -27,7 +27,7 @@ const fr = {
     note: 'Premier échange gratuit et sans engagement · À Lyon ou à distance',
     flow: {
       label: 'Exemple : une nouvelle commande',
-      caption: 'Pendant que vous faites autre chose',
+      caption: 'Une commande, sans ressaisie',
       steps: [
         { t: 'Commande reçue par mail', d: '8 h 02 · d’un client habituel' },
         { t: 'Informations reprises', d: 'Client, 3 articles, livraison vendredi' },

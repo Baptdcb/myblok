@@ -17,7 +17,7 @@ const en: Content = {
     pre: 'Focus on your business,',
     grad: 'we automate',
     post: 'the rest',
-    sub: 'Re-typing data, chasing reminders, endless Excel sheets: we take care of it, with tools built around the way you work.',
+    sub: 'We automate repetitive tasks with tools built around the way you work.',
     ctaPrimary: "Let's talk about your needs",
     ctaRealisations: 'See our projects',
     ctaExamples: 'See concrete examples',
@@ -25,7 +25,7 @@ const en: Content = {
     note: 'Free, no-commitment first call · In Lyon, France, or remotely',
     flow: {
       label: 'Example: a new order',
-      caption: 'While you get on with something else',
+      caption: 'An order, no re-typing',
       steps: [
         { t: 'Order received by email', d: '8:02 · from a regular customer' },
         { t: 'Details picked up', d: 'Customer, 3 items, delivery Friday' },
