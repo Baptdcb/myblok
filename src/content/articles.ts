@@ -27,11 +27,11 @@ export interface Article {
 // /fr/exemples/<slug> (/en/examples/<slug>), ajoutée automatiquement au prérendu et au sitemap.
 //
 // Ce sont des cas types, tels qu'on les met en place : pas de nom de client, pas de chiffre
-// de gain inventé. Pour raconter un vrai projet client, utiliser realisations.js.
+// de gain inventé. Pour raconter un vrai projet client, utiliser realisations.ts.
 //
 // {
 //   slug: '…',
-//   tag: 'auto' | 'script' | 'ia' | 'outil',   // filtre du carrousel (libellés dans fr.js / en.js : examples.tags)
+//   tag: 'auto' | 'script' | 'ia' | 'outil',   // catégorie affichée sur la carte (libellés : examples.tags dans fr.ts / en.ts)
 //   visual: '…',                               // illustration dessinée (src/components/Visual.astro)
 //   images: [{ src, alt: { fr, en } }],        // facultatif : vraies captures dans public/exemples/<slug>/
 //   fr: {

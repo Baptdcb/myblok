@@ -4,7 +4,7 @@ const fr = {
   // Ancres des sections de l'accueil (/fr#offre…). Ne pas renommer : d'anciens liens y pointent.
   anchors: { top: 'top', offer: 'offre', realisations: 'realisations', examples: 'exemples', process: 'process', about: 'apropos', faq: 'faq', contact: 'contact' },
   nav: {
-    // L'entrée « realisations » n'apparaît que s'il y a au moins un projet dans realisations.js.
+    // L'entrée « realisations » n'apparaît que s'il y a au moins un projet dans realisations.ts.
     links: [
       { key: 'offer', label: "Ce qu'on fait" },
       { key: 'examples', label: 'Exemples' },
